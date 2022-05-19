@@ -8,18 +8,18 @@
 <body>
 	<section class="site">
         <header>
-           <div class="bouton-burger">
-               <div class="barre"></div>
-               <div class="barre"></div>
-               <div class="barre"></div>
-           </div>
-                 <div class="nav">
+            <div class="bouton-burger">
+                <div class="barre"></div>
+                <div class="barre"></div>
+                <div class="barre"></div>
+            </div>
+                <div class="nav">
                 <ul class="header_barre_nav">
                     <li class="items"><a href="./pages/achat.php" class="achat">Achat</a></li>
                     <li class="items"><a href="./pages/vente.php" class="vente">Vente</a></li>
                     <li class="items"><a href="./pages/profil.php" class="profil">Mon profil</a></li>
                 </ul>
-          </div>
+            </div>
         </header>
     </section>
 

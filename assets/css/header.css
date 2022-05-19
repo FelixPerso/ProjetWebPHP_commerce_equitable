@@ -53,8 +53,8 @@ ul {
 .bouton-burger {
 
     position: absolute;
-    left: 30px;
-    top: 30px;
+    left: 20px;
+    top: 20px;
     z-index: 20;
     cursor: pointer;
 
