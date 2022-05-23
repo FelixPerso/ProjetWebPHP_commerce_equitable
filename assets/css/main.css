@@ -1,4 +1,4 @@
-body, header, html {
+body, header, html, .site {
 
     margin: 0;
     padding: 0;
@@ -15,7 +15,6 @@ body {
 h3 {
 
     color: #000;
-    font-family: Lato;
     font-size: 18pt;
     text-align: center;
     margin-top: 10px;
@@ -24,7 +23,6 @@ h3 {
 .grand-rectangle1 .phrases {
 
     color: #000;
-    font-family: Lato;
     font-size: 15pt;
     text-align: left;
     margin-top: 40px;
@@ -34,96 +32,57 @@ h3 {
 
 .grand-rectangle1 {
 
+    z-index: -1;
     position: relative;
     grid-column-start: body1;
     grid-column-end: body2;
-    top: 1200px;
     width: 80%;
     height: 500px;
     margin-left: 10%;
     margin-right: 10%;
     border-radius: 20px;
-    background: #2A2929;
+    background: #F8F7F7;
 }
 
 
 .rectangle1 {
 
-    font-family: Lato;
     position: absolute;
     grid-column-start: body1;
     grid-column-end: body2;
-    margin-top: 4%;
+    margin-top: 5%;
     margin-left: 4%;
     margin-right: 4%;
-    width: 20%;
-    height: 500px;
+    width: 30%;
+    height: 50%;
     border-radius: 20px;
-    background: #FFF6D4;
+    background: #FFFFFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .rectangle1 .bouton {
 
     position: absolute;
-    width: 80%;
+    width: 60%;
     height: 50px;
-    border-radius: 20px;
-    background-color: #1A1919;
-    top: 85%;
-    margin-left: 10%;
-    margin-right: 10%;
+    top: 70%;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-weight: bold;
+    background: rgba(104, 182, 253, 0.3095);
+    border: 3px solid #000000;
+    border-radius: 100px;
 }
 
-.rectangle2 {
 
-    font-family: Lato;
-    position: absolute;
-    grid-column-start: body1;
-    grid-column-end: body2;
-    margin-top: 4%;
-    margin-left: 28%;
-    margin-right: 4%;
-    width: 20%;
-    height: 500px;
-    border-radius: 20px;
-    background: #FFF6D4;
+.rectangle1 .bouton:hover, .rectangle2 .bouton:hover, .rectangle3 .bouton:hover {
+
+    background: rgba(120, 182, 253, 0.3095);
 }
 
-.rectangle2 .bouton {
 
-    position: absolute;
-    width: 80%;
-    height: 50px;
-    border-radius: 20px;
-    background-color: #1A1919;
-    top: 85%;
-    margin-left: 10%;
-    margin-right: 10%;
-}
+.rectangle1 p, .rectangle2 p, .rectangle3 p {
 
-.rectangle3 {
-
-    font-family: Lato;
-    position: absolute;
-    grid-column-start: body1;
-    grid-column-end: body2;
-    margin-top: 4%;
-    margin-left: 52%;
-    margin-right: 4%;
-    width: 20%;
-    height: 500px;
-    border-radius: 20px;
-    background: #FFF6D4;
-}
-
-.rectangle3 .bouton {
-
-    position: absolute;
-    width: 80%;
-    height: 50px;
-    border-radius: 20px;
-    background-color: #1A1919;
-    top: 85%;
-    margin-left: 10%;
-    margin-right: 10%;
+    color: #000;
+    text-align: center;
 }
