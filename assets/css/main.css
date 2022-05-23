@@ -32,7 +32,6 @@ h3 {
 
 .grand-rectangle1 {
 
-    z-index: -1;
     position: relative;
     grid-column-start: body1;
     grid-column-end: body2;
@@ -41,12 +40,13 @@ h3 {
     margin-left: 10%;
     margin-right: 10%;
     border-radius: 20px;
-    background: #F8F7F7;
+    background: rgba(0, 0, 0, 0);
 }
 
 
 .rectangle1 {
 
+    z-index: auto;
     position: absolute;
     grid-column-start: body1;
     grid-column-end: body2;
@@ -56,7 +56,7 @@ h3 {
     width: 30%;
     height: 50%;
     border-radius: 20px;
-    background: #FFFFFF;
+    background: #FFF;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
@@ -74,10 +74,9 @@ h3 {
     border-radius: 100px;
 }
 
-
 .rectangle1 .bouton:hover, .rectangle2 .bouton:hover, .rectangle3 .bouton:hover {
 
-    background: rgba(120, 182, 253, 0.3095);
+    background: rgba(104, 160, 253, 0.40);
 }
 
 

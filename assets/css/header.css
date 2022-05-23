@@ -17,18 +17,13 @@
 /*        MENU BURGER        */
 /*****************************/
 
-.menu-burger {
-
-    z-index: 7;
-}
-
-
 ul {
 
     list-style: none;}
 
 .nav {
 
+    z-index: 6;
     position: fixed;
     left: 0;
     background: #595656;
@@ -75,8 +70,8 @@ ul {
     top: 30px;
     z-index: 7;
     cursor: pointer;
-
 }
+
 
 .bouton-burger .barre{
 
