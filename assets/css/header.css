@@ -1,3 +1,18 @@
+
+.site {
+
+    font-family: Lato, sans-serif;
+    display: grid;
+    grid-template-rows: 3.75em 1fr 5em;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-areas:
+        "header1 header2"
+        "body1 body2"
+        "footer footer"  
+}
+
+
+
 /*****************************/
 /*        MENU BURGER        */
 /*****************************/
@@ -32,9 +47,6 @@ ul {
     top: 10%;
     border-left: 30px;
     margin: -10px;
-
-    /*transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);*/
 }
 
 .nav ul li {
@@ -53,8 +65,8 @@ ul {
 .bouton-burger {
 
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 30px;
+    top: 30px;
     z-index: 20;
     cursor: pointer;
 

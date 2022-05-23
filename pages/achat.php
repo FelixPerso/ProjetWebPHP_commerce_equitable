@@ -15,13 +15,14 @@
             </div>
 	            <div class="nav">
                 <ul class="header_barre_nav">
-                    <div class="page-actuelle"><li class"items">Achat</li></div>
+                    <div class="page-actuelle"><li class="items">Achat</li></div>
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
                     <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
                 </ul>
             </div>
 		</header>
 	</section>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>
