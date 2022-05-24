@@ -3,8 +3,8 @@
 <head>
     <meta charset='utf-8'>
     <title>IT+  Accueil</title>
-        <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/header.css'>
-        <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/header.css'>
 </head>
 <body>
 	<section class="site">
