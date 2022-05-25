@@ -11,6 +11,7 @@ body {
 	background-color: #F8F7F7;
 }
 
+
 h3 {
 
     color: #000;
@@ -21,10 +22,37 @@ h3 {
 
 h1 {
 
-    color: #000;
-    font-size: 50pt;
+    color: #68B6FD;
+    font-size: 40pt;
     text-align: center;
+    margin-top: -2%;
+    grid-column-start: body1;
+    grid-column-end: body2;
 }
+
+.trait {
+
+    color: #68B6FD;
+    font-size: 40pt;
+    text-align: center;
+    margin-top: 0%;
+    grid-column-start: body1;
+    grid-column-end: body2;
+}
+
+
+.p-concept {
+
+    grid-column-start: body1;
+    grid-column-end: body2;
+    color: #000;
+    font-size: 14pt;
+    line-height: 35px;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 
 .grand-rectangle1 .phrases {
 
@@ -32,7 +60,7 @@ h1 {
     font-size: 12pt;
     text-align: center;
     margin-top: 5%;
-    margin-left: 20px;
+    margin-left: 20px; 
     margin-right: 20px;
 }
 
