@@ -11,13 +11,19 @@ body {
 	background-color: #F8F7F7;
 }
 
-
 h3 {
 
     color: #000;
     font-size: 18pt;
     text-align: center;
     margin-top: 5%;
+}
+
+h1 {
+
+    color: #000;
+    font-size: 50pt;
+    text-align: center;
 }
 
 .grand-rectangle1 .phrases {
