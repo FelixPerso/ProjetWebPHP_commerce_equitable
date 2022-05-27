@@ -25,6 +25,19 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>
+    <?php
 
+include './script.php';
+$result = mysqli_query($conn,"SELECT * FROM Mendeleiev");
+if($result){
+echo"<table><tr><th>Name</th><th>symbol</th><th>Z</th>";
+while($Mendeleiev = mysqli_fetch_assoc($result))
+{
+echo "<tr><td>{$Mendeleiev['name']}</td><td>{$Mendeleiev['symbol']}</td><td>{$Mendeleiev['Z']}</td><td></tr>";
+} 
+echo"</table";
+}
+mysqli_close($conn);
+?>
 </body>
 </html>
