@@ -1,3 +1,17 @@
+body, header, html, .site {
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Lato', sans-serif;
+    overflow-y: auto;
+}
+
+body {
+
+    background-color: #F8F7F7;
+}
+
 
 .site {
 
@@ -8,7 +22,7 @@
     grid-template-areas:
         "header1 header2"
         "body1 body2"
-        "footer footer"  
+        "footer footer"; 
 }
 
 

@@ -1,10 +1,9 @@
-<!DOCTYPE HTML>
+
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
     <title>IT+ - Achat</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/main.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/achat.css'>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -43,6 +42,62 @@
                 </div>
             </div>
 		</header>
+        <div class="grille-achat">
+            <div class="rectangle1">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle2">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle3">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle4">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle5">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle6">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+        </div>
 	</section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
