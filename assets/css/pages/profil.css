@@ -1,0 +1,115 @@
+body, header, html, .site {
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Lato', sans-serif;
+    overflow-y: hidden;
+}
+
+body {
+
+	background-color: #F8F7F7;
+}
+
+
+.grand-rectangle1 {
+
+    position: relative;
+    grid-column-start: body1;
+    grid-column-end: body1;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 800px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.grand-rectangle2 {
+
+    position: relative;
+    grid-column-start: body2;
+    grid-column-end: body2;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 800px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0);
+}
+
+
+.rectangle1 {
+
+    z-index: auto;
+    position: absolute;
+    grid-column-start: body1;
+    grid-column-end: body1;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
+    width: 80%;
+    height: 100%;
+    border-radius: 20px;
+    background: #FFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.rectangle2 {
+
+    display: flex; /* Permet le centrage vertical*/
+    z-index: auto;
+    position: absolute;
+    grid-column-start: body2;
+    grid-column-end: body2;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
+    width: 80%;
+    height: 20%;
+    border-radius: 20px;
+    background: #FFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.rectangle3 {
+
+    z-index: auto;
+    position: absolute;
+    grid-column-start: body2;
+    grid-column-end: body2;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 30%;
+    width: 80%;
+    height: 70%;
+    border-radius: 20px;
+    background: #FFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+
+.grand-rectangle1 h3, .grand-rectangle2 h3 {
+
+    color: #68B6FD;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+.rectangle2 img {
+
+    width: 20%;
+    margin: auto; /* Permet le centrage vertical*/
+}
+
+.rectangle2 h1 {
+
+    float: right;
+    color: #68B6FD;
+    font-size: 100px;
+    margin: auto; /* Permet le centrage vertical*/
+    
+    
+}
