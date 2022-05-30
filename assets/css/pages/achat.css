@@ -1,0 +1,32 @@
+.w3-container {
+
+	z-index: 5;
+	position: absolute;
+	display: block;
+    right: 10px;
+    top: 30px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+
+w3-container button:hover {
+
+	background: rgba(104, 182, 253, 0.3095);
+}
+
+
+.w3-container button {
+
+	font-weight: bold;
+    background: rgba(104, 182, 253, 0.3095);
+    border: 3px solid #000000;
+    border-radius: 100px;
+}
+
+
+.w3-dropdown-click {
+
+	border-radius: 100px;
+}
+

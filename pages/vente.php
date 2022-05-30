@@ -15,6 +15,7 @@
             </div>
             <div class="nav">
                 <ul class="header_barre_nav">
+                    <li class="items"><a href="../index.php" class="accueil">Accueil</a></li>
                     <li class="items"><a href="./achat.php" class="achat">Achat</a></li>
                     <div class="page-actuelle"><li class="items">Vente</li></div>
                     <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>

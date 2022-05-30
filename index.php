@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -15,6 +16,7 @@
             </div>
             <div class="nav">
                 <ul class="header_barre_nav">
+                    <div class="page-actuelle"><li class="items">Accueil</li></div>
                     <li class="items"><a href="./pages/achat.php" class="achat">Achat</a></li>
                     <li class="items"><a href="./pages/vente.php" class="vente">Vente</a></li>
                     <li class="items"><a href="./pages/profil.php" class="profil">Mon profil</a></li>

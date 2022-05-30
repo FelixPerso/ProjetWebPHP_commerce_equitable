@@ -89,7 +89,7 @@ ul {
     background: #fff;
 }
 
-.achat:hover, .vente:hover, .profil:hover {
+.achat:hover, .vente:hover, .profil:hover, .accueil:hover {
 
     color: #68B6FD;
 }
