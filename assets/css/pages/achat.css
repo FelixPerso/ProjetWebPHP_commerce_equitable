@@ -8,129 +8,133 @@
         'L1C1 L1C2 L1C3'
         'L2C1 L2C2 L2C3'
         'L3C1 L3C2 L3C3';
-    grid-gap: 5%;
+    row-gap: 20%;
+    column-gap: 5%;
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
 }
 
-.rectangle1 {
+.grille-achat .bouton {
 
-    z-index: auto;
-    grid-column-start: L1C1;
-    grid-column-end: L1C1;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: #FFF;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.rectangle2 {
-
-    z-index: auto;
-    grid-column-start: L1C2;
-    grid-column-end: L1C2;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: #FFF;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.rectangle3 {
-
-    z-index: auto;
-    grid-column-start: L1C3;
-    grid-column-end: L1C3;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: #FFF;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.rectangle4 {
-
-    z-index: auto;
-    grid-column-start: L2C1;
-    grid-column-end: L2C1;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: #FFF;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.rectangle5 {
-
-    z-index: auto;
-    grid-column-start: L2C2;
-    grid-column-end: L2C2;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: #FFF;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.rectangle6 {
-
-    z-index: auto;
-    grid-column-start: L2C3;
-    grid-column-end: L2C3;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: #FFF;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.grand-rectangle1 .bouton {
-
-    position: absolute;
-    width: 60%;
+    position: static;
+    width: 40%;
     height: 50px;
-    top: 70%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-bottom: 3%;
+    margin-left: 30%;
+    margin-right: 30%;
     font-weight: bold;
     background: rgba(104, 182, 253, 0.3095);
     border: 3px solid #000000;
     border-radius: 100px;
 }
 
+.grille-achat .bouton:hover {
+
+    background: rgba(104, 160, 253, 0.40);
+}
+
+.grille-achat .phrases {
+
+    color: #000;
+    font-size: 12pt;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+
+.grille-achat h3 {
+
+    color: #000;
+    font-size: 18pt;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.grille-achat p {
+
+    color: #000;
+    text-align: center;
+}
+
+
+.rectangle1, .rectangle2, .rectangle3, .rectangle4, .rectangle5, .rectangle6 {
+
+    z-index: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: #FFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.rectangle1 {
+
+    grid-column-start: L1C1;
+    grid-column-end: L1C1;
+}
+
+.rectangle2 {
+
+    grid-column-start: L1C2;
+    grid-column-end: L1C2;
+}
+
+.rectangle3 {
+
+    grid-column-start: L1C3;
+    grid-column-end: L1C3;
+}
+
+.rectangle4 {
+
+    grid-column-start: L2C1;
+    grid-column-end: L2C1;
+
+}
+
+.rectangle5 {
+ 
+    grid-column-start: L2C2;
+    grid-column-end: L2C2;
+}
+
+.rectangle6 {
+
+    grid-column-start: L2C3;
+    grid-column-end: L2C3;
+}
 
 
 
-
+/*****************************/
+/*      BAR DE RECHERCHE     */
+/*****************************/
 
 .w3-container {
 
-	z-index: 5;
-	position: absolute;
-	display: block;
-    right: 10px;
+    z-index: 5;
+    position: absolute;
+    display: block;
+    right: 5%;
     top: 30px;
-    margin-right: 10px;
     margin-top: 5px;
 }
 
-
-w3-container button:hover {
+.w3-container button:hover {
 
 	background: rgba(104, 182, 253, 0.3095);
 }
-
 
 .w3-container button {
 
 	font-weight: bold;
     background: rgba(104, 182, 253, 0.3095);
-    border: 3px solid #000000;
+    border: 2px solid #000000;
     border-radius: 100px;
+    width: 100%;
 }
-
 
 .w3-dropdown-click {
 
