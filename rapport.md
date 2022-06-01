@@ -5,11 +5,11 @@ Les auteurs de ce dépôt sont les suivants :
 - Hugo Brenet
 - Félix Brinet
 
-Ce projet a été réalisé dans le cadre d'une SAE 2.02 dans la matière développement web en première année de BUT informatique. 
-Cet SAE est en commun avec les SAE 2.05 ET 2.06 dans les matières communication et egod. Vous trouverez donc les pages HTML, CSS, PHP mais aussi le wireflow de notre site.
+Ce projet a été réalisé dans le cadre d'une SAE 2.02 dans la matière Développement Web en première année de BUT informatique. 
+Cette SAE est en commun avec les SAE 2.05 ET 2.06 dans les matières Communication et EGOD. Vous trouverez donc les pages HTML, CSS, PHP mais aussi le wireflow de notre site.
 Vous pouvez également y accéder avec le lien suivant :https://www.figma.com/proto/aylnUzhfTIFKKPsthPNOqB/Prototype-1?node-id=9%3A3&scaling=scale-down&page-id=0%3A1&starting-point-node-id=9%3A3 
 
-Dans la première partie de la création de ce site web, nous avons créé, plusieurs pages HTML pour chaque partie du site donc : 
+Dans la première partie de la création de ce site web, nous avons créé, plusieurs pages PHP pour chaque partie du site donc : 
 - page d'accueil
 - page de connexion
 - page inscription
