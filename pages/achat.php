@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -89,6 +88,60 @@
                 </a>
             </div>
             <div class="rectangle6">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle7">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle8">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle9">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle10">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle11">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle12">
                 <h3>Achat</h3>
                 <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                 <a href="./pages/achat.php">
