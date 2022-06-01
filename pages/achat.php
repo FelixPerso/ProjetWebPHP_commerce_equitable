@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -8,14 +7,14 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-	<section class="site">
-		<header>
+    <section class="site">
+        <header>
             <div class="bouton-burger">
                <div class="barre"></div>
                <div class="barre"></div>
                <div class="barre"></div>
             </div>
-	            <div class="nav">
+                <div class="nav">
                 <ul class="header_barre_nav">
                     <li class="items"><a href="../index.php" class="accueil">Accueil</a></li>
                     <div class="page-actuelle"><li class="items">Achat</li></div>
@@ -41,7 +40,7 @@
                     </div>
                 </div>
             </div>
-		</header>
+        </header>
         <div class="grille-achat">
             <div class="rectangle1">
                 <h3>Achat</h3>
@@ -97,8 +96,62 @@
                     </div>
                 </a>
             </div>
+            <div class="rectangle7">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle8">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle9">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle10">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle11">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
+            <div class="rectangle12">
+                <h3>Achat</h3>
+                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="./pages/achat.php">
+                    <div class="bouton">
+                        <p>VOIR</p>
+                    </div>
+                </a>
+            </div>
         </div>
-	</section>
+    </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>

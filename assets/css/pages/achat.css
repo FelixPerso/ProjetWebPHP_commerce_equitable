@@ -1,4 +1,15 @@
 
+*, ::before, ::after {
+
+    text-decoration: none;
+}
+
+body, .site {
+
+    overflow-y: hidden;
+}
+
+
 .grille-achat {
 
     display: grid;
@@ -7,12 +18,14 @@
     grid-template-areas:
         'L1C1 L1C2 L1C3'
         'L2C1 L2C2 L2C3'
-        'L3C1 L3C2 L3C3';
+        'L3C1 L3C2 L3C3'
+        'L4C1 L4C2 L4C3';
     row-gap: 20%;
     column-gap: 5%;
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 5%;
 }
 
 .grille-achat .bouton {
@@ -27,6 +40,7 @@
     background: rgba(104, 182, 253, 0.3095);
     border: 3px solid #000000;
     border-radius: 100px;
+    text-decoration: none;
 }
 
 .grille-achat .bouton:hover {
@@ -59,7 +73,7 @@
 }
 
 
-.rectangle1, .rectangle2, .rectangle3, .rectangle4, .rectangle5, .rectangle6 {
+.rectangle1, .rectangle2, .rectangle3, .rectangle4, .rectangle5, .rectangle6, .rectangle7, .rectangle8, .rectangle9, .rectangle10, .rectangle11, .rectangle12 {
 
     z-index: auto;
     width: 100%;
@@ -106,6 +120,42 @@
     grid-column-end: L2C3;
 }
 
+.rectangle7 {
+
+    grid-column-start: L3C1;
+    grid-column-end: L3C1;
+}
+
+.rectangle8 {
+
+    grid-column-start: L3C2;
+    grid-column-end: L3C2;
+}
+
+.rectangle9 {
+
+    grid-column-start: L3C3;
+    grid-column-end: L3C3;
+}
+
+.rectangle10 {
+
+    grid-column-start: L4C1;
+    grid-column-end: L4C1;
+}
+
+.rectangle11 {
+
+    grid-column-start: L4C2;
+    grid-column-end: L4C2;
+}
+
+.rectangle12 {
+
+    grid-column-start: L4C3;
+    grid-column-end: L4C3;
+}
+
 
 
 /*****************************/
@@ -122,10 +172,6 @@
     margin-top: 5px;
 }
 
-.w3-container button:hover {
-
-	background: rgba(104, 182, 253, 0.3095);
-}
 
 .w3-container button {
 
