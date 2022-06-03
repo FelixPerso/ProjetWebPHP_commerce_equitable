@@ -26,9 +26,7 @@
                     <div class="page-actuelle"><li class="items">Mon profil</li></div>
                 </ul>
             </div>
-            </section>
         </header>
-        <div class="decoupe-fenetre">
         <div class="grand-rectangle1">
             <div class="rectangle1">
                 <h3>Métaux précieux recyclés</h3>
@@ -45,8 +43,6 @@
                         } 
                         echo"</table>";
                     }
-                    
-    
                 ?> 
             </div>
         </div>
@@ -58,19 +54,19 @@
             <div class="rectangle3">
                 <h3>Vos informations</h3>
                 <?php
-                     $result2 = mysqli_query($conn,"Select login from Customer where id = 1");
-                     $nom = mysqli_fetch_assoc($result2);
+
+                    $result2 = mysqli_query($conn,"Select login from Customer where id = 1");
+                    $nom = mysqli_fetch_assoc($result2);
                      
-                     if($result2){
-                         echo"$nom[login]";
-                     }
-                     mysqli_close($conn);
+                    if($result2){
+                        echo"$nom[login]";
+                    }
+                    mysqli_close($conn);
                 ?>
             </div>
         </div>
-                    </div>
+    </section>
     
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>
 
