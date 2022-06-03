@@ -1,3 +1,8 @@
+<?php 
+    include 'bd.php';
+    //session_start();
+    $iduser = 1;//$_SESSION["cle_session"];
+?>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -42,111 +47,26 @@
             </div>
         </header>
         <div class="grille-achat">
-            <div class="rectangle1">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
+            
+                <?php
+
+                    $result1 = mysqli_query($conn,"Select * from TypeItemDetails");
+                     
+                    if($result1){
+                        while($detail = mysqli_fetch_assoc($result1))
+                        {
+                        echo"<div class='rectangle'>
+                        <h3>Achat</h3>
+                        <p class='phrases'>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                        <a href='./pages/achat.php'>
+                        <img class='image' src='../images/samsung_galaxy_fold_3.png' alt='image-fold3'>";
+
+                        echo "<ul><li>{$detail['attribute']}</li><li>{$detail['value']}</li></ul>";
+                        } 
+                    }
+                    ?>
                     <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle2">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle3">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle4">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle5">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle6">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle7">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle8">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle9">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle10">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle11">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle12">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
+                        <p>ACHETER</p>
                     </div>
                 </a>
             </div>
@@ -188,3 +108,6 @@
 
 </body>
 </html>
+<?php
+mysqli_close($conn);
+?>

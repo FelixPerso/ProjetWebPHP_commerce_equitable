@@ -1,11 +1,12 @@
 <?php
+//session_start();
 include 'bd.php';
 $login = $_POST['login'] ?? NULL;
 $mdp = $_POST['mdp'] ?? NULL;
 
 
-$sql = "SELECT mdp FROM user WHERE login='$login'";
-$res = mysqli_query($connexion,$sql);
+$sql = "SELECT mdp,id FROM Customer WHERE login='$login'";
+$res = mysqli_query($conn,$sql);
 
     if ($res) {
         $row = mysqli_fetch_assoc($res);
@@ -13,6 +14,7 @@ $res = mysqli_query($connexion,$sql);
         
 
         if (password_verify($mdp,$hashed_mdp)) {
+            //$_SESSION ["cles_session"] = $row["id"];
             echo "OK";
         }
         else
