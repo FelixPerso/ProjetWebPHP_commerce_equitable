@@ -41,9 +41,9 @@
                         echo"<table><tr><th>Matériaux</th><th>Quantité récupéré</th></tr>";
                         while($Mendeleiev = mysqli_fetch_assoc($result1))
                         {
-                        echo "<tr><td>{$Mendeleiev['name']}</td><td>{$Mendeleiev['quantity']}</td></td></tr>";
+                        echo "<tr><td>{$Mendeleiev['name']}</td><td>{$Mendeleiev['quantity']}</td></tr>";
                         } 
-                        echo"</table";
+                        echo"</table>";
                     }
                     
     
