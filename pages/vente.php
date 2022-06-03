@@ -50,13 +50,8 @@
             <input type="text" id="nom-famille" name="nom-famille" value=""><br><br><br>
             <label for="prix">Prix de l'offre (€) :</label><br>
             <input type="number" id="prix" name="prix" value=""><br><br>
-            <!-- <input type="submit" value="Submit"> -->
-        </form> 
-        <a href="">
-            <div class="bouton">
-                <p>VENDRE</p>
-            </div>
-        </a>
+            <input type="submit" id="bouton" value="VENDRE">
+        </form>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
