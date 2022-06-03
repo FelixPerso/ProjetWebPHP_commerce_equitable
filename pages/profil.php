@@ -1,5 +1,5 @@
 <?php 
-    include './script.php';
+    include 'bd.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -30,6 +30,20 @@
         <div class="grand-rectangle1">
             <div class="rectangle1">
                 <h3>Métaux précieux recyclés</h3>
+                <?php
+
+                    $result1 = mysqli_query($conn,"Select name,quantity from CustomerExtraction right outer 
+                    join Mendeleiev on element=Z");
+
+                    if($result1){
+                        echo"<table><tr><th>Matériaux</th><th>Quantité récupéré</th></tr>";
+                        while($Mendeleiev = mysqli_fetch_assoc($result1))
+                        {
+                        echo "<tr><td>{$Mendeleiev['name']}</td><td>{$Mendeleiev['quantity']}</td></tr>";
+                        } 
+                        echo"</table>";
+                    }
+                ?> 
             </div>
         </div>
         <div class="grand-rectangle2">
@@ -40,21 +54,19 @@
             <div class="rectangle3">
                 <h3>Vos informations</h3>
                 <?php
-                    $result = mysqli_query($conn,"SELECT * FROM Mendeleiev");
-                    if($result){
-                        echo"<table><tr><th>Name</th><th>symbol</th><th>Z</th>";
-                        while($Mendeleiev = mysqli_fetch_assoc($result))
-                    {
-                        echo "<tr><td>{$Mendeleiev['name']}</td><td>{$Mendeleiev['symbol']}</td><td>{$Mendeleiev['Z']}</td><td></tr>";
-                    } 
-                        echo"</table";
+
+                    $result2 = mysqli_query($conn,"Select login from Customer where id = 1");
+                    $nom = mysqli_fetch_assoc($result2);
+                     
+                    if($result2){
+                        echo"$nom[login]";
                     }
-                        mysqli_close($conn);
+                    mysqli_close($conn);
                 ?>
             </div>
         </div>
     </section>
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>
 
