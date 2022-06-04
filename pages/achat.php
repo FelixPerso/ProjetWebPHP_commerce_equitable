@@ -2,6 +2,7 @@
     include 'bd.php';
     //session_start();
     $iduser = 1;//$_SESSION["cle_session"];
+    $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
 <html lang="fr">
 <head>
@@ -32,45 +33,51 @@
                     <button class="w3-button w3-marina" onclick="rechercheMenuFunction()">Rechercher</button>
                     <div class="w3-dropdown-content w3-bar-block w3-card w3-white" id="myDIV">
                         <input class="w3-input w3-padding" type="text" placeholder="..." id="myInput" onkeyup="rechercheFiltreFunction()">
-                        <a class="w3-bar-item w3-button" href="#telephone">Téléphone</a>
-                        <a class="w3-bar-item w3-button" href="#ordi-portable">Ordinateur portable</a>
-                        <a class="w3-bar-item w3-button" href="#ordi-fixe">Ordinateur fixe</a>
-                        <a class="w3-bar-item w3-button" href="#clavier">Clavier</a>
-                        <a class="w3-bar-item w3-button" href="#souris">Souris</a>
-                        <a class="w3-bar-item w3-button" href="#casque">Casque</a>
-                        <a class="w3-bar-item w3-button" href="#ram">RAM</a>
-                        <a class="w3-bar-item w3-button" href="#processeur">Processeur</a>
-                        <a class="w3-bar-item w3-button" href="#carte-graphique">Carte Graphique</a>
-                        <a class="w3-bar-item w3-button" href="#ecran">Ecran</a>
+                        <?php
+                            if($titre){
+                                while(($titreprod = mysqli_fetch_array($titre))!=null)
+                                {
+                            echo"<a class='w3-bar-item w3-button' href='#{$titreprod['name']}'>{$titreprod['name']}</a>";
+                                }
+                        }
+                        ?>
+                        
+                        
                     </div>
                 </div>
             </div>
         </header>
         <div class="grille-achat">
-            
                 <?php
+                    $titre2 = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC;");
 
-                    $result1 = mysqli_query($conn,"Select * from TypeItemDetails");
-                     
-                    if($result1){
-                        while($detail = mysqli_fetch_assoc($result1))
+                    if($titre2) {
+                        while(($titreprod = mysqli_fetch_array($titre2))!=null)
+                        {
+                    echo "<h2>{$titreprod['name']}</h2>";
+                    $itemdetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails");
+
+                    if($itemdetails){
+                        while(($detail = mysqli_fetch_array($itemdetails))!=null)
                         {
                         echo"<div class='rectangle'>
-                        <h3>Achat</h3>
+                        <h3>{$titreprod['name']}</h3>
                         <p class='phrases'>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                         <a href='./pages/achat.php'>
-                        <img class='image' src='../images/samsung_galaxy_fold_3.png' alt='image-fold3'>";
-
-                        echo "<ul><li>{$detail['attribute']}</li><li>{$detail['value']}</li></ul>";
+                        <img class='image' src='../images/tel1.png' alt='tel1'>
+                        <div class='bouton'>
+                        <p>ACHETER</p></div></a>
+                        </div>
+                        <ul><li>{$detail['attribute']}</li><li>{$detail['value']}</li></ul>
+                        </div>";
                         } 
                     }
-                    ?>
-                    <div class="bouton">
-                        <p>ACHETER</p>
-                    </div>
-                </a>
+                }
+            }                
+            ?>
             </div>
-        </div>
+
+
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -105,8 +112,12 @@
             } 
         }
     </script>
+<a href="#">
+    <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">
+</a>
 
 </body>
+
 </html>
 <?php
 mysqli_close($conn);

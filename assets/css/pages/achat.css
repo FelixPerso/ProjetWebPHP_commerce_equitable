@@ -1,4 +1,8 @@
 
+html {
+    scroll-behavior: smooth;
+}
+
 *, ::before, ::after {
 
     text-decoration: none;
@@ -71,8 +75,8 @@ body, .site {
 .rectangle {
 
     z-index: auto;
-    width: 50%;
-    height: 50%;
+    width: 20%;
+    height: 20%;
     border-radius: 20px;
     background: #FFF;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -109,6 +113,13 @@ body, .site {
 }
 
 .image {
-    width: 100%;
-    height: 100%;
+    width: 25%;
+    height: 25%;
 }
+
+.arrowtop {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    height: 10px;
+  }

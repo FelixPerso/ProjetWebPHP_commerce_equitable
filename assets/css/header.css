@@ -5,8 +5,9 @@ body, header, html, .site {
     border: 0;
     font-family: 'Lato', sans-serif;
     overflow-y: auto;
+    
 }
-
+  
 body {
 
     background-color: #F8F7F7;
