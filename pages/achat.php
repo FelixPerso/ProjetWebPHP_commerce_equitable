@@ -49,19 +49,20 @@
         </header>
         <div class="grille-achat">
                 <?php
-                    $titre2 = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC;");
-
+                    $varItem = 1;
+                    $titre2 = mysqli_query($conn,"SELECT name FROM TypeItem where id=$varItem;");
+                    $itemdetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where typeItem = $varItem");
                     if($titre2) {
-                        while(($titreprod = mysqli_fetch_array($titre2))!=null)
+                        while(($titreprod2 = mysqli_fetch_array($titre2))!=null)
                         {
-                    echo "<h2>{$titreprod['name']}</h2>";
-                    $itemdetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails");
+                        $varItem++;
+                        echo "<h2>{$titreprod2['name']}</h2>";
 
                     if($itemdetails){
                         while(($detail = mysqli_fetch_array($itemdetails))!=null)
                         {
                         echo"<div class='rectangle'>
-                        <h3>{$titreprod['name']}</h3>
+                        <h3>{$titreprod2['name']}</h3>
                         <p class='phrases'>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                         <a href='./pages/achat.php'>
                         <img class='image' src='../images/tel1.png' alt='tel1'>

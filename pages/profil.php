@@ -34,13 +34,16 @@
                 <h3>Métaux précieux recyclés</h3>
                 <?php
 
-                    $result1 = mysqli_query($conn,"(Select name,v1.quantity from Mendeleiev left join (Select quantity,element from CustomerExtraction where Customer = $iduser ) v1 on v1.element = Z)");
+                    $result1 = mysqli_query($conn,"(Select name,v1.quantity 
+                    from Mendeleiev left join (Select quantity,element from *
+                    CustomerExtraction where Customer = $iduser ) v1 on v1.element = Z)");
 
                     if($result1){
                         echo"<table><tr><th>Matériaux</th><th>Quantité récupéré</th></tr>";
                         while($Mendeleiev = mysqli_fetch_assoc($result1))
                         {
-                        echo "<tr><td>{$Mendeleiev['name']}</td><td>{$Mendeleiev['quantity']}</td></tr>";
+                        echo "<tr><td>{$Mendeleiev['name']}</td><td>
+                        {$Mendeleiev['quantity']}</td></tr>";
                         } 
                         echo"</table>";
                     }
@@ -52,7 +55,8 @@
                 <img src="../images/cagnotte.png" alt="image-cagnotte">
                 <h1>
                 <?php
-                    $result3 = mysqli_query($conn,"Select stash from Customer where id=$iduser");
+                    $result3 = mysqli_query($conn,"Select stash from
+                     Customer where id=$iduser");
 
                     if($result3){
                         $money = mysqli_fetch_assoc($result3);
@@ -65,7 +69,8 @@
                 <h3>Vos informations</h3>
                 <?php
 
-                    $result2 = mysqli_query($conn,"Select * from CustomerProtectedData where id = $iduser");
+                    $result2 = mysqli_query($conn,"Select * from 
+                    CustomerProtectedData where id = $iduser");
                     $caract = mysqli_fetch_assoc($result2);
                      
                     if($result2){
