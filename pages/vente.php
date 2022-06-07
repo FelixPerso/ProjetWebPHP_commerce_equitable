@@ -1,3 +1,11 @@
+<?php 
+    include 'bd.php';
+    //session_start();
+    $iduser = 1;//$_SESSION["cle_session"];
+    $titre = mysqli_query($conn,"SELECT * FROM TypeItem ORDER BY id ASC ");
+    $pays = mysqli_query($conn,"SELECT DISTINCT country FROM Business ORDER BY country ASC ");
+?>
+<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -26,30 +34,24 @@
     </section>
     <div class="rectangle">
         <h3>Mettez votre produit en vente</h3>
-        <div class="custom-select" style="width:200px;">
-            <select>
-                <option value="0">Type de produit :</option>
-                <option value="1">Téléphone</option>
-                <option value="2">Ordinateur portable</option>
-                <option value="3">Ordinateur fixe</option>
-                <option value="4">Clavier</option>
-                <option value="5">Souris</option>
-                <option value="6">Casque</option>
-                <option value="7">RAM</option>
-                <option value="8">Processeur</option>
-                <option value="9">Carte graphique</option>
-                <option value="10">Ecran</option>
-            </select>
-        </div>
         <form class="formulaire" action="">
-            <label for="nom-offre">Nom de l'offre :</label><br>
-            <input type="text" id="nom-offre" name="nom-offre" value=""><br><br><br>
-            <label for="prenom">Prénom du vendeur :</label><br>
-            <input type="text" id="prenom" name="prenom" value=""><br><br>
-            <label for="nom-famille">Nom de famille du vendeur :</label><br>
-            <input type="text" id="nom-famille" name="nom-famille" value=""><br><br><br>
+            <div class="custom-select" style="width:200px;">
+                <select>
+                    <option value="0">Type de produit :</option>
+                    <?php
+                        if($titre){
+                                    while(($titreprod = mysqli_fetch_array($titre))!=null)
+                                    {
+                                        echo"<option value='{$titreprod['id']}'>{$titreprod['name']}</option>";
+                                    }
+                            }
+                    ?>
+                </select>
+            </div><br>
+            <label for="quantite">Quantité :</label><br>
+            <input type="number" id="quantite" name="quantite" value=""><br><br>
             <label for="prix">Prix de l'offre (€) :</label><br>
-            <input type="number" id="prix" name="prix" value=""><br><br>
+            <input type="number" id="prix" name="prix" value=""><br><br><br>
             <input type="submit" id="bouton" value="VENDRE">
         </form>
     </div>
