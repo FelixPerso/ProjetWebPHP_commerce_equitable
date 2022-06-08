@@ -1,49 +1,75 @@
 <?php
+
+ session_start();
 include 'bd.php';
-$login = $_POST['login'] ?? NULL;
-$mdp = $_POST['mdp'] ?? NULL;
 
 
-$sql = "SELECT mdp FROM user WHERE login='$login'";
-$res = mysqli_query($connexion,$sql);
+        if(!empty($_POST)){
 
-    if ($res) {
-        $row = mysqli_fetch_assoc($res);
-        $hashed_mdp = $row['mdp'];
-        
+        extract($_POST);
 
-        if (password_verify($mdp,$hashed_mdp)) {
-            echo "OK";
-        }
-        else
-            echo "PAS OK";
+        $valid = true;
+
+
+
+        if (isset($_POST['connexion'])){
+        $login = $_POST['login'];
+        $mdp = $_POST['mdp'];
+
+
+        $sql = "SELECT mdp FROM Customer WHERE login='$login'";
+        $res = mysqli_query($conn,$sql);
+
+            if ($res) {
+                $row = mysqli_fetch_assoc($res);
+                $hashed_mdp = $row['mdp'];
+                
+
+                if (password_verify($mdp,$hashed_mdp)) {
+                    echo "OK";
+                }
+                else
+                    echo "PAS OK";
+            }
+            else
+                die("error !!");
     }
-    else
-        die("error !!");
+}
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="fr">
     <head>
-       <meta charset="utf-8">
-        <!-- importer le fichier de style -->
-        <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Inscription</title>
     </head>
-    <body>
-        <div id="container">
-            <!-- zone de connexion -->
+    <body>      
+        <div>Inscription</div>
+        <form method="post">
+            <?php
+                // S'il y a une erreur sur le login alors on affiche
+                if (isset($er_login)){
+                ?>
+                    <div><?= $er_login ?></div>
+                <?php   
+                }
+            ?>
+            <input type="text" placeholder="Votre login" name="login" value="<?php if(isset($login)){ echo $login; }?>" required>
+
             
-            <form action="" method="POST">
-                <h1>Connexion</h1>
-                
-                <label><b>Nom d'utilisateur</b></label>
-                <input type="text" placeholder="Entrer le nom d'utilisateur" name="login" required>
+            <?php
+                if (isset($er_mdp)){
+                ?>
+                    <div><?= $er_mdp ?></div>
+                <?php   
+                }
+            ?>
+            <input type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
 
-                <label><b>Mot de passe</b></label>
-                <input type="password" placeholder="Entrer le mot de passe" name="mdp" required>
-
-                <input type="submit" id='submit' value='LOGIN' >
-
-            </form>
-        </div>
+            <button type="submit" name="connexion">Envoyer</button>
+        </form>
     </body>
+
 </html>
