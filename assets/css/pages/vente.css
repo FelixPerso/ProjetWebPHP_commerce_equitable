@@ -4,7 +4,7 @@
 }
 
 .site {
-
+ 
     margin: auto;
 }
 
@@ -12,7 +12,7 @@
 
     z-index: auto;
     width: 60%;
-    height: 70%;
+    height: 100%;
     margin: auto;
     border-radius: 20px;
     background: #FFF;
@@ -25,6 +25,7 @@
 
     width: 40%;
     height: 50px;
+    margin-bottom: 3%;
     font-weight: bold;
     background: rgba(104, 182, 253, 0.3095);
     border: 3px solid #000000;
@@ -164,7 +165,7 @@
     font-size: 20px;
 }
 
-#nom-offre, #prenom, #nom-famille, #prix {
+#quantite, #pays, #prix {
 
     font-size: 20px;
     text-align: center;
@@ -173,7 +174,7 @@
     height: 40px;
 }
 
-#nom-offre:hover, #prenom:hover, #nom-famille:hover, #prix:hover {
+#quantite:hover, #pays:hover, #prix:hover {
 
     background: rgba(104, 182, 253, 0.10);
 }
@@ -181,9 +182,4 @@
 #nom-offre {
 
     width: 40%;
-}
-
-#prenom, #nom-famille {
-
-    width: 30%;
 }

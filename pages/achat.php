@@ -1,3 +1,9 @@
+<?php 
+    include 'bd.php';
+    //session_start();
+    $iduser = 1;//$_SESSION["cle_session"];
+    $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
+?>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -27,130 +33,50 @@
                     <button class="w3-button w3-marina" onclick="rechercheMenuFunction()">Rechercher</button>
                     <div class="w3-dropdown-content w3-bar-block w3-card w3-white" id="myDIV">
                         <input class="w3-input w3-padding" type="text" placeholder="..." id="myInput" onkeyup="rechercheFiltreFunction()">
-                        <a class="w3-bar-item w3-button" href="#telephone">Téléphone</a>
-                        <a class="w3-bar-item w3-button" href="#ordi-portable">Ordinateur portable</a>
-                        <a class="w3-bar-item w3-button" href="#ordi-fixe">Ordinateur fixe</a>
-                        <a class="w3-bar-item w3-button" href="#clavier">Clavier</a>
-                        <a class="w3-bar-item w3-button" href="#souris">Souris</a>
-                        <a class="w3-bar-item w3-button" href="#casque">Casque</a>
-                        <a class="w3-bar-item w3-button" href="#ram">RAM</a>
-                        <a class="w3-bar-item w3-button" href="#processeur">Processeur</a>
-                        <a class="w3-bar-item w3-button" href="#carte-graphique">Carte Graphique</a>
-                        <a class="w3-bar-item w3-button" href="#ecran">Ecran</a>
+                        <?php
+                            if($titre){
+                                while(($titreprod = mysqli_fetch_array($titre))!=null)
+                                {
+                            echo"<a class='w3-bar-item w3-button' href='#{$titreprod['name']}'>{$titreprod['name']}</a>";
+                                }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </header>
         <div class="grille-achat">
-            <div class="rectangle1">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
+                <?php
+                    $varItem = 1;
+                    $titre2 = mysqli_query($conn,"SELECT name FROM TypeItem where id=$varItem;");
+                    $itemdetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where typeItem = $varItem");
+                    if($titre2) {
+                        while(($titreprod2 = mysqli_fetch_array($titre2))!=null)
+                        {
+                        $varItem++;
+                        echo "<h2>{$titreprod2['name']}</h2>";
+
+                    if($itemdetails){
+                        while(($detail = mysqli_fetch_array($itemdetails))!=null)
+                        {
+                        echo"<div class='rectangle'>
+                        <h3>{$titreprod2['name']}</h3>
+                        <p class='phrases'>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                        <a href='./pages/achat.php'>
+                        <img class='image' src='../images/tel1.png' alt='tel1'>
+                        <div class='bouton'>
+                        <p>ACHETER</p></div></a>
+                        </div>
+                        <ul><li>{$detail['attribute']}</li><li>{$detail['value']}</li></ul>
+                        </div>";
+                        } 
+                    }
+                }
+            }                
+            ?>
             </div>
-            <div class="rectangle2">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle3">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle4">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle5">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle6">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle7">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle8">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle9">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle10">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle11">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-            <div class="rectangle12">
-                <h3>Achat</h3>
-                <p class="phrases">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="./pages/achat.php">
-                    <div class="bouton">
-                        <p>VOIR</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+
+
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -185,6 +111,13 @@
             } 
         }
     </script>
+<a href="#">
+    <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">
+</a>
 
 </body>
+
 </html>
+<?php
+mysqli_close($conn);
+?>

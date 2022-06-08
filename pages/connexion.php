@@ -1,9 +1,14 @@
 <?php
+<<<<<<< HEAD
 
  session_start();
+=======
+//session_start();
+>>>>>>> 11b36f52166d769be2a870507fa842ba84d5e55f
 include 'bd.php';
 
 
+<<<<<<< HEAD
         if(!empty($_POST)){
 
         extract($_POST);
@@ -16,10 +21,15 @@ include 'bd.php';
         $login = $_POST['login'];
         $mdp = $_POST['mdp'];
 
+=======
+$sql = "SELECT mdp,id FROM Customer WHERE login='$login'";
+$res = mysqli_query($conn,$sql);
+>>>>>>> 11b36f52166d769be2a870507fa842ba84d5e55f
 
         $sql = "SELECT mdp FROM Customer WHERE login='$login'";
         $res = mysqli_query($conn,$sql);
 
+<<<<<<< HEAD
             if ($res) {
                 $row = mysqli_fetch_assoc($res);
                 $hashed_mdp = $row['mdp'];
@@ -33,6 +43,14 @@ include 'bd.php';
             }
             else
                 die("error !!");
+=======
+        if (password_verify($mdp,$hashed_mdp)) {
+            //$_SESSION ["cles_session"] = $row["id"];
+            echo "OK";
+        }
+        else
+            echo "PAS OK";
+>>>>>>> 11b36f52166d769be2a870507fa842ba84d5e55f
     }
 }
 ?>

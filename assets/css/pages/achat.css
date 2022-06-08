@@ -1,4 +1,8 @@
 
+html {
+    scroll-behavior: smooth;
+}
+
 *, ::before, ::after {
 
     text-decoration: none;
@@ -10,16 +14,11 @@ body, .site {
 }
 
 
-.grille-achat {
+ .grille-achat {
 
     display: grid;
     grid-column-start: body1;
     grid-column-end: body2;
-    grid-template-areas:
-        'L1C1 L1C2 L1C3'
-        'L2C1 L2C2 L2C3'
-        'L3C1 L3C2 L3C3'
-        'L4C1 L4C2 L4C3';
     row-gap: 20%;
     column-gap: 5%;
     margin-top: 5%;
@@ -73,89 +72,15 @@ body, .site {
 }
 
 
-.rectangle1, .rectangle2, .rectangle3, .rectangle4, .rectangle5, .rectangle6, .rectangle7, .rectangle8, .rectangle9, .rectangle10, .rectangle11, .rectangle12 {
+.rectangle {
 
     z-index: auto;
-    width: 100%;
-    height: 100%;
+    width: 20%;
+    height: 20%;
     border-radius: 20px;
     background: #FFF;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.rectangle1 {
-
-    grid-column-start: L1C1;
-    grid-column-end: L1C1;
-}
-
-.rectangle2 {
-
-    grid-column-start: L1C2;
-    grid-column-end: L1C2;
-}
-
-.rectangle3 {
-
-    grid-column-start: L1C3;
-    grid-column-end: L1C3;
-}
-
-.rectangle4 {
-
-    grid-column-start: L2C1;
-    grid-column-end: L2C1;
-
-}
-
-.rectangle5 {
- 
-    grid-column-start: L2C2;
-    grid-column-end: L2C2;
-}
-
-.rectangle6 {
-
-    grid-column-start: L2C3;
-    grid-column-end: L2C3;
-}
-
-.rectangle7 {
-
-    grid-column-start: L3C1;
-    grid-column-end: L3C1;
-}
-
-.rectangle8 {
-
-    grid-column-start: L3C2;
-    grid-column-end: L3C2;
-}
-
-.rectangle9 {
-
-    grid-column-start: L3C3;
-    grid-column-end: L3C3;
-}
-
-.rectangle10 {
-
-    grid-column-start: L4C1;
-    grid-column-end: L4C1;
-}
-
-.rectangle11 {
-
-    grid-column-start: L4C2;
-    grid-column-end: L4C2;
-}
-
-.rectangle12 {
-
-    grid-column-start: L4C3;
-    grid-column-end: L4C3;
-}
-
+} 
 
 
 /*****************************/
@@ -186,3 +111,15 @@ body, .site {
 
 	border-radius: 100px;
 }
+
+.image {
+    width: 25%;
+    height: 25%;
+}
+
+.arrowtop {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    height: 10rem;
+  }
