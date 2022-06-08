@@ -4,6 +4,7 @@
     $iduser = 1;//$_SESSION["cle_session"];
     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
+<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -45,38 +46,26 @@
                 </div>
             </div>
         </header>
-        <div class="grille-achat">
                 <?php
-                    $varItem = 1;
-                    $titre2 = mysqli_query($conn,"SELECT name FROM TypeItem where id=$varItem;");
-                    $itemdetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where typeItem = $varItem");
-                    if($titre2) {
-                        while(($titreprod2 = mysqli_fetch_array($titre2))!=null)
+                    $titre2 = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC");
+                    $itemdetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails ORDER BY typeItem ASC");
+                    if($titre2 && $itemdetails) {
+                        while((($titreprod2 = mysqli_fetch_array($titre2)) !=null&& ($detail2 = mysqli_fetch_array($itemdetails))))
                         {
-                        $varItem++;
-                        echo "<h2>{$titreprod2['name']}</h2>";
-
-                    if($itemdetails){
-                        while(($detail = mysqli_fetch_array($itemdetails))!=null)
-                        {
+                        
+                        // echo "<h2>{$titreprod2['name']}</h2><br>";
                         echo"<div class='rectangle'>
                         <h3>{$titreprod2['name']}</h3>
                         <p class='phrases'>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                         <a href='./pages/achat.php'>
                         <img class='image' src='../images/tel1.png' alt='tel1'>
+                        <p>{$detail2['attribute']}<br>{$detail2['value']}</p>
                         <div class='bouton'>
                         <p>ACHETER</p></div></a>
-                        </div>
-                        <ul><li>{$detail['attribute']}</li><li>{$detail['value']}</li></ul>
                         </div>";
                         } 
                     }
-                }
-            }                
-            ?>
-            </div>
-
-
+                    ?>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
