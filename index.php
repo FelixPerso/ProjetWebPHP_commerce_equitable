@@ -20,6 +20,8 @@
                     <li class="items"><a href="./pages/achat.php" class="achat">Achat</a></li>
                     <li class="items"><a href="./pages/vente.php" class="vente">Vente</a></li>
                     <li class="items"><a href="./pages/profil.php" class="profil">Mon profil</a></li>
+                    <li class="items"><a href="./pages/Inscription.php" class="inscrit">Inscription</a></li>
+                    <li class="items"><a href="./pages/connexion.php" class="connex">Connexion</a></li>
                 </ul>
             </div>
         </header>
