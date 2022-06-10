@@ -195,17 +195,33 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
         <title>Inscription</title>
     </head>
+     <header>
+            <div class="bouton-burger">
+                <div class="barre"></div>
+                <div class="barre"></div>
+                <div class="barre"></div>
+            </div>
+            <div class="nav">
+                <ul class="header_barre_nav">
+                    <li class="items"><a href="../index.php" class="Accueil">Accueil</a></li>
+                    <li class="items"><a href="./achat.php" class="achat">Achat</a></li>
+                    <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
+                    <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
+                    <div class="page-actuelle"><li class="items">Inscription</li></div>
+                </ul>
+            </div>
+        </header>
     <body>      
         <div>Inscription</div>
         <form method="post">
             <?php
                 // S'il y a une erreur sur le login alors on affiche
                 if (isset($er_login)){
-                ?>
-                    <div><?= $er_login ?></div>
-                <?php   
+
+                    echo"<div><?= $er_login ?></div>";
                 }
             ?>
             <input type="text" placeholder="Votre login" name="login" value="<?php if(isset($login)){ echo $login; }?>" required>
@@ -213,39 +229,38 @@
             <?php
                 // S'il y a une erreur sur le nom alors on affiche
                 if (isset($er_nom)){
-                ?>
-                    <div><?= $er_nom ?></div>
-                <?php   
+
+                    echo"<div><?= $er_nom ?></div>";
                 }
             ?>
             <input type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" required>   
             <?php
                 if (isset($er_prenom)){
-                ?>
-                    <div><?= $er_prenom ?></div>
-                <?php   
+
+                    echo"<div><?= $er_prenom ?></div>";
                 }
             ?>
             <input type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" required>   
             <?php
                 if (isset($er_email)){
-                ?>
-                    <div><?= $er_email ?></div>
-                <?php   
+
+                   echo" <div><?= $er_email ?></div>";
                 }
             ?>
             <input type="email" placeholder="Adresse mail" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
             <?php
                 if (isset($er_mdp)){
-                ?>
-                    <div><?= $er_mdp ?></div>
-                <?php   
+
+                    echo"<div><?= $er_mdp ?></div>";
                 }
             ?>
             <input type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
             <input type="password" placeholder="Confirmer le mot de passe" name="confmdp" required>
             <button type="submit" name="inscription">Envoyer</button>
         </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../assets/javascript/transitionBurger.js"></script>
     </body>
 
 </html>

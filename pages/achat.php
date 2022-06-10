@@ -1,7 +1,6 @@
 <?php 
     include 'bd.php';
     session_start();
-    $_SESSION["cle_session"];
     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
 <!-- <!DOCTYPE_html> -->
@@ -9,7 +8,7 @@
 <head>
     <meta charset='utf-8'>
     <title>IT+ - Achat</title>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'> -->
+    <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/achat.css'>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -26,7 +25,9 @@
                     <li class="items"><a href="../index.php" class="accueil">Accueil</a></li>
                     <div class="page-actuelle"><li class="items">Achat</li></div>
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
-                    <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
+                    <li class="items"><a href="./Inscription.php" class="inscrit">Inscription</a></li>
+                    <li class="items"><a href="./connexion.php" class="connex">Connexion</a></li>
+                    
                 </ul>
             </div>
             <div class="w3-container">

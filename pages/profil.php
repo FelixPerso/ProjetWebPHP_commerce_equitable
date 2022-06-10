@@ -1,6 +1,9 @@
 <?php 
     include 'bd.php';
     session_start();
+    if(!isset($_SESSION['cle_id'])){
+        header("Location:./connexion.php");
+    }
 ?>
 
 <!DOCTYPE_html>
@@ -25,9 +28,14 @@
                     <li class="items"><a href="./achat.php" class="achat">Achat</a></li>
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
                     <div class="page-actuelle"><li class="items">Mon profil</li></div>
+                    <li class="items"><a href="./Inscription.php" class="inscrit">Inscription</a></li>
+                    <li class="items"><a href="./connexion.php" class="connex">Connexion</a></li>
+                    
                 </ul>
             </div>
+
         </header>
+        <button onclick="window.location.href = 'logout.php';">déconnexion</button>
         <div class="grand-rectangle1">
             <div class="rectangle1">
                 <h3>Métaux précieux recyclés</h3>
@@ -35,14 +43,20 @@
 
                     $result1 = mysqli_query($conn,"(Select name,v1.quantity 
                     from Mendeleiev left join (Select quantity,element from
-                    CustomerExtraction where Customer = $cle_id ) v1 on v1.element = Z)");
+                    CustomerExtraction where Customer = {$_SESSION['cle_id']} ) v1 on v1.element = Z)");
 
                     if($result1){
                         echo"<table><tr><th>Matériaux</th><th>Quantité récupéré</th></tr>";
                         while($Mendeleiev = mysqli_fetch_assoc($result1))
                         {
+                            if($Mendeleiev['quantity']==null){
+                                $Mendeleiev['quantity']=0;
+                                echo "<tr><td>{$Mendeleiev['name']}</td><td>
+                                {$Mendeleiev['quantity']}</td></tr>";
+                            }else{
                         echo "<tr><td>{$Mendeleiev['name']}</td><td>
                         {$Mendeleiev['quantity']}</td></tr>";
+                        }
                         } 
                         echo"</table>";
                     }
@@ -55,7 +69,7 @@
                 <h1>
                 <?php
                     $result3 = mysqli_query($conn,"Select stash from
-                     Customer where id=$cle_id");
+                     Customer where id={$_SESSION['cle_id']}");
 
                     if($result3){
                         $money = mysqli_fetch_assoc($result3);
@@ -69,19 +83,19 @@
                 <?php
 
                     $result2 = mysqli_query($conn,"Select * from 
-                    CustomerProtectedData where id = $cle_id");
-                    $caract = mysqli_fetch_assoc($result2);
+                    CustomerProtectedData where id = {$_SESSION['cle_id']}");
+                    $caract = mysqli_fetch_array($result2);
                      
                     if($result2){
-                        echo"Prénom : $caract[surname]<br>";
-                        echo"Nom    : $caract[firstname]<br>";
-                        echo"Email  : $caract[email]<br>";
+                        echo"Prénom : {$caract["surname"]}<br>";
+                        echo"Nom    : {$caract["firstname"]}<br>";
+                        echo"Email  : {$caract["email"]}<br>";
                     }
                     
                 ?>
             </div>
         </div>
-        <a href='logout.php'>Click here to log out</a>
+
     </section>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
