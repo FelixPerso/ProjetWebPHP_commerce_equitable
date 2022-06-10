@@ -4,11 +4,12 @@
     $iduser = 1;//$_SESSION["cle_session"];
     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
+<!-- <!DOCTYPE_html> -->
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
     <title>IT+ - Achat</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'> -->
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/achat.css'>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -45,38 +46,32 @@
                 </div>
             </div>
         </header>
-        <div class="grille-achat">
                 <?php
-                    $varItem = 1;
-                    $titre2 = mysqli_query($conn,"SELECT name FROM TypeItem where id=$varItem;");
-                    $itemdetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where typeItem = $varItem");
-                    if($titre2) {
-                        while(($titreprod2 = mysqli_fetch_array($titre2))!=null)
+                    $val =0;
+                    $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
+                    if($titre){
+                        foreach($titre as $titreprod)
                         {
-                        $varItem++;
-                        echo "<h2>{$titreprod2['name']}</h2>";
-
-                    if($itemdetails){
-                        while(($detail = mysqli_fetch_array($itemdetails))!=null)
-                        {
-                        echo"<div class='rectangle'>
-                        <h3>{$titreprod2['name']}</h3>
-                        <p class='phrases'>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                        <a href='./pages/achat.php'>
+                        echo"<title>{$titreprod['name']}</title>";
+                        echo"<div class='rectangle'>";
+                        echo"<p>{$titreprod['name']}</p>";
+                        $val++;
+                    $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
+                    if($itemAndDetails ) {
+                        foreach($itemAndDetails as $detail) {
+                        echo"<p>{$detail['attribute']} : {$detail['value']}</p>";
+                        
+                        }
+                    }
+                     echo"<a href='./pages/achat.php'>
                         <img class='image' src='../images/tel1.png' alt='tel1'>
                         <div class='bouton'>
-                        <p>ACHETER</p></div></a>
-                        </div>
-                        <ul><li>{$detail['attribute']}</li><li>{$detail['value']}</li></ul>
-                        </div>";
-                        } 
-                    }
-                }
-            }                
-            ?>
-            </div>
+                        <p>ACHETER</p></div></a></div>";
+                } 
+            }
+                   
 
-
+                    ?>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

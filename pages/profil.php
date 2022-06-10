@@ -4,7 +4,7 @@
     $iduser = 1;//$_SESSION["cle_session"];
 ?>
 
-<!DOCTYPE HTML>
+<!DOCTYPE_html>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>

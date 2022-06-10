@@ -1,14 +1,9 @@
 <?php
-<<<<<<< HEAD
 
  session_start();
-=======
-//session_start();
->>>>>>> 11b36f52166d769be2a870507fa842ba84d5e55f
+
 include 'bd.php';
 
-
-<<<<<<< HEAD
         if(!empty($_POST)){
 
         extract($_POST);
@@ -21,15 +16,14 @@ include 'bd.php';
         $login = $_POST['login'];
         $mdp = $_POST['mdp'];
 
-=======
+
 $sql = "SELECT mdp,id FROM Customer WHERE login='$login'";
 $res = mysqli_query($conn,$sql);
->>>>>>> 11b36f52166d769be2a870507fa842ba84d5e55f
+
 
         $sql = "SELECT mdp FROM Customer WHERE login='$login'";
         $res = mysqli_query($conn,$sql);
 
-<<<<<<< HEAD
             if ($res) {
                 $row = mysqli_fetch_assoc($res);
                 $hashed_mdp = $row['mdp'];
@@ -43,14 +37,13 @@ $res = mysqli_query($conn,$sql);
             }
             else
                 die("error !!");
-=======
+
         if (password_verify($mdp,$hashed_mdp)) {
             //$_SESSION ["cles_session"] = $row["id"];
             echo "OK";
         }
         else
             echo "PAS OK";
->>>>>>> 11b36f52166d769be2a870507fa842ba84d5e55f
     }
 }
 ?>
@@ -61,10 +54,10 @@ $res = mysqli_query($conn,$sql);
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Inscription</title>
+        <title>Connexion</title>
     </head>
     <body>      
-        <div>Inscription</div>
+        <div>Connexion</div>
         <form method="post">
             <?php
                 // S'il y a une erreur sur le login alors on affiche
@@ -91,3 +84,4 @@ $res = mysqli_query($conn,$sql);
     </body>
 
 </html>
+
