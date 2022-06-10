@@ -8,7 +8,7 @@
 
     // S'il y a une session alors on ne retourne plus sur cette page
 
-    if (isset($_SESSION['id'])){
+    if (isset($_SESSION['cle_id'])){
 
         header('Location: ../index.php'); 
 
@@ -18,7 +18,7 @@
 
  
 
-    // Si la variable "$_Post" contient des informations alors on les traitres
+    // Si la variable "$_Post" contient des informations alors on les traites
 
     if(!empty($_POST)){
 
@@ -167,7 +167,7 @@
 
                     $table = mysqli_stmt_get_result($stmt);
                     $tuple = mysqli_fetch_assoc($table);
-                    $id = $tuple['id'];
+                    $id = $tuple['cle_id'];
 
 
                     $stmt = mysqli_prepare("INSERT INTO CustomerProtectedData(id, surname, firstName, email) 
@@ -175,7 +175,7 @@
 
                     mysqli_stmt_bind_param($stmt,"isss",$id,$nom,$prenom,$email);
                     mysqli_stmt_execute($stmt);
-                    $_SESSION['id'] = $id;
+                    $_SESSION['cle_id'] = $id;
                     header('Location : ./pages/profil.php');
                 }
 
