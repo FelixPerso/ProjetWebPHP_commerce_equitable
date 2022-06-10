@@ -1,7 +1,6 @@
 <?php 
     include 'bd.php';
-    //session_start();
-    $iduser = 1;//$_SESSION["cle_session"];
+    session_start();
 ?>
 
 <!DOCTYPE_html>
@@ -36,7 +35,7 @@
 
                     $result1 = mysqli_query($conn,"(Select name,v1.quantity 
                     from Mendeleiev left join (Select quantity,element from
-                    CustomerExtraction where Customer = $iduser ) v1 on v1.element = Z)");
+                    CustomerExtraction where Customer = $cle_id ) v1 on v1.element = Z)");
 
                     if($result1){
                         echo"<table><tr><th>Matériaux</th><th>Quantité récupéré</th></tr>";
@@ -56,7 +55,7 @@
                 <h1>
                 <?php
                     $result3 = mysqli_query($conn,"Select stash from
-                     Customer where id=$iduser");
+                     Customer where id=$cle_id");
 
                     if($result3){
                         $money = mysqli_fetch_assoc($result3);
@@ -70,7 +69,7 @@
                 <?php
 
                     $result2 = mysqli_query($conn,"Select * from 
-                    CustomerProtectedData where id = $iduser");
+                    CustomerProtectedData where id = $cle_id");
                     $caract = mysqli_fetch_assoc($result2);
                      
                     if($result2){
@@ -82,6 +81,7 @@
                 ?>
             </div>
         </div>
+        <a href='logout.php'>Click here to log out</a>
     </section>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

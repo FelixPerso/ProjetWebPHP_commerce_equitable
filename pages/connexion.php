@@ -2,6 +2,7 @@
 
  session_start();
 
+
 include 'bd.php';
 
         if(!empty($_POST)){

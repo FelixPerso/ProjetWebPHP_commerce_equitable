@@ -1,7 +1,7 @@
 <?php 
     include 'bd.php';
-    //session_start();
-    $iduser = 1;//$_SESSION["cle_session"];
+    session_start();
+    $_SESSION["cle_session"];
     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
 <!-- <!DOCTYPE_html> -->

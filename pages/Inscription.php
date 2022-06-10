@@ -176,7 +176,7 @@
                     mysqli_stmt_bind_param($stmt,"isss",$id,$nom,$prenom,$email);
                     mysqli_stmt_execute($stmt);
                     $_SESSION['id'] = $id;
-                    header('Location : ./profile.php');
+                    header('Location : ./pages/profil.php');
                 }
 
             }else{
