@@ -150,7 +150,7 @@
             if($valid){
 
                 // Insert dans la table "Customer"
-                $stmt = mysqli_prepare($conn, "INSERT INTO Customer(login,password,stash) VALUES (?,?,0)");
+                $stmt = mysqli_prepare($conn, "INSERT INTO Customer(login,mdp,stash) VALUES (?,?,0)");
                 $hashed_password = password_hash($mdp,PASSWORD_DEFAULT);
                 mysqli_stmt_bind_param($stmt,"ss",$login,$hashed_password);
                 mysqli_stmt_execute($stmt);

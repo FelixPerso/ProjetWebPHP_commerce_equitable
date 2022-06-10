@@ -52,14 +52,14 @@
                     if($titre){
                         foreach($titre as $titreprod)
                         {
+                        echo"<title>{$titreprod['name']}</title>";
                         echo"<div class='rectangle'>";
-                        echo"<a href='#{$titreprod['name']}'>
-                        <p>{$titreprod['name']}</p></a>";
+                        echo"<p>{$titreprod['name']}</p>";
                         $val++;
                     $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
                     if($itemAndDetails ) {
                         foreach($itemAndDetails as $detail) {
-                        echo"<p>{$detail['attribute']}{$detail['value']}</p><br>";
+                        echo"<p>{$detail['attribute']} : {$detail['value']}</p>";
                         
                         }
                     }
