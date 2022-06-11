@@ -91,7 +91,7 @@ $res = mysqli_query($conn,$sql);
             </form>
         </div>
         <div class="rectangle2">
-            <p>Vous n'avez pas de compte ? <a href="./inscription.php">Inscrivez-vous !</a></p>
+            <p>Vous n'avez pas de compte ? <a href="./Inscription.php">Inscrivez-vous !</a></p>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
