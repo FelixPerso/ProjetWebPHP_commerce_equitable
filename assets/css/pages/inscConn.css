@@ -1,0 +1,120 @@
+*, ::before, ::after {
+
+    text-decoration: none;
+}
+
+.site {
+ 
+    margin: auto;
+}
+
+.rectangle1, .rectangle2 {
+
+    z-index: auto;
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    border-radius: 20px;
+    background: #FFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-bottom: 2%;
+}
+
+
+#bouton {
+
+    width: 45%;
+    height: 50px;
+    margin-bottom: 3%;
+    font-weight: bold;
+    background: rgba(104, 182, 253, 0.3095);
+    border: 3px solid #000000;
+    border-radius: 100px;
+    font-size: 20px;
+}
+
+#bouton:hover {
+
+    background: rgba(104, 160, 253, 0.40);
+}
+
+
+.rectangle1 .phrases, .rectangle2 p {
+
+    color: #000;
+    font-size: 12pt;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+
+.rectangle1 h3, .rectangle2 p {
+
+    color: #68B6FD;
+    text-align: center;
+    margin-top: 0%;
+    padding-top: 2%;
+}
+
+.rectangle1 h3 {
+
+    font-size: 22pt;
+}
+
+.rectangle1 p, .rectangle2 p {
+
+    color: #000;
+    text-align: center;
+}
+
+.rectangle2 a {
+
+    color: #68B6FD;
+}
+
+.rectangle2 p {
+
+    padding-bottom: 2%;
+    font-size: 18pt;
+}
+
+.rectangle2 a:hover {
+
+    color: rgb(104, 160, 253);
+}
+
+
+
+/*****************************/
+/*        FORMULAIRE         */
+/*****************************/
+
+.formulaire {
+
+    margin: auto;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.formulaire label {
+
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#login, #mdp, #nom, #prenom, #email, #confmdp {
+
+    font-size: 20px;
+    text-align: center;
+    border-radius: 100px;
+    border: 3px solid #000000;
+    height: 40px;
+    width: 35%;
+}
+
+
+#login:hover, #mdp:hover, #nom:hover, #prenom:hover, #email:hover, #confmdp:hover {
+
+    background: rgba(104, 182, 253, 0.10);
+}

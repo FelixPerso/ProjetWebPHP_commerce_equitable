@@ -2,7 +2,7 @@
 
     session_start();
 
-    include('bd.php'); // Connexion à la base de données
+    include 'bd.php'; // Connexion à la base de données
 
  
 
@@ -189,79 +189,90 @@
 
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/inscConn.css'>
         <title>Inscription</title>
     </head>
-     <header>
-            <div class="bouton-burger">
-                <div class="barre"></div>
-                <div class="barre"></div>
-                <div class="barre"></div>
-            </div>
-            <div class="nav">
-                <ul class="header_barre_nav">
-                    <li class="items"><a href="../index.php" class="Accueil">Accueil</a></li>
-                    <li class="items"><a href="./achat.php" class="achat">Achat</a></li>
-                    <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
-                    <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
-                    <div class="page-actuelle"><li class="items">Inscription</li></div>
-                </ul>
-            </div>
-        </header>
-    <body>      
-        <div>Inscription</div>
-        <form method="post">
-            <?php
-                // S'il y a une erreur sur le login alors on affiche
-                if (isset($er_login)){
+    <body> 
+        <section class="site"> 
+            <header>
+                <div class="bouton-burger">
+                    <div class="barre"></div>
+                    <div class="barre"></div>
+                    <div class="barre"></div>
+                </div>
+                <div class="nav">
+                    <ul class="header_barre_nav">
+                        <li class="items"><a href="../index.php" class="Accueil">Accueil</a></li>
+                        <li class="items"><a href="./achat.php" class="achat">Achat</a></li>
+                        <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
+                        <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
+                        <div class="page-actuelle"><li class="items">Inscription</li></div>
+                    </ul>
+                </div>
+            </header>  
+        </section>  
+        <div class="rectangle1">
+            <h3>Inscription</h3>
+            <form class="formulaire" method="post">
+                <?php
+                    // S'il y a une erreur sur le login alors on affiche
+                    if (isset($er_login)){
+                    ?>
+                        <div><?= $er_login ?></div>
+                    <?php
+                    }
+                ?>
+                <input type="text" placeholder="Votre login" id="login" name="login" value="<?php if(isset($login)){ echo $login; }?>" required><br><br><br>
 
-                    echo"<div><?= $er_login ?></div>";
-                }
-            ?>
-            <input type="text" placeholder="Votre login" name="login" value="<?php if(isset($login)){ echo $login; }?>" required>
+                <?php
+                    // S'il y a une erreur sur le nom alors on affiche
+                    if (isset($er_nom)){
+                    ?>
+                        <div><?= $er_nom ?></div>
+                    <?php
+                    }
+                ?>
+                <input type="text" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" required><br><br>
+                <?php
+                    if (isset($er_prenom)){
+                    ?>
+                        <div><?= $er_prenom ?></div>
+                    <?php
+                    }
+                ?>
+                <input type="text" placeholder="Votre prénom" id="prenom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" required><br><br>
+                <?php
+                    if (isset($er_email)){
+                    ?>
+                        <div><?= $er_email ?></div>
+                    <?php
+                    }
+                ?>
+                <input type="email" placeholder="Adresse mail" id="email" name="email" value="<?php if(isset($email)){ echo $email; }?>" required><br><br><br>
+                <?php
+                    if (isset($er_mdp)){
+                    ?>
+                        <div><?= $er_mdp ?></div>
+                    <?php
+                    }
+                ?>
+                <input type="password" placeholder="Mot de passe" id="mdp" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required><br><br>
+                <input type="password" placeholder="Confirmer le mot de passe" id="confmdp" name="confmdp" required><br><br><br>
+                <button type="submit" id="bouton" name="inscription">INSCRIPTION</button>
+            </form>
+        </div>
+        <div class="rectangle2">
+            <p>Vous avez déjà un compte ? <a href="./connexion.php">Connectez-vous !</a></p>
+        </div>
 
-            <?php
-                // S'il y a une erreur sur le nom alors on affiche
-                if (isset($er_nom)){
-
-                    echo"<div><?= $er_nom ?></div>";
-                }
-            ?>
-            <input type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" required>   
-            <?php
-                if (isset($er_prenom)){
-
-                    echo"<div><?= $er_prenom ?></div>";
-                }
-            ?>
-            <input type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" required>   
-            <?php
-                if (isset($er_email)){
-
-                   echo" <div><?= $er_email ?></div>";
-                }
-            ?>
-            <input type="email" placeholder="Adresse mail" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
-            <?php
-                if (isset($er_mdp)){
-
-                    echo"<div><?= $er_mdp ?></div>";
-                }
-            ?>
-            <input type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
-            <input type="password" placeholder="Confirmer le mot de passe" name="confmdp" required>
-            <button type="submit" name="inscription">Envoyer</button>
-        </form>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="../assets/javascript/transitionBurger.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="../assets/javascript/transitionBurger.js"></script>
+    
     </body>
 
 </html>
-

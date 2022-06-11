@@ -1,0 +1,34 @@
+body, header, html, .site {
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Lato', sans-serif;
+    overflow-y: auto;
+    
+}
+  
+body {
+
+    background-color: #F8F7F7;
+}
+
+body p {
+
+    color: #000;
+    text-align: center;
+    font-size: 18pt;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}
+
+body a {
+
+    color: #68B6FD;
+    text-decoration: none;
+}
+
+body a:hover {
+
+    color: rgb(104, 160, 253);
+}
