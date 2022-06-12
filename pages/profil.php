@@ -44,12 +44,12 @@
                     CustomerExtraction where Customer = {$_SESSION['cle_id']} ) v1 on v1.element = Z)");
 
                     if($result1){
-                        echo"<table><tr><th>Matériaux</th><th>Quantité récupéré</th></tr>";
+                        echo"<table>";
                         while($Mendeleiev = mysqli_fetch_assoc($result1))
                         {
                             if($Mendeleiev['quantity']==null){
                                 $Mendeleiev['quantity']=0;
-                                echo "<tr><td>{$Mendeleiev['name']}</td><td>
+                                echo "<tr><td><b>{$Mendeleiev['name']} :</b></td><td>
                                 {$Mendeleiev['quantity']}</td></tr>";
                             }else{
                         echo "<tr><td>{$Mendeleiev['name']}</td><td>
@@ -85,9 +85,9 @@
                     $caract = mysqli_fetch_array($result2);
                      
                     if($result2!=null){
-                        echo"Prénom : {$caract["surname"]}<br>";
-                        echo"Nom    : {$caract["firstname"]}<br>";
-                        echo"Email  : {$caract["email"]}<br>";
+                        echo"<b>Prénom : </b>{$caract["surname"]}<br>";
+                        echo"<b>Nom    : </b>{$caract["firstname"]}<br>";
+                        echo"<b>Email  : </b>{$caract["email"]}<br>";
                     }
                     
                 ?>

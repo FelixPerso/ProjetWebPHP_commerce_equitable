@@ -55,20 +55,18 @@
                         {
                         echo"<title>{$titreprod['name']}</title>";
                         echo"<div class='rectangle'>";
-                        echo"<p>{$titreprod['name']}</p>";
+                        echo"<p class='name'>{$titreprod['name']}</p>";
                         $val++;
                         $numimg++;
                     $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
                     if($itemAndDetails ) {
                         foreach($itemAndDetails as $detail) {
-                        echo"<p>{$detail['attribute']} : {$detail['value']}</p>";
+                        echo"<p class='carac'><b>{$detail['attribute']} :</b> {$detail['value']}</p>";
                         
-                        }
+                        } 
                     }
-                     echo"<a href='./pages/achat.php'>
-                        <img class='image' src='../images/img$numimg.png' alt='tel1'>
-                        <div class='bouton'>
-                        <p>ACHETER</p></div></a></div>";
+                     echo"<img class='image' src='../images/img$numimg.png' alt='img'>
+                        <button type='submit' id='acheter' name='boutonAcheter'>ACHETER</button></div>";
                 } 
             }
                    
