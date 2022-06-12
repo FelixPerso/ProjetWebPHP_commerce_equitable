@@ -28,6 +28,7 @@
                     <li class="items"><a href="./achat.php" class="achat">Achat</a></li>
                     <div class="page-actuelle"><li class="items">Vente</li></div>
                     <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
+                    <li class="items"><a href="./connexion.php" class="connexion">Connexion</a></li>
                 </ul>
             </div>
         </header>

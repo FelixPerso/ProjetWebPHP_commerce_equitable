@@ -25,9 +25,8 @@
                     <li class="items"><a href="../index.php" class="accueil">Accueil</a></li>
                     <div class="page-actuelle"><li class="items">Achat</li></div>
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
-                    <li class="items"><a href="./Inscription.php" class="inscrit">Inscription</a></li>
-                    <li class="items"><a href="./connexion.php" class="connex">Connexion</a></li>
-                    
+                    <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
+                    <li class="items"><a href="./connexion.php" class="connexion">Connexion</a></li>   
                 </ul>
             </div>
             <div class="w3-container">

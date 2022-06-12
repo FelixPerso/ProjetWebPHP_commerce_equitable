@@ -28,14 +28,12 @@
                     <li class="items"><a href="./achat.php" class="achat">Achat</a></li>
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
                     <div class="page-actuelle"><li class="items">Mon profil</li></div>
-                    <li class="items"><a href="./Inscription.php" class="inscrit">Inscription</a></li>
-                    <li class="items"><a href="./connexion.php" class="connex">Connexion</a></li>
+                    <li class="items"><a href="./connexion.php" class="connexion">Connexion</a></li>
                     
                 </ul>
             </div>
-
         </header>
-        <button onclick="window.location.href = 'logout.php';">déconnexion</button>
+        <button class="bouton-deconnexion" onclick="window.location.href = 'logout.php';">Déconnexion</button>
         <div class="grand-rectangle1">
             <div class="rectangle1">
                 <h3>Métaux précieux recyclés</h3>

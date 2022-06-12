@@ -68,6 +68,7 @@ ul {
 .nav ul li {
 
     margin: 10px 0;
+    line-height: 1;
 }
 
 
@@ -104,7 +105,7 @@ ul {
     background: #fff;
 }
 
-.achat:hover, .vente:hover, .profil:hover, .accueil:hover {
+.achat:hover, .vente:hover, .profil:hover, .accueil:hover, .connexion:hover, .inscription:hover {
 
     color: #68B6FD;
 }
