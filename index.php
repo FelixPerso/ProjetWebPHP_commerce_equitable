@@ -55,3 +55,17 @@
                     </div>
                 </a>
             </div>
+        </div>
+        <h1>⎯⎯⎯⎯⎯⎯ NOTRE CONCEPT ⎯⎯⎯⎯⎯⎯</h1>
+        <p class="p-concept"></p>
+        <h1 class="trait">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</h1>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="./assets/javascript/transitionBurger.js"></script>
+    <a href="#">
+    <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">
+</a>
+
+</body>
+</html>
