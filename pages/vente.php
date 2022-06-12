@@ -1,7 +1,12 @@
 <?php 
     include 'bd.php';
-    //session_start();
-    $id = 1;//$_SESSION["cle_session"];
+    session_start();
+    if(!isset($_SESSION['cle_id'])){
+        $id = 'connexion impossible';
+    }else{
+        $id = $_SESSION['cle_id'];
+        echo 'vous n\'êtes pas connecté';
+    }
     $titre = mysqli_query($conn,"SELECT * FROM TypeItem ORDER BY id ASC ");
     $pays = mysqli_query($conn,"SELECT DISTINCT country FROM Business ORDER BY country ASC ");
 ?>
@@ -110,7 +115,7 @@
                         
                             if ($valid) {
                             // on mets à jour la cagnotte de l'utilisateur    
-                            $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash + ? WHERE 'Customer'.'id'=1 ");
+                            $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash + ? WHERE 'Customer'.'id'=$id ");
                             mysqli_stmt_bind_param($stmt,"i",$prixTot);
                             mysqli_stmt_execute($stmt);
 
@@ -139,7 +144,7 @@
                             print_r($prixUnit);
                             
                             // on ajoute les éléments et la quantité dans la table CustomerExtraction.
-                            $stmt = mysqli_prepare($conn,"INSERT INTO CustomerExtraction(Customer,element,quantity) VALUES (1,?,?)");
+                            $stmt = mysqli_prepare($conn,"INSERT INTO CustomerExtraction(Customer,element,quantity) VALUES ($id,?,?)");
                             mysqli_stmt_bind_param($stmt,'ii',$element,$qqt);
                             mysqli_stmt_execute($stmt);
 

@@ -48,6 +48,7 @@
         </header>
                 <?php
                     $val =0;
+                    $numimg = 0;
                     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
                     if($titre){
                         foreach($titre as $titreprod)
@@ -56,6 +57,7 @@
                         echo"<div class='rectangle'>";
                         echo"<p>{$titreprod['name']}</p>";
                         $val++;
+                        $numimg++;
                     $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
                     if($itemAndDetails ) {
                         foreach($itemAndDetails as $detail) {
@@ -64,7 +66,7 @@
                         }
                     }
                      echo"<a href='./pages/achat.php'>
-                        <img class='image' src='../images/tel1.png' alt='tel1'>
+                        <img class='image' src='../images/img$numimg.png' alt='tel1'>
                         <div class='bouton'>
                         <p>ACHETER</p></div></a></div>";
                 } 

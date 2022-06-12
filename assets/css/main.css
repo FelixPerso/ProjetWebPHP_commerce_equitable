@@ -12,6 +12,7 @@ h1 {
     font-size: 40pt;
     text-align: center;
     margin-top: -5%;
+    
     grid-column-start: body1;
     grid-column-end: body2;
 }
@@ -28,18 +29,20 @@ h1 {
 
 
 .p-concept {
-
     grid-column-start: body1;
     grid-column-end: body2;
     color: #000;
-    font-size: 14pt;
+    font-size: 16pt;
     line-height: 35px;
     text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: -2%;
-}
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: -4%;
 
+}
+.p-concept B {
+    font-size: 18pt;
+}
 
 .grand-rectangle1 .phrases {
 
@@ -137,4 +140,33 @@ h1 {
 
     color: #000;
     text-align: center;
+}
+.slogan {
+    text-align: center;
+    font-size: 18pt;
+}
+
+.fond-img {
+    position: relative;
+    grid-column-start: body1;
+    grid-column-end: body2;
+    width: 40%;
+    height: auto;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+.arrowtop {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    height: 60px;
+  }
+  
+.arrowtop:hover {
+
+    z-index: 0;
+    height: 65px;
+    bottom: 37.5px; 
+    right: 37.5px; 
+     
 }

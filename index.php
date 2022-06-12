@@ -56,16 +56,27 @@
                 </a>
             </div>
         </div>
-        <h1>⎯⎯⎯⎯⎯⎯ NOTRE CONCEPT ⎯⎯⎯⎯⎯⎯</h1>
-        <p class="p-concept"></p>
+        <h1>⎯⎯⎯⎯⎯⎯⎯⎯ NOTRE CONCEPT ⎯⎯⎯⎯⎯⎯⎯⎯</h1>
+        <p class="p-concept">
+        <B>Notre entreprise se charge de faire l'intermédiaire entre vous et les entreprises !</B><br><br>
+        Mettez en vente votre matériel électronique (téléphone, ordinateur, carte graphique, processeur...).
+        En vendant sur notre site, vous avez l'opportunité d'observer votre participation écologique. 
+        Sur votre profil, vous avez à votre disposition une liste de métaux précieux recyclés,
+        les valeurs correspondent aux quantités contenues dans les objets que vous avez vendus.<br><br>
+        Toujours sur votre profil, vous disposez également d'une cagnotte.
+         Celle-ci augmente au fur et à mesure que vous vendez des produits sur le site.
+         Si vous achetez un produit, la cagnotte est réduite en fonction du prix de ce produit.  </p>
         <h1 class="trait">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</h1>
+
+        <img class="fond-img" src="./images/image_fond_index.png">
+        <p class="p-concept"><B> Recycler c'est GG !</B><p>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="./assets/javascript/transitionBurger.js"></script>
     <a href="#">
-    <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">
-</a>
+    <img class="arrowtop" src="./images/arrow_top.png" alt="arrowtop">
+    </a>
 
 </body>
 </html>

@@ -84,7 +84,7 @@
                     CustomerProtectedData where id = {$_SESSION['cle_id']}");
                     $caract = mysqli_fetch_array($result2);
                      
-                    if($result2){
+                    if($result2!=null){
                         echo"Prénom : {$caract["surname"]}<br>";
                         echo"Nom    : {$caract["firstname"]}<br>";
                         echo"Email  : {$caract["email"]}<br>";
