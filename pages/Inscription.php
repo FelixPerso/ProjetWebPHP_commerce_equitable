@@ -2,13 +2,13 @@
 
     session_start();
 
-    include('bd.php'); // Connexion à la base de données
+    include 'bd.php'; // Connexion à la base de données
 
  
 
     // S'il y a une session alors on ne retourne plus sur cette page
 
-    if (isset($_SESSION['id'])){
+    if (isset($_SESSION['cle_id'])){
 
         header('Location: ../index.php'); 
 
@@ -18,7 +18,7 @@
 
  
 
-    // Si la variable "$_Post" contient des informations alors on les traitres
+    // Si la variable "$_Post" contient des informations alors on les traites
 
     if(!empty($_POST)){
 
@@ -171,7 +171,7 @@
 
                     $table = mysqli_stmt_get_result($stmt);
                     $tuple = mysqli_fetch_assoc($table);
-                    $id = $tuple['id'];
+                    $id = $tuple['cle_id'];
 
 
                     $stmt = mysqli_prepare($conn,"INSERT INTO CustomerProtectedData(id, surname, firstName, email) 
@@ -179,8 +179,8 @@
 
                     mysqli_stmt_bind_param($stmt,"isss",$id,$nom,$prenom,$email);
                     mysqli_stmt_execute($stmt);
-                    $_SESSION['id'] = $id;
-                    header('Location : ./profile.php');
+                    $_SESSION['cle_id'] = $id;
+                    header('Location : ./pages/profil.php');
                 }
 
             }else{
@@ -193,64 +193,90 @@
 
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/inscConn.css'>
         <title>Inscription</title>
     </head>
-    <body>      
-        <div>Inscription</div>
-        <form method="post">
-            <?php
-                // S'il y a une erreur sur le login alors on affiche
-                if (isset($er_login)){
+    <body> 
+        <section class="site"> 
+            <header>
+                <div class="bouton-burger">
+                    <div class="barre"></div>
+                    <div class="barre"></div>
+                    <div class="barre"></div>
+                </div>
+                <div class="nav">
+                    <ul class="header_barre_nav">
+                        <li class="items"><a href="../index.php" class="accueil">Accueil</a></li>
+                        <li class="items"><a href="./achat.php" class="achat">Achat</a></li>
+                        <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
+                        <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
+                        <li class="items"><a href="./connexion.php" class="connexion">Connexion</a></li>
+                    </ul>
+                </div>
+            </header>  
+        </section>  
+        <div class="rectangle1">
+            <h3>Inscription</h3>
+            <form class="formulaire" method="post">
+                <?php
+                    // S'il y a une erreur sur le login alors on affiche
+                    if (isset($er_login)){
+                    ?>
+                        <div><?= $er_login ?></div>
+                    <?php
+                    }
                 ?>
-                    <div><?= $er_login ?></div>
-                <?php   
-                }
-            ?>
-            <input type="text" placeholder="Votre login" name="login" value="<?php if(isset($login)){ echo $login; }?>" required>
+                <input type="text" placeholder="Votre login" id="login" name="login" value="<?php if(isset($login)){ echo $login; }?>" required><br><br><br>
 
-            <?php
-                // S'il y a une erreur sur le nom alors on affiche
-                if (isset($er_nom)){
+                <?php
+                    // S'il y a une erreur sur le nom alors on affiche
+                    if (isset($er_nom)){
+                    ?>
+                        <div><?= $er_nom ?></div>
+                    <?php
+                    }
                 ?>
-                    <div><?= $er_nom ?></div>
-                <?php   
-                }
-            ?>
-            <input type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" required>   
-            <?php
-                if (isset($er_prenom)){
+                <input type="text" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" required><br><br>
+                <?php
+                    if (isset($er_prenom)){
+                    ?>
+                        <div><?= $er_prenom ?></div>
+                    <?php
+                    }
                 ?>
-                    <div><?= $er_prenom ?></div>
-                <?php   
-                }
-            ?>
-            <input type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" required>   
-            <?php
-                if (isset($er_email)){
+                <input type="text" placeholder="Votre prénom" id="prenom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" required><br><br>
+                <?php
+                    if (isset($er_email)){
+                    ?>
+                        <div><?= $er_email ?></div>
+                    <?php
+                    }
                 ?>
-                    <div><?= $er_email ?></div>
-                <?php   
-                }
-            ?>
-            <input type="email" placeholder="Adresse mail" name="email" value="<?php if(isset($email)){ echo $email; }?>" required>
-            <?php
-                if (isset($er_mdp)){
+                <input type="email" placeholder="Adresse mail" id="email" name="email" value="<?php if(isset($email)){ echo $email; }?>" required><br><br><br>
+                <?php
+                    if (isset($er_mdp)){
+                    ?>
+                        <div><?= $er_mdp ?></div>
+                    <?php
+                    }
                 ?>
-                    <div><?= $er_mdp ?></div>
-                <?php   
-                }
-            ?>
-            <input type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
-            <input type="password" placeholder="Confirmer le mot de passe" name="confmdp" required>
-            <button type="submit" name="inscription">Envoyer</button>
-        </form>
+                <input type="password" placeholder="Mot de passe" id="mdp" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required><br><br>
+                <input type="password" placeholder="Confirmer le mot de passe" id="confmdp" name="confmdp" required><br><br><br>
+                <button type="submit" id="bouton" name="inscription">INSCRIPTION</button>
+            </form>
+        </div>
+        <div class="rectangle2">
+            <p>Vous avez déjà un compte ? <a href="./connexion.php">Connectez-vous !</a></p>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="../assets/javascript/transitionBurger.js"></script>
+    
     </body>
 
 </html>
-
