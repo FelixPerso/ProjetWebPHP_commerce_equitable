@@ -39,7 +39,7 @@
         </header>
     </section>
     <div class="rectangle">
-        <h3>Mettez votre produit en vente</h3>
+        <h3>Quel est votre produit ?</h3>
         <form class="formulaire" action="" method="POST">
             <div class="custom-select" style="width:300px;">
                 <select name="produit">
