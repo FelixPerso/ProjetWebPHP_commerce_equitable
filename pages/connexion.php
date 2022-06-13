@@ -70,7 +70,7 @@ $res = mysqli_query($conn,$sql);
             <h3>Connexion</h3>
             <form class="formulaire" method="post">
                 <?php
-                        // S'il y a une erreur sur le login alors on affiche
+                        // Si il y a une erreur sur le login alors on affiche
                         if (isset($er_login)){
                         ?>
                             <div><?= $er_login ?></div>

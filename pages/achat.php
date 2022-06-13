@@ -89,7 +89,7 @@
         }
 
 
-        // Recherche Filtre
+        // Recherche filtre
         function rechercheFiltreFunction() {
             var input, filtre, ul, li, a, i;
             input = document.getElementById("myInput");
