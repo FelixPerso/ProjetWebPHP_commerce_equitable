@@ -1,12 +1,11 @@
 <?php 
     include 'bd.php';
     session_start();
+    $id = isset($_SESSION['cle_id']);
     if(!isset($_SESSION['cle_id'])){
         $id = 'connexion impossible';
-    }else{
-        $id = $_SESSION['cle_id'];
-        echo 'vous n\'êtes pas connecté';
     }
+    
     $titre = mysqli_query($conn,"SELECT * FROM TypeItem ORDER BY id ASC ");
     $pays = mysqli_query($conn,"SELECT DISTINCT country FROM Business ORDER BY country ASC ");
 ?>
@@ -53,24 +52,9 @@
                             }
                     ?>
                 </select>
-            </div><br>
-            <div class="custom-select" style="width:300px;">
-                <select name="pays">
-                    <option value="0">Pays :</option>
-                    <?php
-                        if($pays){
-                                    while(($nompays = mysqli_fetch_array($pays))!=null)
-                                    {
-                                        echo"<option>{$nompays['country']}</option>";
-                                    }
-                            }
-                    ?>
-                </select>
-            </div><br>
-            <label for="quantite">Quantité :</label><br>
-            <input type="number" id="quantite" name="quantite" value=""><br><br>
-            <label for="prix">Prix de l'offre (€) :</label><br>
-            <input type="number" id="prix" name="prix" value=""><br><br><br>
+            </div><br><br>
+            <input type="number" placeholder="Quantité" id="quantite" name="quantite" value=""><br><br>
+            <input type="number" placeholder="Votre prix" id="prix" name="prix" value=""><br><br><br>
             <button type="submit" id="bouton" name="boutonVendre">VENDRE</button>
                 <?php
 
@@ -84,7 +68,6 @@
                         $quantite = $_POST['quantite'];
                         $titreprod = $_POST['produit'];
                         $prixUnit = $_POST['prix'];
-                        $pays = $_POST['pays'];
                         $prixTot = $prixUnit * $quantite ;
 
                     if(empty($quantite)){
@@ -106,18 +89,14 @@
 
                     $er_nom = ("Le prix de l'offre ne peut pas être vide");
                     }
-                    if(empty($nompays)){
-
-                    $valid = false;
-
-                    $er_nom = ("Le pays ne peut pas être vide");
-                    }
                         
                             if ($valid) {
+                        
                             // on mets à jour la cagnotte de l'utilisateur    
-                            $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash + ? WHERE 'Customer'.'id'=$id ");
-                            mysqli_stmt_bind_param($stmt,"i",$prixTot);
+                            $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash + ? WHERE id=? ");
+                            mysqli_stmt_bind_param($stmt,'ii',$prixTot,$id);
                             mysqli_stmt_execute($stmt);
+
 
 
                             // on cherche l'id du produit de la table TypeItem
@@ -129,19 +108,21 @@
                             $tuple = mysqli_fetch_assoc($table);
                             $titreprodId = $tuple['id'];
 
-                            // on cherche les éléments et la quantités du produit choisit dans le formulaire.
-                            $stmt = mysqli_prepare($conn,"SELECT element,quantity FROM ExtractionFromTypeItem WHERE TypeItem=?");
+                            // on cherche les éléments du produit choisit dans le formulaire.
+                            $stmt = mysqli_prepare($conn,"SELECT element FROM ExtractionFromTypeItem WHERE TypeItem=?");
                             mysqli_stmt_bind_param($stmt,'i',$titreprodId);
                             mysqli_stmt_execute($stmt);
-                            // on recupère les élements et leurs quantités.
                             $table = mysqli_stmt_get_result($stmt);
                             $tuple = mysqli_fetch_assoc($table);
                             $element = $tuple['element'];
+
+                            // on cherche la quantités du produit choisit dans le formulaire.
+                            $stmt = mysqli_prepare($conn,"SELECT quantity FROM ExtractionFromTypeItem WHERE TypeItem=?");
+                            mysqli_stmt_bind_param($stmt,'i',$titreprodId);
+                            mysqli_stmt_execute($stmt);
                             $table = mysqli_stmt_get_result($stmt);
                             $tuple = mysqli_fetch_assoc($table);
                             $qqt = $tuple['quantity'];
-                            print_r($quantite);
-                            print_r($prixUnit);
                             
                             // on ajoute les éléments et la quantité dans la table CustomerExtraction.
                             $stmt = mysqli_prepare($conn,"INSERT INTO CustomerExtraction(Customer,element,quantity) VALUES ($id,?,?)");

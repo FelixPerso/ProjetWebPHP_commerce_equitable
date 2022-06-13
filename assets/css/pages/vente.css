@@ -72,7 +72,6 @@
 .custom-select {
 
     position: relative;
-    font-family: Arial;
     border: 3px solid #000000;
     border-radius: 100px;
     margin: auto;
@@ -166,7 +165,7 @@
     font-size: 20px;
 }
 
-#quantite, #pays, #prix {
+#quantite, #prix {
 
     font-size: 20px;
     text-align: center;
@@ -175,7 +174,7 @@
     height: 40px;
 }
 
-#quantite:hover, #pays:hover, #prix:hover {
+#quantite:hover, #prix:hover {
 
     background: rgba(104, 182, 253, 0.10);
 }
