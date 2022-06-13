@@ -2,6 +2,8 @@
 
     session_start();
 
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
     include 'bd.php'; // Connexion à la base de données
 
  
@@ -167,16 +169,16 @@
 
                     $table = mysqli_stmt_get_result($stmt);
                     $tuple = mysqli_fetch_assoc($table);
-                    $id = $tuple['cle_id'];
+                    $id = $tuple['id'];
 
 
-                    $stmt = mysqli_prepare("INSERT INTO CustomerProtectedData(id, surname, firstName, email) 
+                    $stmt = mysqli_prepare($conn,"INSERT INTO CustomerProtectedData(id, surname, firstname, email) 
                                             VALUES (?,?,?,?)");
 
                     mysqli_stmt_bind_param($stmt,"isss",$id,$nom,$prenom,$email);
                     mysqli_stmt_execute($stmt);
                     $_SESSION['cle_id'] = $id;
-                    header('Location : ./pages/profil.php');
+                    header('Location:./profil.php');
                 }
 
             }else{

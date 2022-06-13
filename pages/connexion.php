@@ -27,11 +27,12 @@ $res = mysqli_query($conn,$sql);
                 
 
                 if (password_verify($mdp,$hashed_mdp)) {
-                    echo "OK";
+                    // echo "OK";
                     $_SESSION['cle_id'] = $row["id"];
+                    header('Location:./profil.php');
                 }
                 else
-                    echo "PAS OK";
+                    echo "Mot de passe incorect";
             }
             else
                 die("error !!");
