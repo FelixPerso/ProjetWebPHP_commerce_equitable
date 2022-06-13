@@ -1,9 +1,10 @@
 <?php 
     include 'bd.php';
     session_start();
-    $id = isset($_SESSION['cle_id']);
     if(!isset($_SESSION['cle_id'])){
-        $id = 'connexion impossible';
+        echo "connexion impossible";
+    } else {
+        $id = $_SESSION['cle_id'];
     }
     
     $titre = mysqli_query($conn,"SELECT * FROM TypeItem ORDER BY id ASC ");
@@ -91,6 +92,7 @@
                     }
                         
                             if ($valid) {
+                                
                         
                             // on mets à jour la cagnotte de l'utilisateur    
                             $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash + ? WHERE id=? ");
@@ -98,7 +100,7 @@
                             mysqli_stmt_execute($stmt);
 
 
-
+                            
                             // on cherche l'id du produit de la table TypeItem
                             $stmt = mysqli_prepare($conn,"SELECT id FROM TypeItem WHERE id=?");
                             mysqli_stmt_bind_param($stmt,'i',$titreprod);
@@ -108,30 +110,27 @@
                             $tuple = mysqli_fetch_assoc($table);
                             $titreprodId = $tuple['id'];
 
-                            // on cherche les éléments du produit choisit dans le formulaire.
-                            $stmt = mysqli_prepare($conn,"SELECT element FROM ExtractionFromTypeItem WHERE TypeItem=?");
-                            mysqli_stmt_bind_param($stmt,'i',$titreprodId);
-                            mysqli_stmt_execute($stmt);
-                            $table = mysqli_stmt_get_result($stmt);
-                            $tuple = mysqli_fetch_assoc($table);
-                            $element = $tuple['element'];
+                            $request = mysqli_query($conn,"SELECT element,quantity FROM ExtractionFromTypeItem WHERE TypeItem=$titreprodId");
 
-                            // on cherche la quantités du produit choisit dans le formulaire.
-                            $stmt = mysqli_prepare($conn,"SELECT quantity FROM ExtractionFromTypeItem WHERE TypeItem=?");
-                            mysqli_stmt_bind_param($stmt,'i',$titreprodId);
-                            mysqli_stmt_execute($stmt);
-                            $table = mysqli_stmt_get_result($stmt);
-                            $tuple = mysqli_fetch_assoc($table);
-                            $qqt = $tuple['quantity'];
                             
+
+                            if ($request) {
+                                foreach ($request as $requestas) {
+
+                                    print_r($requestas);
+                            
+
+                                                     
                             // on ajoute les éléments et la quantité dans la table CustomerExtraction.
-                            $stmt = mysqli_prepare($conn,"INSERT INTO CustomerExtraction(Customer,element,quantity) VALUES ($id,?,?)");
-                            mysqli_stmt_bind_param($stmt,'ii',$element,$qqt);
+                            $stmt = mysqli_prepare($conn,"UPDATE CustomerExtraction SET quantity = quantity + ? WHERE Customer=? AND element=? ");
+                            mysqli_stmt_bind_param($stmt,'iii',$requestas['quantity'],$id,$requestas['element']);
                             mysqli_stmt_execute($stmt);
+                        }
+                    }
 
 
             
-
+                    echo"votre profil à été mis à jour";
 
                         }else{
                             $valid = false;
