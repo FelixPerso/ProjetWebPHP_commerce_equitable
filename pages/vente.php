@@ -54,9 +54,9 @@
                     ?>
                 </select>
             </div><br><br>
-            <input type="number" placeholder="Quantité" id="quantite" name="quantite" value=""><br><br>
-            <input type="number" placeholder="Votre prix" id="prix" name="prix" value=""><br><br><br>
-            <button type="submit" id="bouton" name="boutonVendre">VENDRE</button>
+            <!-- <input type="number" placeholder="Quantité" id="quantite" name="quantite" value=""><br><br>
+            <input type="number" placeholder="Votre prix" id="prix" name="prix" value=""><br><br><br> -->
+            <button type="submit" id="bouton" name="boutonVendre">TROUVER UN VENDEUR</button>
                 <?php
 
                     if(!empty($_POST)){
@@ -88,6 +88,7 @@
 
                     $valid = false;
 
+
                     $er_nom = ("Le prix de l'offre ne peut pas être vide");
                     }
                         
@@ -115,16 +116,11 @@
                             
 
                             if ($request) {
+                                $stmt = mysqli_prepare($conn,"UPDATE CustomerExtraction SET quantity = quantity + ? WHERE Customer=? AND element=? ");
+                                
                                 foreach ($request as $requestas) {
-
-                                    print_r($requestas);
-                            
-
-                                                     
-                            // on ajoute les éléments et la quantité dans la table CustomerExtraction.
-                            $stmt = mysqli_prepare($conn,"UPDATE CustomerExtraction SET quantity = quantity + ? WHERE Customer=? AND element=? ");
-                            mysqli_stmt_bind_param($stmt,'iii',$requestas['quantity'],$id,$requestas['element']);
-                            mysqli_stmt_execute($stmt);
+                                    mysqli_stmt_bind_param($stmt,'iii',$requestas['quantity'],$id,$requestas['element']);
+                                    mysqli_stmt_execute($stmt);
                         }
                     }
 

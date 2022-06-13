@@ -57,7 +57,7 @@
 
                 // On vérifit que le login est dans le bon format
 
-            }elseif(!preg_match("/^[a-zA-Z]+$/", $login)){
+            }elseif(!preg_match("/^[a-zA-Z0-9]+$/", $login)){
 
                 $valid = false;
 
@@ -178,6 +178,22 @@
                     mysqli_stmt_bind_param($stmt,"isss",$id,$nom,$prenom,$email);
                     mysqli_stmt_execute($stmt);
                     $_SESSION['cle_id'] = $id;
+
+
+                    $element = mysqli_query($conn,"SELECT Z FROM Mendeleiev");
+                    // On ajoute dans CustomerExtraction les matérieux des élements pour la vente.
+        
+
+                    if ($element) {
+                         $stmt = mysqli_prepare($conn,"INSERT INTO CustomerExtraction(Customer, element, quantity) 
+                                            VALUES (?,?,0)");
+                         foreach ($element as $elementas) {
+                             mysqli_stmt_bind_param($stmt,"ii",$id,$elementas['Z']);
+                            mysqli_stmt_execute($stmt);
+                         }
+                    }
+                    
+
                     header('Location:./profil.php');
                 }
 
