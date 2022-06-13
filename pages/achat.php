@@ -50,21 +50,17 @@
                 <?php
                     $val =0;
                     $numimg = 0;
-                    $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
+                    $titre = mysqli_query($conn,"SELECT name,Prix FROM TypeItem ORDER BY id ASC");
                     
                     if($titre){
                         foreach($titre as $titreprod)
                         {
                         echo"<title>{$titreprod['name']}</title>";
                         echo"<div class='rectangle'>";
-                        echo"<p class='name'>{$titreprod['name']}</p>";
+                        echo"<p class='name'>{$titreprod['name']} <br>{$titreprod['Prix']}€</p>";
                         
                         $val++;
                         $numimg++;
-                        $prix = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = $val");
-                        if($prix){
-                            echo"$prix['Prix']";
-                        }
                         $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
 
                     if($itemAndDetails ) {
