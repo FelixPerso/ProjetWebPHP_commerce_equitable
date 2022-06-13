@@ -53,11 +53,11 @@
                     $titre = mysqli_query($conn,"SELECT name,Prix FROM TypeItem ORDER BY id ASC");
                     
                     if($titre){
+                        echo "<table>";
                         foreach($titre as $titreprod)
                         {
-                        echo"<title>{$titreprod['name']}</title>";
-                        echo"<div class='rectangle'>";
-                        echo"<p class='name'>{$titreprod['name']} <br>{$titreprod['Prix']}€</p>";
+                        
+                        echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
                         
                         $val++;
                         $numimg++;
@@ -65,13 +65,15 @@
 
                     if($itemAndDetails ) {
                         foreach($itemAndDetails as $detail) {
-                        echo"<p class='carac'><b>{$detail['attribute']} :</b> {$detail['value']}</p>";
-                        
+                        echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
                         } 
                     }
-                     echo"<img class='image' src='../images/img$numimg.png' alt='img'>
-                        <button type='submit' id='acheter' name='boutonAcheter'>ACHETER</button></div>";
+                     echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img'></td></tr>  
+                     <tr><td><button type='submit' id='acheter' name='boutonAcheter'>ACHETER</button></td></tr>";
+                     
                 } 
+                echo "</table>";
+                
             }
             if(!empty($_POST)){
 
