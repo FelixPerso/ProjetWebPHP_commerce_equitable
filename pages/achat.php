@@ -1,5 +1,6 @@
 <?php 
     include 'bd.php';
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     session_start();
     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
@@ -50,15 +51,22 @@
                     $val =0;
                     $numimg = 0;
                     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
+                    
                     if($titre){
                         foreach($titre as $titreprod)
                         {
                         echo"<title>{$titreprod['name']}</title>";
                         echo"<div class='rectangle'>";
                         echo"<p class='name'>{$titreprod['name']}</p>";
+                        
                         $val++;
                         $numimg++;
-                    $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
+                        $prix = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = $val");
+                        if($prix){
+                            echo"$prix['Prix']";
+                        }
+                        $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
+
                     if($itemAndDetails ) {
                         foreach($itemAndDetails as $detail) {
                         echo"<p class='carac'><b>{$detail['attribute']} :</b> {$detail['value']}</p>";
@@ -69,6 +77,17 @@
                         <button type='submit' id='acheter' name='boutonAcheter'>ACHETER</button></div>";
                 } 
             }
+            if(!empty($_POST)){
+
+                    extract($_POST);
+                    $valid = true;
+
+                    if (isset($_POST['boutonAcheter'])) {
+
+                        
+                    }
+                }
+
                    
 
                     ?>
