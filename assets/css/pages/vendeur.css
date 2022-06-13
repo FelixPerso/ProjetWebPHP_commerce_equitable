@@ -1,0 +1,185 @@
+*, ::before, ::after {
+
+    text-decoration: none;
+}
+
+.site {
+ 
+    margin: auto;
+}
+
+.rectangle {
+
+    z-index: auto;
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    border-radius: 20px;
+    background: #FFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-bottom: 5%;
+}
+
+
+#bouton {
+
+    width: 40%;
+    height: 50px;
+    margin-bottom: 3%;
+    font-weight: bold;
+    background: rgba(104, 182, 253, 0.3095);
+    border: 3px solid #000000;
+    border-radius: 100px;
+    font-size: 20px;
+}
+
+#bouton:hover {
+
+    background: rgba(104, 160, 253, 0.40);
+}
+
+
+.rectangle .phrases {
+
+    color: #000;
+    font-size: 12pt;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+
+.rectangle h3 {
+
+    color: #68B6FD;
+    font-size: 20pt;
+    text-align: center;
+    margin-top: 0%;
+    padding-top: 3%;
+}
+
+.rectangle p {
+
+    color: #000;
+    text-align: center;
+}
+
+
+/*****************************/
+/*       MENU SELECTION      */
+/*****************************/
+
+.custom-select {
+
+    position: relative;
+    border: 3px solid #000000;
+    border-radius: 100px;
+    margin: auto;
+}
+  
+.custom-select select {
+
+    display: none;
+}
+  
+.select-selected {
+
+    font-weight: bold;
+    background: rgba(104, 182, 253, 0.3095);
+    border-radius: 100px;
+    width: auto;
+}
+
+.select-selected:hover {
+
+    background-color: rgba(104, 160, 253, 0.40);
+}
+  
+.select-selected:after {
+
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #000 transparent transparent transparent;
+}
+  
+.select-selected.select-arrow-active:after {
+
+    border-color: transparent transparent #000 transparent;
+    top: 7px;
+}
+  
+.select-items div,.select-selected {
+
+    color: #000;
+    text-align: center;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(104, 160, 253, 0.40) transparent;
+    cursor: pointer;
+}
+  
+.select-items {
+
+    position: absolute;
+    background-color: #FAFAFA;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+  
+
+.select-hide {
+
+    display: none;
+}
+  
+.select-items div:hover, .same-as-selected {
+
+    background-color: rgba(104, 160, 253, 0.40);
+ }
+
+
+
+/*****************************/
+/*        FORMULAIRE         */
+/*****************************/
+
+
+.formulaire {
+
+    margin: auto;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.formulaire label {
+
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#quantite {
+
+    font-size: 20px;
+    text-align: center;
+    border-radius: 100px;
+    border: 3px solid #000000;
+    height: 40px;
+}
+
+#quantite:hover {
+
+    background: rgba(104, 182, 253, 0.10);
+}
+
+#nom-offre {
+
+    width: 40%;
+}
