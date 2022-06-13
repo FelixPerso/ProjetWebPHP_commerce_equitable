@@ -58,8 +58,8 @@
         <h1>⎯⎯⎯⎯⎯⎯⎯⎯ NOTRE CONCEPT ⎯⎯⎯⎯⎯⎯⎯⎯</h1>
         <p class="p-concept">
         <B>Notre entreprise se charge de faire l'intermédiaire entre vous et les entreprises !</B><br><br>
-        Mettez en vente votre matériel électronique (téléphone, ordinateur, carte graphique, processeur...).
-        En vendant sur notre site, vous avez l'opportunité d'observer votre participation écologique. 
+        Mettez en vente votre matériel électronique (téléphone, ordinateur, carte graphique, processeur...).<br>
+        En vendant sur notre site, vous avez l'opportunité d'observer votre participation écologique. <br>
         Sur votre profil, vous avez à votre disposition une liste de métaux précieux recyclés,
         les valeurs correspondent aux quantités contenues dans les objets que vous avez vendus.<br><br>
         Toujours sur votre profil, vous disposez également d'une cagnotte.

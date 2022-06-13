@@ -13,11 +13,6 @@ body, .site {
     overflow-y: auto;
 }
 
-image {
-
-    width: 25%;
-    height: 25%;
-}
 
 #acheter {
 
@@ -33,6 +28,17 @@ image {
     border-radius: 100px;
     font-size: 20px;
 }
+/* table, th, td {
+    border: 1px solid;
+    text-align: center;
+    
+  }
+table{
+    table-layout: auto;
+    margin: 10rem;
+    width: auto;
+    height:"100%";   
+} */
 
 #acheter:hover {
 

@@ -2,6 +2,11 @@
     include 'bd.php';
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     session_start();
+    if(!isset($_SESSION['cle_id'])){
+        echo "Veuillez vous connecter pour effectuer des achats";
+    } else {
+        $id = $_SESSION['cle_id'];
+    }
     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
 <!-- <!DOCTYPE_html> -->
@@ -27,7 +32,7 @@
                     <div class="page-actuelle"><li class="items">Achat</li></div>
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
                     <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
-                    <li class="items"><a href="./connexion.php" class="connexion">Connexion</a></li>   
+                    <li class='items'><a href='./connexion.php' class='connexion'>Connexion</a></li>
                 </ul>
             </div>
             <div class="w3-container">
@@ -47,46 +52,57 @@
                 </div>
             </div>
         </header>
+        
                 <?php
                     $val =0;
                     $numimg = 0;
                     $titre = mysqli_query($conn,"SELECT name,Prix FROM TypeItem ORDER BY id ASC");
                     
+                    
                     if($titre){
                         echo "<table>";
                         foreach($titre as $titreprod)
                         {
-                        
+                            
                         echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
                         
                         $val++;
                         $numimg++;
+                        
                         $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
-
-                    if($itemAndDetails ) {
+                    if($itemAndDetails) {
                         foreach($itemAndDetails as $detail) {
                         echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
                         } 
                     }
-                     echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img'></td></tr>  
+                     echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%' ></td></tr>  
                      <tr><td><button type='submit' id='acheter' name='boutonAcheter'>ACHETER</button></td></tr>";
+                     
                      
                 } 
                 echo "</table>";
                 
-            }
-            if(!empty($_POST)){
-
-                    extract($_POST);
-                    $valid = true;
-
-                    if (isset($_POST['boutonAcheter'])) {
-
-                        
-                    }
+            }       
+                    // $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
+                    
+                    $cagnotteUser = mysqli_query($conn,"SELECT stash FROM Customer where id = $id");
+                    $prixprod = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = 1");
+                    $prixprod2 = mysqli_fetch_assoc($conn,"SELECT Prix FROM TypeItem where id = 1");
+                    $id2 =  mysqli_result($id);
+                    echo"<form id='frm' name='frm' method='post'>
+                    <input type='submit' name='btn1' value='vendre'/>
+                    </form>";
+                    if (isset($_POST['btn1'])) {
+                        if($cagnotteUser>=$prixprod){
+                            $updatecagnote = mysqli_query($conn,"UPDATE Customer SET stash = stash - $prixprod2 WHERE id=$id2");
+                            //mysqli_stmt_bind_param($stmt,'ii',$prixprod,$id);
+                            //mysqli_stmt_execute($stmt);
+                            echo"achat réussi";
+                        }else{
+                            echo"Vous êtes pauvre";
+                        }
+                    
                 }
-
-                   
 
                     ?>
     </section>
