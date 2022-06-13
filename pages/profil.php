@@ -41,7 +41,7 @@
 
                     $result1 = mysqli_query($conn,"(Select name,v1.quantity 
                     from Mendeleiev left join (Select quantity,element from
-                    CustomerExtraction where Customer = {$_SESSION['cle_id']} ) v1 on (v1.element = Z)");
+                    CustomerExtraction where Customer = {$_SESSION['cle_id']} ) v1 on (v1.element = Z))");
 
                     if($result1){
                         echo"<table>";
