@@ -2,11 +2,7 @@
     include 'bd.php';
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     session_start();
-    if(!isset($_SESSION['cle_id'])){
-        echo "Veuillez vous connecter pour effectuer des achats";
-    } else {
-        $id = $_SESSION['cle_id'];
-    }
+    
     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
 <!DOCTYPE HTML>
@@ -55,6 +51,9 @@
         </header>
         
                 <?php
+                if(!isset($_SESSION['cle_id'])){
+                    echo "Veuillez vous connecter pour effectuer des achats";
+                
                     $val =0;
                     $numimg = 0;
                     $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
@@ -87,6 +86,9 @@
                     echo "</table>";
                 
             }
+            } else {
+                $id = $_SESSION['cle_id'];
+                
             if(!empty($_POST)){
 
                         extract($_POST);
@@ -120,6 +122,7 @@
 
                     }else{
                         $valid = false;
+                    }
                     }       
                     
                     
