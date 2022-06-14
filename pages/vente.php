@@ -1,9 +1,11 @@
 <?php 
     include 'bd.php';
     session_start();
-    if(!isset($_SESSION['cle_id'])){
+
+    if(!isset($_SESSION['cle_id']))
         echo "connexion impossible";
-    } else {
+
+    else {
         $id = $_SESSION['cle_id'];
     }
     
@@ -42,97 +44,59 @@
         <h3>Quel est votre produit ?</h3>
         <form class="formulaire" action="" method="POST">
             <div class="custom-select" style="width:300px;">
-                <select name="produit">
+                <select id="produit" name="produit">
                     <option value="0">Type de produit :</option>
                     <?php
                         if($titre){
-                                    while(($titreprod = mysqli_fetch_array($titre))!=null)
-                                    {
-                                        echo"<option value='{$titreprod['id']}'>{$titreprod['name']}</option>";
-                                    }
+                            while(($titreprod = mysqli_fetch_array($titre))!=null){
+                                        
+                                echo"<option value='{$titreprod['id']}'>{$titreprod['name']}</option>";
                             }
+                        }
                     ?>
                 </select>
             </div><br><br>
-            <!-- <input type="number" placeholder="Quantité" id="quantite" name="quantite" value=""><br><br>
-            <input type="number" placeholder="Votre prix" id="prix" name="prix" value=""><br><br><br> -->
             <button type="submit" id="bouton" name="boutonVendre">TROUVER UN VENDEUR</button>
                 <?php
 
                     if(!empty($_POST)){
 
-                    extract($_POST);
-                    $valid = true;
+                        extract($_POST);
+                        $valid = true;
 
-                    if (isset($_POST['boutonVendre'])) {
-                       
-                        $quantite = $_POST['quantite'];
-                        $titreprod = $_POST['produit'];
-                        $prixUnit = $_POST['prix'];
-                        $prixTot = $prixUnit * $quantite ;
+                        if (isset($_POST['boutonVendre'])) {
+                            $titreprod  = $_POST['produit']; // On recupere le type produit selectionné
+                           
 
-                    if(empty($quantite)){
+                            if(empty($produit)){
 
-                    $valid = false;
+                                $valid = false;
+                                $er_nom = ("La quantite ne peut pas être vide");
 
-                    $er_nom = ("La quantite ne peut pas être vide");
-                    }
+                            }
 
-                    if(empty($titreprod)){
-
-                    $valid = false;
-
-                    $er_nom = ("Le type de produit ne peut pas être vide");
-                    }
-                    if(empty($prixUnit)){
-
-                    $valid = false;
-
-
-                    $er_nom = ("Le prix de l'offre ne peut pas être vide");
-                    }
-                        
+                            
                             if ($valid) {
-                                
-                        
-                            // on mets à jour la cagnotte de l'utilisateur    
-                            $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash + ? WHERE id=? ");
-                            mysqli_stmt_bind_param($stmt,'ii',$prixTot,$id);
-                            mysqli_stmt_execute($stmt);
+                                      
+                                // on cherche l'id du produit de la table TypeItem
+                                $stmt = mysqli_prepare($conn,"SELECT id FROM TypeItem WHERE id=?");
+                                mysqli_stmt_bind_param($stmt,'i',$titreprod);
+                                mysqli_stmt_execute($stmt);
+                                // on recupère l'id du produit de la table TypeItem 
+                                $table = mysqli_stmt_get_result($stmt);
+                                $tuple = mysqli_fetch_assoc($table);
+                                $titreprodId = $tuple['id'];
+                                $_SESSION['cle_typeProduit'] = $titreprodId;
+                                header('Location:./vendeur.php');
 
-
-                            
-                            // on cherche l'id du produit de la table TypeItem
-                            $stmt = mysqli_prepare($conn,"SELECT id FROM TypeItem WHERE id=?");
-                            mysqli_stmt_bind_param($stmt,'i',$titreprod);
-                            mysqli_stmt_execute($stmt);
-                            // on recupère l'id du produit de la table TypeItem 
-                            $table = mysqli_stmt_get_result($stmt);
-                            $tuple = mysqli_fetch_assoc($table);
-                            $titreprodId = $tuple['id'];
-
-                            $request = mysqli_query($conn,"SELECT element,quantity FROM ExtractionFromTypeItem WHERE TypeItem=$titreprodId");
-
-                            
-
-                            if ($request) {
-                                $stmt = mysqli_prepare($conn,"UPDATE CustomerExtraction SET quantity = quantity + ? WHERE Customer=? AND element=? ");
-                                
-                                foreach ($request as $requestas) {
-                                    mysqli_stmt_bind_param($stmt,'iii',$requestas['quantity'],$id,$requestas['element']);
-                                    mysqli_stmt_execute($stmt);
+                            }
                         }
+                    echo "<p style='padding-bottom:2%; font-size:14pt;'><b>Veuillez selectionner un produit !</b></p>";
+
+                    }else{
+
+                        $valid = false;
                     }
-
-
-            
-                    echo"votre profil à été mis à jour";
-
-                        }else{
-                            $valid = false;
-                        }
-                    }
-                }
                 ?>
         </form>
     </div>

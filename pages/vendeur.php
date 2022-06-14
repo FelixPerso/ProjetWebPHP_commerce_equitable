@@ -1,14 +1,40 @@
 <?php 
     include 'bd.php';
     session_start();
-    if(!isset($_SESSION['cle_id'])){
+
+    if(!isset($_SESSION['cle_id']))
         echo "connexion impossible";
-    } else {
+    else {
+
         $id = $_SESSION['cle_id'];
+        $typeProduit = $_SESSION['cle_typeProduit'];
     }
-    
-    $titre = mysqli_query($conn,"SELECT * FROM TypeItem ORDER BY id ASC ");
-    $vendeurs = mysqli_query($conn,"SELECT name,price FROM Business NATURAL JOIN BusinessSell");
+
+    $vendeurs = mysqli_query($conn,"SELECT name,price,quantity FROM Business NATURAL JOIN BusinessSell WHERE typeItem=$typeProduit AND id=business");
+
+    $stmt = mysqli_prepare($conn,"SELECT quantity FROM Business NATURAL JOIN BusinessSell WHERE typeItem=? AND id=business");
+    mysqli_stmt_bind_param($stmt,'i',$typeProduit);
+    mysqli_stmt_execute($stmt);
+
+    $table = mysqli_stmt_get_result($stmt);
+    $tuple = mysqli_fetch_assoc($table);
+    $quantityVendeur = $tuple['quantity'];
+
+    $stmt = mysqli_prepare($conn,"SELECT price FROM Business NATURAL JOIN BusinessSell WHERE typeItem=? AND id=business");
+    mysqli_stmt_bind_param($stmt,'i',$typeProduit);
+    mysqli_stmt_execute($stmt);
+
+    $table = mysqli_stmt_get_result($stmt);
+    $tuple = mysqli_fetch_assoc($table);
+    $prixVendeur = $tuple['price'];
+
+    $stmt = mysqli_prepare($conn,"SELECT id FROM Business NATURAL JOIN BusinessSell WHERE typeItem=? AND id=business");
+    mysqli_stmt_bind_param($stmt,'i',$typeProduit);
+    mysqli_stmt_execute($stmt);
+
+    $table = mysqli_stmt_get_result($stmt);
+    $tuple = mysqli_fetch_assoc($table);
+    $idBusiness = $tuple['id'];
 ?>
 <!DOCTYPE HTML>
 <html lang="fr">
@@ -42,15 +68,15 @@
         <h3>Trouver un vendeur</h3>
         <form class="formulaire" action="" method="POST">
             <div class="custom-select" style="width:300px;">
-                <select name="produit">
+                <select id="vendeurs" name="vendeurs">
                     <option value="0">Vendeurs :</option>
                     <?php
                         if($vendeurs){
-                                    while(($namevendeurs = mysqli_fetch_array($vendeurs))!=null)
-                                    {
-                                        echo"<option value='{$namevendeurs['name']}'>{$namevendeurs['name']} - {$namevendeurs['price']}€ </option>";
-                                    }
+                            while(($namevendeurs = mysqli_fetch_array($vendeurs))!=null)
+                            {
+                                echo"<option value='{$namevendeurs['name']}'>{$namevendeurs['name']} - {$namevendeurs['price']}€ (x{$namevendeurs['quantity']})</option>";
                             }
+                        }
                     ?>
                 </select>
             </div><br><br>
@@ -58,7 +84,7 @@
             <button type="submit" id="bouton" name="boutonVendre">VENDRE</button>
             <?php
 
-                    if(!empty($_POST)){
+                if(!empty($_POST)){
 
                     extract($_POST);
                     $valid = true;
@@ -66,59 +92,58 @@
                     if (isset($_POST['boutonVendre'])) {
                        
                         $quantite = $_POST['quantite'];
-                        $titreprod = $_POST['produit'];
-                        $prixUnit = $_POST['prix'];
-                        $prixTot = $prixUnit * $quantite ;
+                        $prixTot = $quantite*$prixVendeur;
 
-                    if(empty($quantite)){
+                        if(empty($vendeurs)){
 
-                    $valid = false;
+                            $valid = false;
+                            $er_nom = ("Les vendeurs ne peut pas être vide");
 
-                    $er_nom = ("La quantite ne peut pas être vide");
-                    }
+                        }
+
+                        if(empty($quantite) || $quantite>$quantityVendeur){
+
+                            $valid = false;
+                            echo "<p style='padding-bottom:2%; font-size:14pt;'><b>Vous dépassez la quantité maximale demandée par l'acheteur ! Maximum: $quantityVendeur</b></p>";
+
+                            $er_nom = ("La quantité ne peut pas être vide");
+                        }
                         
                             if ($valid) {
                                 
-                        
                             // on mets à jour la cagnotte de l'utilisateur    
                             $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash + ? WHERE id=? ");
                             mysqli_stmt_bind_param($stmt,'ii',$prixTot,$id);
-                            mysqli_stmt_execute($stmt);
+                            mysqli_stmt_execute($stmt);                       
 
+                            $request = mysqli_query($conn,"SELECT element,quantity FROM ExtractionFromTypeItem WHERE TypeItem=$typeProduit");
 
-                            
-                            // on cherche l'id du produit de la table TypeItem
-                            $stmt = mysqli_prepare($conn,"SELECT id FROM TypeItem WHERE id=?");
-                            mysqli_stmt_bind_param($stmt,'i',$titreprod);
-                            mysqli_stmt_execute($stmt);
-                            // on recupère l'id du produit de la table TypeItem 
-                            $table = mysqli_stmt_get_result($stmt);
-                            $tuple = mysqli_fetch_assoc($table);
-                            $titreprodId = $tuple['id'];
+                                if ($request) {
+                                    $stmt = mysqli_prepare($conn,"UPDATE CustomerExtraction SET quantity = quantity + ? WHERE Customer=? AND element=? ");
+                                    
+                                    foreach ($request as $requestas) {
 
-                            $request = mysqli_query($conn,"SELECT element,quantity FROM ExtractionFromTypeItem WHERE TypeItem=$titreprodId");
+                                        mysqli_stmt_bind_param($stmt,'iii',$requestas['quantity'],$id,$requestas['element']);
+                                        mysqli_stmt_execute($stmt);
 
-                            
+                                    }
 
-                            if ($request) {
-                                $stmt = mysqli_prepare($conn,"UPDATE CustomerExtraction SET quantity = quantity + ? WHERE Customer=? AND element=? ");
-                                
-                                foreach ($request as $requestas) {
-                                    mysqli_stmt_bind_param($stmt,'iii',$requestas['quantity'],$id,$requestas['element']);
-                                    mysqli_stmt_execute($stmt);
-                        }
-                    }
+                                    if ($stmt) {
+                                        echo "<p style='padding-bottom:2%; font-size:14pt;'><b>Votre cagnotte a été augmentée de $prixTot € et vos métaux recyclés ont été mis à jour.</b></p>";
 
+                                        $stmt = mysqli_prepare($conn,"UPDATE BusinessSell SET quantity = quantity - ? where business = ? AND typeItem = ? ");
+                                        mysqli_stmt_bind_param($stmt,'iii',$quantite,$idBusiness,$typeProduit);
+                                        mysqli_stmt_execute($stmt);
+                                    }
+                                }   
 
-            
-                    echo"votre profil à été mis à jour";
-
-                        }else{
-                            $valid = false;
-                        }
+                            }else{
+                                $valid = false;
+                            }
                     }
                 }
-                ?>
+                
+            ?>
         </form>
     </div>
 
@@ -140,11 +165,3 @@
 
 
 
-<?php
-
-// // Dans ce fichier, il faut : 
-// 								Un liste déroulante avec les entreprises qui recherchent le produit choisis (de la page vente.php)
-// 								Le prix des entreprises qui recherchent le produit choisis
-// 								La quantité..
-// 								Mettre les requetes sql qui permettent de calculer les extractions des matériaux et la stash.
-?>
