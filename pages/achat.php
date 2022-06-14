@@ -9,7 +9,7 @@
     }
     $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 ?>
-<!-- <!DOCTYPE_html> -->
+<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -29,10 +29,11 @@
                 <div class="nav">
                 <ul class="header_barre_nav">
                     <li class="items"><a href="../index.php" class="accueil">Accueil</a></li>
-                    <div class="page-actuelle"><li class="items">Achat</li></div>
+                    <div class="page-actuelle"><li class="item">Achat</li></div>
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
                     <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
                     <li class='items'><a href='./connexion.php' class='connexion'>Connexion</a></li>
+    
                 </ul>
             </div>
             <div class="w3-container">
@@ -56,12 +57,12 @@
                 <?php
                     $val =0;
                     $numimg = 0;
-                    $titre = mysqli_query($conn,"SELECT name,Prix FROM TypeItem ORDER BY id ASC");
+                    $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
                     
                     
                     if($titre){
                         echo "<table>";
-                        foreach($titre as $titreprod)
+                       foreach($titre as $titreprod)
                         {
                             
                         echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
@@ -75,40 +76,59 @@
                         echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
                         } 
                     }
-                     echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%' ></td></tr>  
-                     <tr><td><button type='submit' id='acheter' name='boutonAcheter'>ACHETER</button></td></tr>";
+
+                     echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
+                     <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
+                    </form></td></tr>";
                      
+
                      
                 } 
-                echo "</table>";
+                    echo "</table>";
                 
-            }       
-                    // $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
-                    
-                    $cagnotteUser = mysqli_query($conn,"SELECT stash FROM Customer where id = $id");
-                    $prixprod = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = 1");
-                    $prixprod2 = mysqli_fetch_assoc($conn,"SELECT Prix FROM TypeItem where id = 1");
-                    $id2 =  mysqli_result($id);
-                    echo"<form id='frm' name='frm' method='post'>
-                    <input type='submit' name='btn1' value='vendre'/>
-                    </form>";
-                    if (isset($_POST['btn1'])) {
-                        if($cagnotteUser>=$prixprod){
-                            $updatecagnote = mysqli_query($conn,"UPDATE Customer SET stash = stash - $prixprod2 WHERE id=$id2");
-                            //mysqli_stmt_bind_param($stmt,'ii',$prixprod,$id);
-                            //mysqli_stmt_execute($stmt);
-                            echo"achat réussi";
-                        }else{
-                            echo"Vous êtes pauvre";
+            }
+            if(!empty($_POST)){
+
+                        extract($_POST);
+
+                        $valid = true;
+
+ 
+
+                        // On se place sur le bon formulaire grâce au "name" de la balise "input"
+
+                    if (isset($_POST['btn'])){
+                        $cagnotteUser = mysqli_query($conn,"SELECT stash FROM Customer where id = $id");
+                        $stmt = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = {$_POST['idprod']}");
+                        $tuple = mysqli_fetch_assoc($stmt);
+                        $produitPrix = $tuple['Prix'];
+
+
+
+                        if ($cagnotteUser<$produitPrix) {
+                            $valid = false;
+                            $er_cagnotte = "Vous n'avez pas assez dans votre cagnotte";
                         }
-                    
+                        // Si toutes les conditions sont remplies alors on fait le traitement
+
+                        if($valid){
+                        $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
+                        mysqli_stmt_bind_param($stmt,'ii',$produitPrix,$id);
+                        mysqli_stmt_execute($stmt);
+                    }
                 }
 
-                    ?>
+                    }else{
+                        $valid = false;
+                    }       
+                    
+                    
+
+        
+
+?>
     </section>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="../assets/javascript/transitionBurger.js"></script>
 
     <script>
         // Menu cliquable Recherche
@@ -142,9 +162,11 @@
 <a href="#">
     <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">
 </a>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../assets/javascript/transitionBurger.js"></script>
+    <script src="../assets/javascript/menuSelectionVente.js"></script>
 </body>
-
+ 
 </html>
 <?php
 mysqli_close($conn);
