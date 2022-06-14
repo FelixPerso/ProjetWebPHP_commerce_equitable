@@ -6,7 +6,7 @@
     }
 ?>
 
-<!DOCTYPE_html>
+<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -44,17 +44,17 @@
                     CustomerExtraction where Customer = {$_SESSION['cle_id']} ) v1 on (v1.element = Z))");
 
                     if($result1){
-                        echo"<table>";
+                        echo"<table style='border-spacing:15px; margin-left:5%;'>";
                         while($Mendeleiev = mysqli_fetch_assoc($result1))
                         {
                             if($Mendeleiev['quantity']==null){
                                 $Mendeleiev['quantity']=0;
-                                echo "<tr><td><b>{$Mendeleiev['name']} :</b></td><td>
+                                echo "<tr><td>{$Mendeleiev['name']}</td><td>
                                 {$Mendeleiev['quantity']}</td></tr>";
                             }else{
-                        echo "<tr><td>{$Mendeleiev['name']}</td><td>
-                        {$Mendeleiev['quantity']}</td></tr>";
-                        }
+                                echo "<tr><td><b>{$Mendeleiev['name']} :</b></td><td>
+                                {$Mendeleiev['quantity']} mg</td></tr>";
+                            }
                         } 
                         echo"</table>";
                     }
@@ -85,11 +85,10 @@
                     $caract = mysqli_fetch_array($result2);
                      
                     if($result2!=null){
-                        echo"<b>Prénom : </b>{$caract["surname"]}<br>";
-                        echo"<b>Nom    : </b>{$caract["firstname"]}<br>";
-                        echo"<b>Email  : </b>{$caract["email"]}<br>";
+                        echo"<p style='margin-left:5%;'><b>Prénom : </b>{$caract["surname"]}</p>";
+                        echo"<p style='margin-left:5%;'><b>Nom    : </b>{$caract["firstname"]}</p>";
+                        echo"<p style='margin-left:5%;'><b>Email  : </b>{$caract["email"]}</p>";
                     }
-                    
                 ?>
             </div>
         </div>

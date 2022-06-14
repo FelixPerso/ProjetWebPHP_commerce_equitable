@@ -94,11 +94,13 @@
     float: right;
     color: #68B6FD;
     font-size: 100px;
-    margin: auto; /* Permet le centrage vertical*/
-    
-    
+    margin: auto; /* Permet le centrage vertical*/  
 }
 
+.rectangle3 p {
+
+    line-height: 1;
+}
 
 .bouton-deconnexion {
 
