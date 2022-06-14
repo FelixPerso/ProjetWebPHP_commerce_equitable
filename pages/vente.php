@@ -72,7 +72,7 @@
 
                                 $valid = false;
                                 $er_nom = ("La quantite ne peut pas être vide");
-                                
+
                             }
 
                             
@@ -91,7 +91,7 @@
 
                             }
                         }
-                    echo "Veuillez selectionner un produit";
+                    echo "<p style='padding-bottom:2%; font-size:14pt;'><b>Veuillez selectionner un produit !</b></p>";
 
                     }else{
 

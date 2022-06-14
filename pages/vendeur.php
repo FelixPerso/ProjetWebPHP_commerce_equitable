@@ -27,6 +27,14 @@
     $table = mysqli_stmt_get_result($stmt);
     $tuple = mysqli_fetch_assoc($table);
     $prixVendeur = $tuple['price'];
+
+    $stmt = mysqli_prepare($conn,"SELECT id FROM Business NATURAL JOIN BusinessSell WHERE typeItem=? AND id=business");
+    mysqli_stmt_bind_param($stmt,'i',$typeProduit);
+    mysqli_stmt_execute($stmt);
+
+    $table = mysqli_stmt_get_result($stmt);
+    $tuple = mysqli_fetch_assoc($table);
+    $idBusiness = $tuple['id'];
 ?>
 <!DOCTYPE HTML>
 <html lang="fr">
@@ -96,9 +104,9 @@
                         if(empty($quantite) || $quantite>$quantityVendeur){
 
                             $valid = false;
-                            echo "Veuillez respecter la quantité des vendeurs. Max $quantityVendeur";
+                            echo "<p style='padding-bottom:2%; font-size:14pt;'><b>Vous dépassez la quantité maximale demandée par l'acheteur ! Maximum: $quantityVendeur</b></p>";
 
-                            $er_nom = ("La quantite ne peut pas être vide");
+                            $er_nom = ("La quantité ne peut pas être vide");
                         }
                         
                             if ($valid) {
@@ -121,7 +129,11 @@
                                     }
 
                                     if ($stmt) {
-                                        echo "votre cagnotte à été augmenter de $prixTot € et vos métaux recyclé ont été mis à jour.";
+                                        echo "<p style='padding-bottom:2%; font-size:14pt;'><b>Votre cagnotte a été augmentée de $prixTot € et vos métaux recyclés ont été mis à jour.</b></p>";
+
+                                        $stmt = mysqli_prepare($conn,"UPDATE BusinessSell SET quantity = quantity - ? where business = ? AND typeItem = ? ");
+                                        mysqli_stmt_bind_param($stmt,'iii',$quantite,$idBusiness,$typeProduit);
+                                        mysqli_stmt_execute($stmt);
                                     }
                                 }   
 
