@@ -88,6 +88,36 @@
             }
             } else {
                 $id = $_SESSION['cle_id'];
+                $val =0;
+                    $numimg = 0;
+                    $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
+                    
+                    
+                    if($titre){
+                        echo "<table>";
+                       foreach($titre as $titreprod)
+                        {
+                            
+                        echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
+                        
+                        $val++;
+                        $numimg++;
+                        
+                        $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
+                    if($itemAndDetails) {
+                        foreach($itemAndDetails as $detail) {
+                        echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
+                        } 
+                    }
+
+                     echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
+                     <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
+                    </form></td></tr>";
+                     
+
+                     
+                } 
+                    echo "</table>";
                 
             if(!empty($_POST)){
 
@@ -122,6 +152,7 @@
 
                     }else{
                         $valid = false;
+                    }
                     }
                     }       
                     
