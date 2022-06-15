@@ -1,9 +1,10 @@
 <?php 
-    include 'bd.php';
-    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-    session_start();
-    
-    $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
+include 'bd.php';
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+session_start();
+
+$titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
+
 ?>
 <!DOCTYPE HTML>
 <html lang="fr">
@@ -41,13 +42,13 @@
                     <button class="w3-button w3-marina" onclick="rechercheMenuFunction()">Rechercher</button>
                     <div class="w3-dropdown-content w3-bar-block w3-card w3-white" id="myDIV">
                         <input class="w3-input w3-padding" type="text" placeholder="..." id="myInput"
-                            onkeyup="rechercheFiltreFunction()">
+                        onkeyup="rechercheFiltreFunction()">
                         <?php
-                            if($titre){
-                                while(($titreprod = mysqli_fetch_array($titre))!=null)
-                                {
-                            echo"<a class='w3-bar-item w3-button' href='#{$titreprod['name']}'>{$titreprod['name']}</a>";
-                                }
+                        if($titre){
+                            while(($titreprod = mysqli_fetch_array($titre))!=null)
+                            {
+                                echo"<a class='w3-bar-item w3-button' href='#{$titreprod['name']}'>{$titreprod['name']}</a>";
+                            }
                         }
                         ?>
                     </div>
@@ -56,94 +57,106 @@
         </header>
 
         <?php
-            $val =0;
-            $numimg = 0;
-            $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
-                 
-                 
-                 if($titre){
-                     echo "<table>";
-                    foreach($titre as $titreprod)
-                     {
-                         
-                     echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
-                     
-                     $val++;
-                     $numimg++;
-                     
-                     $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
-                 if($itemAndDetails) {
-                     foreach($itemAndDetails as $detail) {
-                     echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
-                     } 
-                 }
+        $val =0;
+        $numimg = 0;
+        $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
 
-                  echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
-                  <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
-                 </form></td></tr>";
-                  
 
-                  
-             } 
-                 echo "</table>";
-             
-         }
-         
-         
-         if(!isset($_SESSION['cle_id'])) {
-                echo "Veuillez vous connecter pour effectuer des achats";
-            }else {
-                $id= $_SESSION['cle_id'];
-                
-            if(!empty($_POST)){
+        if($titre){
+           echo "<table>";
+           foreach($titre as $titreprod)
+           {
 
-                        extract($_POST);
+               echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
 
-                        
+               $val++;
+               $numimg++;
 
- 
+               $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
+               if($itemAndDetails) {
+                   foreach($itemAndDetails as $detail) {
+                       echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
+                   } 
+               }
+
+               echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
+               <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
+               </form></td></tr>";
+
+
+
+           } 
+           echo "</table>";
+
+       }
+
+
+       if(!isset($_SESSION['cle_id'])) {
+        echo "Veuillez vous connecter pour effectuer des achats";
+    }else {
+        $id= $_SESSION['cle_id'];
+
+        if(!empty($_POST)){
+
+            extract($_POST);
+
+
+
+
 
                         // On se place sur le bon formulaire grâce au "name" de la balise "input"
 
-                    if (isset($_POST['btn'])){
+            if (isset($_POST['btn'])){
 
                         // on recupere la cagnotte de l'utilisateur.
-                        $cagnotteUser = mysqli_prepare($conn,"SELECT stash FROM Customer where id = ?");
-                        mysqli_stmt_bind_param($cagnotteUser,'i',$id);
-                        mysqli_stmt_execute($cagnotteUser);
-                        $table = mysqli_stmt_get_result($cagnotteUser);
-                        $tuple = mysqli_fetch_assoc($table);
-                        $cagnotteUser = $tuple['stash'];
+                $cagnotteUser = mysqli_prepare($conn,"SELECT stash FROM Customer where id = ?");
+                mysqli_stmt_bind_param($cagnotteUser,'i',$id);
+                mysqli_stmt_execute($cagnotteUser);
+                $table = mysqli_stmt_get_result($cagnotteUser);
+                $tuple = mysqli_fetch_assoc($table);
+                $cagnotteUser = $tuple['stash'];
 
                         // on recupere le prix du produit
-                        $stmt = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = {$_POST['idprod']}");
-                        $tuple = mysqli_fetch_assoc($stmt);
-                        $produitPrix = $tuple['Prix'];
-                        
+                $stmt = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = {$_POST['idprod']}");
+                $tuple = mysqli_fetch_assoc($stmt);
+                $produitPrix = $tuple['Prix'];
+
                         // on verifie que la cagnotte de l'utilisateur est bien supérieur au prix du produit.
-                        if ($cagnotteUser<$produitPrix) {
-                            $valid = false;
-                            $er_cagnotte = "Vous n'avez pas assez dans votre cagnotte";
-                            echo "$er_cagnotte";
-                        }else{
-                            $valid = true;
+                if ($cagnotteUser<$produitPrix) {
+                    $valid = false;
+                    $er_cagnotte = "Vous n'avez pas assez dans votre cagnotte";
+                    echo "$er_cagnotte";
+                }else{
+                    $valid = true;
                         // Si toutes les conditions sont remplies alors on fait le traitement
 
-                        if($valid){
-                            $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
-                            mysqli_stmt_bind_param($stmt,'ii',$produitPrix,$id);
-                            mysqli_stmt_execute($stmt);
-                            echo"<div class='popup' onclick='myFunction()'>
-                            <span class='popuptext' id='myPopup'>Achat réussi,<br>{$produitPrix} € on était déduis de votre cagnotte.</span>
-                            </div>";
+                    if($valid){
+                        $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
+                        mysqli_stmt_bind_param($stmt,'ii',$produitPrix,$id);
+                        mysqli_stmt_execute($stmt);
+                        echo"<div class='popup' onclick='myFunction()'>
+                        <span class='popuptext' id='myPopup'>Achat réussi,<br>{$produitPrix} € on était déduis de votre cagnotte.</span>
+                        </div>";
+                        print_r($id);
+                        echo"<br>";
+                        print_r($produitPrix);
+                        echo"<br>";
+                        $stmt = mysqli_query($conn,"SELECT name from TypeItem where id= ? ");
+                        mysqli_stmt_bind_param($stmt,'i',$_POST['idprod']);
+                        mysqli_stmt_execute($stmt);
+                        echo"$stmt";
+                            // On va inserer les informations de vente dans une nouvelle table "HistoriqueBuy" afin de recenser nos historiques de vente
+                        // $stmt = mysqli_prepare($conn,"INSERT INTO HistoriqueBuy(nameProduit,Prix,Pays,id) VALUES (?,?,?,?)");
+                        // mysqli_stmt_bind_param($stmt,'sisii',$_POST[',$nameTypeItem,$produitPrix,$id);
+                        // mysqli_stmt_execute($stmt);
                     }
                 }
             }
-            } 
-        }   
-                ?>
-    </section>
-    <script>
+        } 
+    }   
+    ?>
+</section>
+<script>
     // Menu cliquable Recherche
     function rechercheMenuFunction() {
         var x = document.getElementById("myDIV");
@@ -171,7 +184,7 @@
             }
         }
     }
-  
+
     // When the user clicks on <div>, open the popup
     function myFunction() {
         var popup = document.getElementById("myPopup");
