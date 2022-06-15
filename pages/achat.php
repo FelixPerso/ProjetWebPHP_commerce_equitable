@@ -99,33 +99,43 @@
 
                         extract($_POST);
 
-                        $valid = true;
+                        
 
  
 
                         // On se place sur le bon formulaire grâce au "name" de la balise "input"
 
                     if (isset($_POST['btn'])){
-                        $cagnotteUser = mysqli_query($conn,"SELECT stash FROM Customer where id = $id");
+
+                        // on recupere la cagnotte de l'utilisateur.
+                        $cagnotteUser = mysqli_prepare($conn,"SELECT stash FROM Customer where id = ?");
+                        mysqli_stmt_bind_param($cagnotteUser,'i',$id);
+                        mysqli_stmt_execute($cagnotteUser);
+                        $table = mysqli_stmt_get_result($cagnotteUser);
+                        $tuple = mysqli_fetch_assoc($table);
+                        $cagnotteUser = $tuple['stash'];
+
+                        // on recupere le prix du produit
                         $stmt = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = {$_POST['idprod']}");
                         $tuple = mysqli_fetch_assoc($stmt);
                         $produitPrix = $tuple['Prix'];
-
-
-
+                        
+                        // on verifie que la cagnotte de l'utilisateur est bien supérieur au prix du produit.
                         if ($cagnotteUser<$produitPrix) {
                             $valid = false;
                             $er_cagnotte = "Vous n'avez pas assez dans votre cagnotte";
+                            echo "$er_cagnotte";
                         }else{
+                            $valid = true;
                         // Si toutes les conditions sont remplies alors on fait le traitement
 
                         if($valid){
-                        $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
-                        mysqli_stmt_bind_param($stmt,'ii',$produitPrix,$id);
-                        mysqli_stmt_execute($stmt);
-                        echo"<div class='popup' onclick='myFunction()'>
-                        <span class='popuptext' id='myPopup'>Achat réussi,<br>{$produitPrix} € on était déduis de votre cagnotte.</span>
-                        </div>";
+                            $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
+                            mysqli_stmt_bind_param($stmt,'ii',$produitPrix,$id);
+                            mysqli_stmt_execute($stmt);
+                            echo"<div class='popup' onclick='myFunction()'>
+                            <span class='popuptext' id='myPopup'>Achat réussi,<br>{$produitPrix} € on était déduis de votre cagnotte.</span>
+                            </div>";
                     }
                 }
             }
