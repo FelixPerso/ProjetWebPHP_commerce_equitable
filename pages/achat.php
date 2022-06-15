@@ -7,6 +7,7 @@
 ?>
 <!DOCTYPE HTML>
 <html lang="fr">
+
 <head>
     <meta charset='utf-8'>
     <title>IT+ - Achat</title>
@@ -14,29 +15,33 @@
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/achat.css'>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+
 <body>
     <section class="site">
         <header>
             <div class="bouton-burger">
-               <div class="barre"></div>
-               <div class="barre"></div>
-               <div class="barre"></div>
+                <div class="barre"></div>
+                <div class="barre"></div>
+                <div class="barre"></div>
             </div>
-                <div class="nav">
+            <div class="nav">
                 <ul class="header_barre_nav">
                     <li class="items"><a href="../index.php" class="accueil">Accueil</a></li>
-                    <div class="page-actuelle"><li class="item">Achat</li></div>
+                    <div class="page-actuelle">
+                        <li class="item">Achat</li>
+                    </div>
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
                     <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
                     <li class='items'><a href='./connexion.php' class='connexion'>Connexion</a></li>
-    
+
                 </ul>
             </div>
             <div class="w3-container">
                 <div class="w3-dropdown-click">
                     <button class="w3-button w3-marina" onclick="rechercheMenuFunction()">Rechercher</button>
                     <div class="w3-dropdown-content w3-bar-block w3-card w3-white" id="myDIV">
-                        <input class="w3-input w3-padding" type="text" placeholder="..." id="myInput" onkeyup="rechercheFiltreFunction()">
+                        <input class="w3-input w3-padding" type="text" placeholder="..." id="myInput"
+                            onkeyup="rechercheFiltreFunction()">
                         <?php
                             if($titre){
                                 while(($titreprod = mysqli_fetch_array($titre))!=null)
@@ -49,75 +54,46 @@
                 </div>
             </div>
         </header>
-        
-                <?php
-                if(!isset($_SESSION['cle_id'])){
-                    echo "Veuillez vous connecter pour effectuer des achats";
-                
-                    $val =0;
-                    $numimg = 0;
-                    $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
-                    
-                    
-                    if($titre){
-                        echo "<table>";
-                       foreach($titre as $titreprod)
-                        {
-                            
-                        echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
-                        
-                        $val++;
-                        $numimg++;
-                        
-                        $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
-                    if($itemAndDetails) {
-                        foreach($itemAndDetails as $detail) {
-                        echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
-                        } 
-                    }
 
-                     echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
-                     <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
-                    </form></td></tr>";
+        <?php
+            $val =0;
+            $numimg = 0;
+            $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
+                 
+                 
+                 if($titre){
+                     echo "<table>";
+                    foreach($titre as $titreprod)
+                     {
+                         
+                     echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
                      
+                     $val++;
+                     $numimg++;
+                     
+                     $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
+                 if($itemAndDetails) {
+                     foreach($itemAndDetails as $detail) {
+                     echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
+                     } 
+                 }
 
-                     
-                } 
-                    echo "</table>";
-                
-            }
-            } else {
-                $id = $_SESSION['cle_id'];
-                $val =0;
-                    $numimg = 0;
-                    $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
-                    
-                    
-                    if($titre){
-                        echo "<table>";
-                       foreach($titre as $titreprod)
-                        {
-                            
-                        echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
-                        
-                        $val++;
-                        $numimg++;
-                        
-                        $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
-                    if($itemAndDetails) {
-                        foreach($itemAndDetails as $detail) {
-                        echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
-                        } 
-                    }
+                  echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
+                  <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
+                 </form></td></tr>";
+                  
 
-                     echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
-                     <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
-                    </form></td></tr>";
-                     
-
-                     
-                } 
-                    echo "</table>";
+                  
+             } 
+                 echo "</table>";
+             
+         }
+         
+         
+         if(!isset($_SESSION['cle_id'])) {
+                echo "Veuillez vous connecter pour effectuer des achats";
+            }else {
+                $id= $_SESSION['cle_id'];
                 
             if(!empty($_POST)){
 
@@ -147,60 +123,61 @@
                         $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
                         mysqli_stmt_bind_param($stmt,'ii',$produitPrix,$id);
                         mysqli_stmt_execute($stmt);
+                        echo"<div class='popup' onclick='myFunction()'>
+                        <span class='popuptext' id='myPopup'>Achat réussi,<br>{$produitPrix} € on était déduis de votre cagnotte.</span>
+                        </div>";
                     }
                 }
 
                     }else{
                         $valid = false;
                     }
-                    }
                     }       
-                    
-                    
-
-        
-
-?>
+                ?>
     </section>
-
-
     <script>
-        // Menu cliquable Recherche
-        function rechercheMenuFunction() {
-            var x = document.getElementById("myDIV");
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
+    // Menu cliquable Recherche
+    function rechercheMenuFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+
+    // Recherche filtre
+    function rechercheFiltreFunction() {
+        var input, filtre, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filtre = input.value.toUpperCase();
+        div = document.getElementById("myDIV");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filtre) > -1) {
+                a[i].style.display = "";
             } else {
-                x.className = x.className.replace(" w3-show", "");
+                a[i].style.display = "none";
             }
         }
-
-
-        // Recherche filtre
-        function rechercheFiltreFunction() {
-            var input, filtre, ul, li, a, i;
-            input = document.getElementById("myInput");
-            filtre = input.value.toUpperCase();
-            div = document.getElementById("myDIV");
-            a = div.getElementsByTagName("a");
-            for (i = 0; i < a.length; i++) {
-                txtValue = a[i].textContent || a[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filtre) > -1) {
-                    a[i].style.display = "";
-                } else {
-                    a[i].style.display = "none";
-                }
-            } 
-        }
+    }
+  
+    // When the user clicks on <div>, open the popup
+    function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
     </script>
-<a href="#">
-    <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">
-</a>
+    <a href="#">
+        <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">
+    </a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>
     <script src="../assets/javascript/menuSelectionVente.js"></script>
 </body>
- 
+
 </html>
 <?php
 mysqli_close($conn);
