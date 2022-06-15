@@ -66,7 +66,7 @@
                     foreach($titre as $titreprod)
                      {
                          
-                     echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
+                     echo"<tr><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
                      
                      $val++;
                      $numimg++;
