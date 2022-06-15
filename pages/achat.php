@@ -116,7 +116,7 @@
                         if ($cagnotteUser<$produitPrix) {
                             $valid = false;
                             $er_cagnotte = "Vous n'avez pas assez dans votre cagnotte";
-                        }
+                        }else{
                         // Si toutes les conditions sont remplies alors on fait le traitement
 
                         if($valid){
@@ -128,11 +128,8 @@
                         </div>";
                     }
                 }
-
-                    }else{
-                        $valid = false;
-                    }
-                    }       
+            }
+            }    
                 ?>
     </section>
     <script>
