@@ -1,7 +1,9 @@
 <?php
 
  session_start();
-
+if(isset($_SESSION['cle_id'])){
+        header("Location:./profil.php");
+    }
 
 include 'bd.php';
 
