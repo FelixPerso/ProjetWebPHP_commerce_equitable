@@ -57,9 +57,33 @@ $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
         </header>
 
         <?php
+<<<<<<< HEAD
         $val =0;
         $numimg = 0;
         $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
+=======
+            $val =0;
+            $numimg = 0;
+            $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
+                 
+                 
+                 if($titre){
+                     echo "<table>";
+                    foreach($titre as $titreprod)
+                     {
+                         
+                     echo"<tr><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
+                     
+                     $val++;
+                     $numimg++;
+                     
+                     $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
+                 if($itemAndDetails) {
+                     foreach($itemAndDetails as $detail) {
+                     echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
+                     } 
+                 }
+>>>>>>> 52970ef09d7d1c8a8e4cef628926cd9acb0fc936
 
 
         if($titre){

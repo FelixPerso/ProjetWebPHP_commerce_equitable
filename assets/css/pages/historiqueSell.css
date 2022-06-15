@@ -1,0 +1,34 @@
+.titre-histo-vente, .titre-histo-achat {
+
+	margin-top: 0;
+	color: #68B6FD;
+    text-align: center;
+    font-size: 35px;
+}
+
+.titre-histo-achat {
+
+	margin-top: 10%;
+}
+
+
+.historique-vente, .historique-achat {
+
+	margin: auto;
+	border-spacing: 200px 20px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	border-collapse: separate;
+	text-align: center;
+}
+
+
+.legende {
+
+	font-size: 18pt;
+}
+
+.produits {
+
+	font-size: 15pt;
+}
