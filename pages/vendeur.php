@@ -168,10 +168,14 @@
                                         mysqli_stmt_bind_param($stmt,'iii',$quantite,$idBusiness,$typeProduit);
                                         mysqli_stmt_execute($stmt);
 
-                                        // debut de l'historique.
-                                        /*$stmt = mysqli_prepare($conn,"INSERT INTO Historique(prix,quantite) VALUES (?,?)");
-                                        mysqli_stmt_bind_param($stmt,'ii',$prixVendeur,$quantite);
-                                        mysqli_stmt_execute($stmt);*/
+
+                                        $stmt = mysqli_prepare($conn,"INSERT INTO HistoriqueSell(nameEntreprise,nameProduit,Prix,Quantite,id) VALUES (?,?,?,?,?)");
+                                        mysqli_stmt_bind_param($stmt,'ssiii',$_POST['vendeurs'],$nameTypeItem,$prixVendeur,$quantite,$id);
+                                        mysqli_stmt_execute($stmt);
+                                        echo $_POST['vendeurs'];
+                                        echo $nameTypeItem;
+                                        echo $prixVendeur;
+                                        echo $quantite;
 
 
                                     }
