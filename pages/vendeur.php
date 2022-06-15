@@ -10,31 +10,46 @@
         $typeProduit = $_SESSION['cle_typeProduit'];
     }
 
-    $vendeurs = mysqli_query($conn,"SELECT name,price,quantity FROM Business NATURAL JOIN BusinessSell WHERE typeItem=$typeProduit AND id=business");
+    $vendeurs = mysqli_query($conn,"SELECT name,price,quantity,business FROM Business NATURAL JOIN BusinessSell WHERE typeItem=$typeProduit AND id=business");
 
-    $stmt = mysqli_prepare($conn,"SELECT quantity FROM Business NATURAL JOIN BusinessSell WHERE typeItem=? AND id=business");
-    mysqli_stmt_bind_param($stmt,'i',$typeProduit);
+
+    // on recupere la quantite des vendeurs
+    if (isset($_POST['vendeurs'])) {
+        $stmt = mysqli_prepare($conn,"SELECT quantity FROM Business JOIN BusinessSell ON (Business.id = BusinessSell.business) WHERE typeItem=? AND name=?");
+    mysqli_stmt_bind_param($stmt,'is',$typeProduit,$_POST['vendeurs']);
     mysqli_stmt_execute($stmt);
 
     $table = mysqli_stmt_get_result($stmt);
     $tuple = mysqli_fetch_assoc($table);
     $quantityVendeur = $tuple['quantity'];
+    }
+    
 
-    $stmt = mysqli_prepare($conn,"SELECT price FROM Business NATURAL JOIN BusinessSell WHERE typeItem=? AND id=business");
-    mysqli_stmt_bind_param($stmt,'i',$typeProduit);
-    mysqli_stmt_execute($stmt);
+    
+    // on recupere les prix des vendeurs
+    if (isset($_POST['vendeurs'])) {
+        $stmt = mysqli_prepare($conn,"SELECT price FROM Business JOIN BusinessSell ON (Business.id = BusinessSell.business)WHERE typeItem=? AND name=?");
+        mysqli_stmt_bind_param($stmt,'is',$typeProduit,$_POST['vendeurs']);
+         mysqli_stmt_execute($stmt);
 
-    $table = mysqli_stmt_get_result($stmt);
-    $tuple = mysqli_fetch_assoc($table);
-    $prixVendeur = $tuple['price'];
+        $table = mysqli_stmt_get_result($stmt);
+        $tuple = mysqli_fetch_assoc($table);
+        $prixVendeur = (int) $tuple['price'];
+    }
 
-    $stmt = mysqli_prepare($conn,"SELECT id FROM Business NATURAL JOIN BusinessSell WHERE typeItem=? AND id=business");
-    mysqli_stmt_bind_param($stmt,'i',$typeProduit);
-    mysqli_stmt_execute($stmt);
+    // on recupere les prix des vendeurs
+    if (isset($_POST['vendeurs'])) {
+        $stmt = mysqli_prepare($conn,"SELECT business FROM Business JOIN BusinessSell ON (Business.id = BusinessSell.business) WHERE typeItem=? AND name=?");
+        mysqli_stmt_bind_param($stmt,'is',$typeProduit,$_POST['vendeurs']);
+         mysqli_stmt_execute($stmt);
 
-    $table = mysqli_stmt_get_result($stmt);
-    $tuple = mysqli_fetch_assoc($table);
-    $idBusiness = $tuple['id'];
+        $table = mysqli_stmt_get_result($stmt);
+        $tuple = mysqli_fetch_assoc($table);
+        $idBusiness = (int) $tuple['business'];
+    }
+    
+
+
 
     $stmt = mysqli_prepare($conn,"SELECT name FROM Business NATURAL JOIN BusinessSell WHERE typeItem=? AND id=business");
     mysqli_stmt_bind_param($stmt,'i',$typeProduit);
@@ -44,6 +59,7 @@
     $tuple = mysqli_fetch_assoc($table);
     $namevendeurs = $tuple['name'];
 
+    // on recupere le nom du produit sélectionner grâce à l'id récuperer par la $_SESSION
     $stmt = mysqli_prepare($conn,"SELECT name FROM TypeItem WHERE id=?");
     mysqli_stmt_bind_param($stmt,'i',$typeProduit);
     mysqli_stmt_execute($stmt);
@@ -90,7 +106,7 @@
                         if($vendeurs){
                             while(($namevendeurs = mysqli_fetch_array($vendeurs))!=null)
                             {
-                                echo"<option value='{$namevendeurs['name']}'>{$namevendeurs['name']} - {$namevendeurs['price']}€ (x{$namevendeurs['quantity']})</option>";
+                                echo"<option value='{$namevendeurs['name']}'>{$namevendeurs['business']} - {$namevendeurs['name']} - {$namevendeurs['price']}€ (x{$namevendeurs['quantity']})</option>";
                             }
                         }
                     ?>
@@ -146,6 +162,7 @@
 
                                     if ($stmt) {
                                         echo "<p style='padding-bottom:2%; font-size:14pt;'><b>Votre cagnotte a été augmentée de $prixTot € et vos métaux recyclés ont été mis à jour.</b></p>";
+                                        
 
                                         $stmt = mysqli_prepare($conn,"UPDATE BusinessSell SET quantity = quantity - ? where business = ? AND typeItem = ? ");
                                         mysqli_stmt_bind_param($stmt,'iii',$quantite,$idBusiness,$typeProduit);
