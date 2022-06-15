@@ -6,7 +6,6 @@
     }
 ?>
 
-<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -92,7 +91,7 @@
                 ?>
             </div>
         </div>
-
+        <button class="bouton-historique" onclick="window.location.href = 'historique.php';">Historique</button>
     </section>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
