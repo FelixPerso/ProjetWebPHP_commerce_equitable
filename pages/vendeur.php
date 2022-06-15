@@ -106,7 +106,7 @@
                         if($vendeurs){
                             while(($namevendeurs = mysqli_fetch_array($vendeurs))!=null)
                             {
-                                echo"<option value='{$namevendeurs['name']}'>{$namevendeurs['business']} - {$namevendeurs['name']} - {$namevendeurs['price']}€ (x{$namevendeurs['quantity']})</option>";
+                                echo"<option value='{$namevendeurs['name']}'>{$namevendeurs['name']} - {$namevendeurs['price']}€ (x{$namevendeurs['quantity']})</option>";
                             }
                         }
                     ?>
