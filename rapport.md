@@ -45,27 +45,27 @@ Lorsque ces premières tâches ont été finalisées. Nous avons entammé la con
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Nos réalisations particulièremet réussies ###
 
-Les réalisations que nous avons décidé de mettre en avant sont celles de la page de vente car nous les trouvons intéressantes. De plus, se sont également les plus aboutis du site internet.
+Les réalisations que nous avons décidé de mettre en avant sont celles de la page de vente, car nous les trouvons intéressantes. De plus, ce sont également les plus aboutis du site internet.
 
-La page de ventre est simple. Dessus, on trouve un bouton avec un menu déroulant, celui-ci permet de choisir quel produit l'on souhaite vendre 
+La page de ventre est simple. Dessus, on trouve un bouton avec un menu déroulant, celui-ci permet de choisir quel produit l'on souhaite vendre.
 
->Si vous ne sélectionnez rien, une erreur apparait.
+>Si vous ne sélectionnez rien, une erreur apparaît.
 
-Une fois le produit sélectionné, il faut cliquer sur le bouton "Trouver un vendeur". Par la suite, nous sommes redirectionné vers une sous-page de vente où vous avez de nouveau un bouton avec un menu déroulant, celui-ci contient la liste de toutes les entreprises qui souhaitent acheter le produit que vous avez sélectionné précédemment avec le prix d'achat de l'entreprise ainsi que le nombre de produit qu'elles souhaitent acheter.<br>
-En dessous de ce menu déroulant, vous avez la possibilité d'entrer une quantité, celle-ci représente le nombre de produits que vous allez vendre à l'entreprise sélectionnée au dessus.<br>
+Une fois le produit sélectionné, il faut cliquer sur le bouton "Trouver un vendeur". Par la suite, nous sommes redirigé vers une sous-page de vente où vous avez de nouveau un bouton avec un menu déroulant, celui-ci contient la liste de toutes les entreprises qui souhaitent acheter le produit que vous avez sélectionné précédemment avec le prix d'achat de l'entreprise ainsi que le nombre de produits qu'elles souhaitent acheter.<br>
+En dessous de ce menu déroulant, vous avez la possibilité d'entrer une quantité, celle-ci représente le nombre de produits que vous allez vendre à l'entreprise sélectionnée au-dessus.<br>
 
->Si la quantité mentionnée est suppérieure à celle que demande l'entreprise sélectionnée, une erreur s'affiche.
+>Si la quantité mentionnée est supérieure à celle que demande l'entreprise sélectionnée, une erreur s'affiche.
 
->Si vous ne rentrer aucunes informations où qu'une seule, une erreur s'affiche.
+>Si vous ne rentrez aucune information où qu'une seule, une erreur s'affiche.
 
 Après avoir sélectionné une offre et mentionné une quantité, vous finalisez votre vente en cliquant sur le bouton "Vendre". Cette action vous affiche un message qui contient la somme finale de votre vente (_Prix de l'offre * Quantité mentionnée_).<br> 
-Par la suite, si vous retournez sur votre page de profil, vous pourrez apercevoir que votre cagnotte a été mise à jour avec l'ajout de la somme finale de la vente effectuée précédemment. De plus, vos métaux recyclés ont égelement été mis à jour avec les quantités présentent dans le produit que vous avez vendu.<br><br>
-Si vous cliquez sur le bouton "Historique", vous verez alors votre vente effectuée précédemment dans l'historique des ventes.
+Par la suite, si vous retournez sur votre page de profil, vous pourrez apercevoir que votre cagnotte a été mise à jour avec l'ajout de la somme finale de la vente effectuée précédemment. De plus, vos métaux recyclés ont également été mis à jour avec les quantités présentent dans le produit que vous avez vendu.<br><br>
+Si vous cliquez sur le bouton "Historique", vous verrez alors votre vente effectuée précédemment dans l'historique des ventes.
 
 <br>
 
 ## Conclusions personnelles :
 
-* <b>Thomas :</b> 
+* <b>Thomas :</b> Ce projet a été très intéressant. Travailler en équipe me plaît beaucoup et je suis très satisfait de ce que l'on a proposé. La création de ce Site Internet m'aura permis de retravailler sur mes compétences en HTML, CSS, PHP et MySQL. 
 * <b>Hugo   :</b> Très satisfait de ce projet ! Pour ma part, je trouve que nous avons réalisé un très bon travail, l'organisation était plus que correcte, cela nous a permis d'avancer rapidement et efficacement. J'ai beaucoup apprécié manier la base de données ainsi que le php, j'ai pu approfondir mes connaissances en SQL qui me sera très utile pour ma prochaine alternance. Je remercie mon équipe, Thomas et Felix de m'avoir fait confiance, j'ai pris un réel plaisir à travailler avec eux. 
 * <b>Félix  :</b> 
