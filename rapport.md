@@ -67,5 +67,11 @@ Si vous cliquez sur le bouton "Historique", vous verrez alors votre vente effect
 ## Conclusions personnelles :
 
 * <b>Thomas :</b> Ce projet a été très intéressant. Travailler en équipe me plaît beaucoup et je suis très satisfait de ce que l'on a proposé. La création de ce Site Internet m'aura permis de retravailler sur mes compétences en HTML, CSS, PHP et MySQL. 
+
+<br>
+
 * <b>Hugo   :</b> Très satisfait de ce projet ! Pour ma part, je trouve que nous avons réalisé un très bon travail, l'organisation était plus que correcte, cela nous a permis d'avancer rapidement et efficacement. J'ai beaucoup apprécié manier la base de données ainsi que le php, j'ai pu approfondir mes connaissances en SQL qui me sera très utile pour ma prochaine alternance. Je remercie mon équipe, Thomas et Felix de m'avoir fait confiance, j'ai pris un réel plaisir à travailler avec eux. 
+
+<br>
+
 * <b>Félix  :</b> 
