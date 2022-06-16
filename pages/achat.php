@@ -68,7 +68,7 @@ if(!isset($_SESSION['cle_id'])) {
          foreach($titre as $titreprod)
          {
              echo"<div class='w3-col s4 w3-center'>";
-             echo"<table><tr><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
+             echo"<table><tr class='nom-produit'><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td><b>Prix :</b> {$titreprod['Prix']} €</td></tr><br><br>";
 
              $val++;
              $numimg++;
@@ -76,12 +76,13 @@ if(!isset($_SESSION['cle_id'])) {
              $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
              if($itemAndDetails) {
                  foreach($itemAndDetails as $detail) {
-                     echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
+                     echo"<tr><td><b>{$detail['attribute']} :</b> {$detail['value']}</td></tr>";
                  } 
              }
 
              echo"<tr><td class='w3-center'><img class='w3-image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
-             <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
+             <tr><td><form id='frm' name='frm' method='post'>
+             <input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
              </form></td></tr></table>";
              
 
@@ -198,5 +199,5 @@ if(!isset($_SESSION['cle_id'])) {
 
 </html>
 <?php
-mysqli_close($conn);
+    mysqli_close($conn);
 ?>
