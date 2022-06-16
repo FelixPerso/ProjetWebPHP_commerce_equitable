@@ -107,52 +107,34 @@ if(!isset($_SESSION['cle_id'])) {
                         // On se place sur le bon formulaire grâce au "name" de la balise "input"
 
             if (isset($_POST['btn'])){
-
-                        // on recupere la cagnotte de l'utilisateur.
-                $cagnotteUser = mysqli_prepare($conn,"SELECT stash FROM Customer where id = ?");
-                mysqli_stmt_bind_param($cagnotteUser,'i',$id);
-                mysqli_stmt_execute($cagnotteUser);
-                $table = mysqli_stmt_get_result($cagnotteUser);
-                $tuple = mysqli_fetch_assoc($table);
-                $cagnotteUser = $tuple['stash'];
-
+                $valid = true;
                         // on recupere le prix du produit
                 $stmt = mysqli_query($conn,"SELECT Prix FROM TypeItem where id = {$_POST['idprod']}");
                 $tuple = mysqli_fetch_assoc($stmt);
                 $produitPrix = $tuple['Prix'];
 
-                        // on verifie que la cagnotte de l'utilisateur est bien supérieur au prix du produit.
-                if ($cagnotteUser<$produitPrix) {
-                    $valid = false;
-                    $er_cagnotte = "Vous n'avez pas assez dans votre cagnotte";
-                    echo "$er_cagnotte";
-                }else{
-                    $valid = true;
-                        // Si toutes les conditions sont remplies alors update la stash
+    
 
                     if($valid){
-                        $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
-                        mysqli_stmt_bind_param($stmt,'ii',$produitPrix,$id);
-                        mysqli_stmt_execute($stmt);
-                        echo"<div class='popup' onclick='myFunction()'>
-                        <span class='popuptext' id='myPopup'>Achat réussi,<br>{$produitPrix} € on était déduis de votre cagnotte.</span>
-                        </div>";
-                        print_r($id);
-                        echo"<br>";
-                        print_r($produitPrix);
-                        echo"<br>";
+                        
                         $stmt = mysqli_prepare($conn,"SELECT name from TypeItem where id= ? ");
                         mysqli_stmt_bind_param($stmt,'i',$_POST['idprod']);
                         mysqli_stmt_execute($stmt);
-                        print_r($stmt);
+                        $table = mysqli_stmt_get_result($stmt);
+                        $tuple = mysqli_fetch_assoc($table);
+                        $nomTypeItem = $tuple['name'];
+
+                        
+                        $stmt = mysqli_prepare($conn,"INSERT INTO Cart(prix,typeItem,idUser) VALUES (?,?,?)");
+                        mysqli_stmt_bind_param($stmt,'isi',$produitPrix,$nomTypeItem,$id);
+                        mysqli_stmt_execute($stmt);
                         // On va inserer les informations de vente dans une nouvelle table "HistoriqueBuy" afin de recenser nos historiques de vente
                         // $stmt = mysqli_prepare($conn,"INSERT INTO HistoriqueBuy(nameProduit,Prix,Pays,id) VALUES (?,?,?,?)");
                         // mysqli_stmt_bind_param($stmt,'sisii',$_POST[',$nameTypeItem,$produitPrix,$id);
                         // mysqli_stmt_execute($stmt);
                     }
                 }
-            }
-        }   
+            }   
     ?>
 </section>
 <script>
