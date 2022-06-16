@@ -161,8 +161,8 @@ $nameTypeItem = $tuple['name'];
                             mysqli_stmt_execute($stmt);
 
                                         // On va inserer les informations de vente dans une nouvelle table "HistoriqueSell" afin de recenser nos historiques de vente
-                            $stmt = mysqli_prepare($conn,"INSERT INTO HistoriqueSell(nameEntreprise,nameProduit,Prix,Quantite,id) VALUES (?,?,?,?,?)");
-                            mysqli_stmt_bind_param($stmt,'ssiii',$_POST['vendeurs'],$nameTypeItem,$prixVendeur,$quantite,$id);
+                            $stmt = mysqli_prepare($conn,"INSERT INTO HistoriqueSell(nameEntreprise,nameProduit,Prix,Quantite,id,total) VALUES (?,?,?,?,?,?)");
+                            mysqli_stmt_bind_param($stmt,'ssiiii',$_POST['vendeurs'],$nameTypeItem,$prixVendeur,$quantite,$id,$prixTot);
                             mysqli_stmt_execute($stmt);
                         }
                     }   
