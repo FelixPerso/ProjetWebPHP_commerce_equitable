@@ -5,7 +5,7 @@
         header("Location:./connexion.php");
     }
 ?>
-
+<!DOCTYPE HTML>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>
@@ -33,6 +33,7 @@
             </div>
         </header>
         <button class="bouton-deconnexion" onclick="window.location.href = 'logout.php';">Déconnexion</button>
+        <button class="bouton-historique" onclick="window.location.href = 'historiqueSell.php';">Historique</button>
         <div class="grand-rectangle1">
             <div class="rectangle1">
                 <h3>Métaux précieux recyclés</h3>
@@ -91,7 +92,6 @@
                 ?>
             </div>
         </div>
-        <button class="bouton-historique" onclick="window.location.href = 'historiqueSell.php';">Historique</button>
     </section>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

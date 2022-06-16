@@ -1,4 +1,8 @@
 
+.site {
+
+    padding-bottom: 45%;
+}
 
 .grand-rectangle1 {
 
@@ -121,7 +125,8 @@
 
     width: 20%;
     height: 45px;
-    margin-left: 90%;
+    margin-top: -5%;
+    margin-left: 115%;
     font-weight: bold;
     background: rgba(104, 182, 253, 0.3095);
     border: 3px solid #000000;
