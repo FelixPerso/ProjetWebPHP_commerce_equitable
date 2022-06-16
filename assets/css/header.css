@@ -4,7 +4,6 @@ body, header, html, .site {
     padding: 0;
     border: 0;
     font-family: 'Lato', sans-serif;
-    overflow-y: auto;
     scroll-behavior: smooth;
     
 }

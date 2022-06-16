@@ -4,7 +4,8 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 session_start();
 
 $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
-
+if(!isset($_SESSION['cle_id'])) {
+        echo "Veuillez vous connecter pour effectuer des achats";
 ?>
 <!DOCTYPE HTML>
 <html lang="fr">
@@ -18,7 +19,7 @@ $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 </head>
 
 <body>
-    <section class="site">
+    <section class="site2">
         <header>
             <div class="bouton-burger">
                 <div class="barre"></div>
@@ -55,79 +56,51 @@ $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
                 </div>
             </div>
         </header>
+        
 
         <?php
-<<<<<<< HEAD
         $val =0;
         $numimg = 0;
         $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
-=======
-            $val =0;
-            $numimg = 0;
-            $titre = mysqli_query($conn,"SELECT id,name,Prix FROM TypeItem ORDER BY id ASC");
-                 
-                 
-                 if($titre){
-                     echo "<table>";
-                    foreach($titre as $titreprod)
-                     {
-                         
-                     echo"<tr><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
-                     
-                     $val++;
-                     $numimg++;
-                     
-                     $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
-                 if($itemAndDetails) {
-                     foreach($itemAndDetails as $detail) {
-                     echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
-                     } 
-                 }
->>>>>>> 52970ef09d7d1c8a8e4cef628926cd9acb0fc936
-
-
+        // Product grid
+        echo"<div class='w3-row-padding'>";
         if($titre){
-           echo "<table>";
-           foreach($titre as $titreprod)
-           {
+         foreach($titre as $titreprod)
+         {
+             echo"<div class='w3-col s4 w3-center'>";
+             echo"<table><tr><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
 
-               echo"<tr><td>{$titreprod['name']}</td></tr><tr><td>{$titreprod['Prix']} €</td></tr><br><br>";
+             $val++;
+             $numimg++;
 
-               $val++;
-               $numimg++;
+             $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
+             if($itemAndDetails) {
+                 foreach($itemAndDetails as $detail) {
+                     echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
+                 } 
+             }
 
-               $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
-               if($itemAndDetails) {
-                   foreach($itemAndDetails as $detail) {
-                       echo"<tr><td>{$detail['attribute']} : {$detail['value']}</td></tr>";
-                   } 
-               }
-
-               echo"<tr><td><img class='image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
-               <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
-               </form></td></tr>";
-
-
-
-           } 
-           echo "</table>";
-
-       }
+             echo"<tr><td class='w3-center'><img class='w3-image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
+             <tr><td><form id='frm' name='frm' method='post'><input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
+             </form></td></tr></table>";
+             
 
 
-       if(!isset($_SESSION['cle_id'])) {
-        echo "Veuillez vous connecter pour effectuer des achats";
+             echo"</div>";
+         }
+
+     }
+     echo"</div>";
+
+
+
+     
     }else {
         $id= $_SESSION['cle_id'];
 
         if(!empty($_POST)){
 
             extract($_POST);
-
-
-
-
-
                         // On se place sur le bon formulaire grâce au "name" de la balise "input"
 
             if (isset($_POST['btn'])){
@@ -152,7 +125,7 @@ $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
                     echo "$er_cagnotte";
                 }else{
                     $valid = true;
-                        // Si toutes les conditions sont remplies alors on fait le traitement
+                        // Si toutes les conditions sont remplies alors update la stash
 
                     if($valid){
                         $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
@@ -165,11 +138,11 @@ $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
                         echo"<br>";
                         print_r($produitPrix);
                         echo"<br>";
-                        $stmt = mysqli_query($conn,"SELECT name from TypeItem where id= ? ");
+                        $stmt = mysqli_prepare($conn,"SELECT name from TypeItem where id= ? ");
                         mysqli_stmt_bind_param($stmt,'i',$_POST['idprod']);
                         mysqli_stmt_execute($stmt);
-                        echo"$stmt";
-                            // On va inserer les informations de vente dans une nouvelle table "HistoriqueBuy" afin de recenser nos historiques de vente
+                        print_r($stmt);
+                        // On va inserer les informations de vente dans une nouvelle table "HistoriqueBuy" afin de recenser nos historiques de vente
                         // $stmt = mysqli_prepare($conn,"INSERT INTO HistoriqueBuy(nameProduit,Prix,Pays,id) VALUES (?,?,?,?)");
                         // mysqli_stmt_bind_param($stmt,'sisii',$_POST[',$nameTypeItem,$produitPrix,$id);
                         // mysqli_stmt_execute($stmt);
