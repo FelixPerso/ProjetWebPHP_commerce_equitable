@@ -1,6 +1,6 @@
 # Rapport du projet SAE 2.02 #
 
-## Ce dépôt contient la réalisation du projet SAE 2.02 de création de site web pour une entreprise de B2C.##
+## Ce dépôt contient la réalisation du projet SAE 2.02 de création de site web pour une entreprise de B2C. ##
 ### Les auteurs de ce dépôt sont les suivants : ###
 * Thomas Dagorne
 * Hugo Brenet
