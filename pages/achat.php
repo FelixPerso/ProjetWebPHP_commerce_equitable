@@ -6,10 +6,13 @@ session_start();
 $titre = mysqli_query($conn,"SELECT name FROM TypeItem ORDER BY id ASC ");
 if(!isset($_SESSION['cle_id'])) {
         echo "Veuillez vous connecter pour effectuer des achats";
+    }else {
+        $id= $_SESSION['cle_id'];
+    }
 ?>
-<!DOCTYPE HTML>
+ 
 <html lang="fr">
-
+<!DOCTYPE HTML>
 <head>
     <meta charset='utf-8'>
     <title>IT+ - Achat</title>
@@ -68,7 +71,7 @@ if(!isset($_SESSION['cle_id'])) {
          foreach($titre as $titreprod)
          {
              echo"<div class='w3-col s4 w3-center'>";
-             echo"<table><tr class='nom-produit'><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td><b>Prix :</b> {$titreprod['Prix']} €</td></tr><br><br>";
+             echo"<table><tr class='nom-produit'><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td style='padding-left:5%;'><b>Prix :</b> {$titreprod['Prix']} €</td></tr><br><br>";
 
              $val++;
              $numimg++;
@@ -76,13 +79,13 @@ if(!isset($_SESSION['cle_id'])) {
              $itemAndDetails = mysqli_query($conn,"SELECT attribute,value FROM TypeItemDetails where  typeItem = $val");
              if($itemAndDetails) {
                  foreach($itemAndDetails as $detail) {
-                     echo"<tr><td><b>{$detail['attribute']} :</b> {$detail['value']}</td></tr>";
+                     echo"<tr><td class='carac'><b>{$detail['attribute']} :</b> {$detail['value']}</td></tr>";
                  } 
              }
 
              echo"<tr><td class='w3-center'><img class='w3-image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
              <tr><td><form id='frm' name='frm' method='post'>
-             <input type='hidden' name='idprod' value='{$titreprod['id']}'/><input type='submit' name='btn' value='acheter'/>
+             <input type='hidden' name='idprod' value='{$titreprod['id']}'/><input class='bouton-achat-panier' type='submit' name='btn' value='Ajouter au panier'/>
              </form></td></tr></table>";
              
 
@@ -96,8 +99,7 @@ if(!isset($_SESSION['cle_id'])) {
 
 
      
-    }else {
-        $id= $_SESSION['cle_id'];
+   
 
         if(!empty($_POST)){
 
@@ -150,8 +152,7 @@ if(!isset($_SESSION['cle_id'])) {
                     }
                 }
             }
-        } 
-    }   
+        }   
     ?>
 </section>
 <script>
