@@ -32,7 +32,7 @@ Pour la connexion à la base de données créer sur PhpMyAdmin, un fichier scrip
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Organisation et Répartition des tâches ###
 
-Dans un premier temps, nous nous sommes concentré sur la réalisation du wireflow avec le SIte Internet [Figma](https://www.figma.com/). Par la suite, nous avons amélioré la base de données en rajoutant quelques tables (_les tables des historiques_) et en rajoutant de nombreux tuples dans chacune des tables.
+Dans un premier temps, nous nous sommes concentré sur la réalisation du wireflow avec le SIte Internet [Figma](https://www.figma.com/). Par la suite, nous avons amélioré la base de données en rajoutant quelques tables (_les tables des historiques et du panier_) et en rajoutant de nombreux tuples dans chacune des tables.
 
 Lorsque ces premières tâches ont été finalisées. Nous avons entammé la construction du Site Internet en se divisant le travail :
 * <b>Thomas</b>, qui a déjà réalisé une grande partie de wireflow, s'est occupé principalement de l'aspect graphique de l'intégralité du site. Il s'est également occupé en partie de la page de vente et de la page d'accueil.
@@ -43,7 +43,24 @@ Lorsque ces premières tâches ont été finalisées. Nous avons entammé la con
 
 <br>
 
-### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Notre réalisation particulièremet réussie ###
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Nos réalisations particulièremet réussies ###
+
+Les réalisations que nous avons décidé de mettre en avant sont celles de la page de vente car nous les trouvons intéressantes. De plus, se sont également les plus aboutis du site internet.
+
+La page de ventre est simple. Dessus, on trouve un bouton avec un menu déroulant, celui-ci permet de choisir quel produit l'on souhaite vendre 
+
+>Si vous ne sélectionnez rien, une erreur apparait.
+
+Une fois le produit sélectionné, il faut cliquer sur le bouton "Trouver un vendeur". Par la suite, nous sommes redirectionné vers une sous-page de vente où vous avez de nouveau un bouton avec un menu déroulant, celui-ci contient la liste de toutes les entreprises qui souhaitent acheter le produit que vous avez sélectionné précédemment avec le prix d'achat de l'entreprise ainsi que le nombre de produit qu'elles souhaitent acheter.<br>
+En dessous de ce menu déroulant, vous avez la possibilité d'entrer une quantité, celle-ci représente le nombre de produits que vous allez vendre à l'entreprise sélectionnée au dessus.<br>
+
+>Si la quantité mentionnée est suppérieure à celle que demande l'entreprise sélectionnée, une erreur s'affiche.
+
+>Si vous ne rentrer aucunes informations où qu'une seule, une erreur s'affiche.
+
+Après avoir sélectionné une offre et mentionné une quantité, vous finalisez votre vente en cliquant sur le bouton "Vendre". Cette action vous affiche un message qui contient la somme finale de votre vente (_Prix de l'offre * Quantité mentionnée_).<br> 
+Par la suite, si vous retournez sur votre page de profil, vous pourrez apercevoir que votre cagnotte a été mise à jour avec l'ajout de la somme finale de la vente effectuée précédemment. De plus, vos métaux recyclés ont égelement été mis à jour avec les quantités présentent dans le produit que vous avez vendu.<br><br>
+Si vous cliquez sur le bouton "Historique", vous verez alors votre vente effectuée précédemment dans l'historique des ventes.
 
 <br>
 
