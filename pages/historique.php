@@ -2,15 +2,17 @@
 include 'bd.php';
 session_start();
 
-if(!isset($_SESSION['cle_id'])) {
+if (!isset($_SESSION['cle_id']))
+{
     header("Location:./connexion.php");
-}else {
+}
+else
+{
     $id = $_SESSION['cle_id'];
 }
 
-$HistoSell = mysqli_query($conn,"SELECT nameEntreprise,nameProduit,Prix,Quantite,Total FROM HistoriqueSell WHERE id=$id");
-$HistoBuy = mysqli_query($conn,"SELECT nameProduit,prix FROM HistoriqueBuy WHERE id=$id");
-
+$HistoSell = mysqli_query($conn, "SELECT nameEntreprise,nameProduit,Prix,Quantite,Total FROM HistoriqueSell WHERE id=$id");
+$HistoBuy = mysqli_query($conn, "SELECT nameProduit,prix FROM HistoriqueBuy WHERE id=$id");
 
 ?>
 
@@ -45,20 +47,24 @@ $HistoBuy = mysqli_query($conn,"SELECT nameProduit,prix FROM HistoriqueBuy WHERE
 <img class="logo" src="../images/logo_IT+_.png" >
 <h3 class="titre-histo-vente">Historique des ventes</h3>
 <?php
-if($HistoSell){
+if ($HistoSell)
+{
     echo "<table class='historique-vente'><tr class='legende'><td><b>Entreprise</b></td><td><b>Produit</b></td><td><b>Prix</b></td><td><b>Quantité</b></td><td><b>Total</b></td></tr>";
-    while(($HistoriqueSell = mysqli_fetch_array($HistoSell))!=null) {
-        echo"<tr class='produits'><td>{$HistoriqueSell['nameEntreprise']}</td><td>{$HistoriqueSell['nameProduit']}</td><td style='color: #55B844;'><b>+{$HistoriqueSell['Prix']}€</b></td><td>{$HistoriqueSell['Quantite']}</td><td style='color: #55B844;'><b>+{$HistoriqueSell['Total']}€</b></td></tr>";
+    while (($HistoriqueSell = mysqli_fetch_array($HistoSell)) != null)
+    {
+        echo "<tr class='produits'><td>{$HistoriqueSell['nameEntreprise']}</td><td>{$HistoriqueSell['nameProduit']}</td><td style='color: #55B844;'><b>+{$HistoriqueSell['Prix']}€</b></td><td>{$HistoriqueSell['Quantite']}</td><td style='color: #55B844;'><b>+{$HistoriqueSell['Total']}€</b></td></tr>";
     }
     echo "</table>";
 }
 ?>
 <h3 class="titre-histo-achat">Historique des achats</h3>
 <?php
-if($HistoBuy){
+if ($HistoBuy)
+{
     echo "<table class='historique-achat'><tr class='legende'><td><b>Produit</b></td><td><b>Prix</b></td></tr>";
-    while(($HistoriqueBuy = mysqli_fetch_array($HistoBuy))!=null) {
-        echo"<tr class='produits'><td>{$HistoriqueBuy['nameProduit']}</td><td style='color: #FF0000;'><b>-{$HistoriqueBuy['prix']}€</td></tr>";
+    while (($HistoriqueBuy = mysqli_fetch_array($HistoBuy)) != null)
+    {
+        echo "<tr class='produits'><td>{$HistoriqueBuy['nameProduit']}</td><td style='color: #FF0000;'><b>-{$HistoriqueBuy['prix']}€</td></tr>";
     }
     echo "</table>";
 }

@@ -12,7 +12,7 @@
     $titre = mysqli_query($conn,"SELECT * FROM TypeItem ORDER BY id ASC ");
     $pays = mysqli_query($conn,"SELECT DISTINCT country FROM Business ORDER BY country ASC ");
 ?>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset='utf-8'>

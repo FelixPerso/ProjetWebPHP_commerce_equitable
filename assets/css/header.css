@@ -1,13 +1,16 @@
-body, header, html, .site {
+body,
+header,
+html,
+.site {
 
     margin: 0;
     padding: 0;
     border: 0;
     font-family: 'Lato', sans-serif;
     scroll-behavior: smooth;
-    
+
 }
-  
+
 body {
 
     background-color: #F8F7F7;
@@ -19,19 +22,21 @@ body {
     font-family: Lato, sans-serif;
     display: grid;
     grid-template-rows: 3.75em 1fr 5em;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
         "header1 header2"
         "body1 body2"
-        "footer footer"; 
+        "footer footer";
 }
-.logo
-{
+
+.logo {
     position: fixed;
-    z-index: -1; /* pour que ce sois en "arriere plan" */
-    top: 0; /* on place la division en haut a droite */
+    z-index: -1;
+    /* pour que ce sois en "arriere plan" */
+    top: 0;
+    /* on place la division en haut a droite */
     right: 0;
-    width:6rem;
+    width: 6rem;
 }
 
 
@@ -43,7 +48,8 @@ body {
 
 ul {
 
-    list-style: none;}
+    list-style: none;
+}
 
 .nav {
 
@@ -98,7 +104,7 @@ ul {
 }
 
 
-.bouton-burger .barre{
+.bouton-burger .barre {
 
     width: 30px;
     height: 3px;
@@ -109,12 +115,17 @@ ul {
     -webkit-transition: background .5s ease-in-out;
 }
 
-.bouton-burger .barre.blanc{
+.bouton-burger .barre.blanc {
 
     background: #fff;
 }
 
-.achat:hover, .vente:hover, .profil:hover, .accueil:hover, .connexion:hover, .inscription:hover {
+.achat:hover,
+.vente:hover,
+.profil:hover,
+.accueil:hover,
+.connexion:hover,
+.inscription:hover {
 
     color: #68B6FD;
 }
@@ -127,4 +138,3 @@ ul {
     font-size: 25px;
     text-decoration: none;
 }
-

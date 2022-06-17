@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/logout.css'>
     </head>
-    <body>
-         
+    <body> 
         <?php
             session_start();
             session_destroy();
