@@ -41,7 +41,7 @@ Lorsque ses premières tâches ont été finalisées. Nous avons entamé la cons
 
 * <b>Félix</b> s'est occupé des pages d'achat et de profil.
 
->Au final, tout le monde a touché un peu à tout selon les quelques difficultés rencontrées.
+>Au final, chacun de nous étions indispensable à la réalisation de se projet, l'entraide a été très présent lors de la rencontre de problèmes.
 
 <br>
 
