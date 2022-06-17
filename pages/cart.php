@@ -36,17 +36,12 @@ if(!isset($_SESSION['cle_id'])) {
                     <li class="items"><a href="./vente.php" class="vente">Vente</a></li>
                     <li class="items"><a href="./profil.php" class="profil">Mon profil</a></li>
                     <li class='items'><a href='./connexion.php' class='connexion'>Connexion</a></li>
-
                 </ul>
             </div>
         </header>
-
 <body>
     <section class="site2">
     <h3 class="titre-panier">Panier</h3>
-
- 
-    
     <?php
         /**on créer une variable pour calculer le prix total du panier*/
         $totalPrix= 0;
@@ -64,12 +59,12 @@ if(!isset($_SESSION['cle_id'])) {
             echo"<tr class='produits'><td>{$cart['typeItem']}</td><td>{$cart['Prix']}€</td><td>
             <form id='frm' name='frm' method='post'>
             <input type='hidden' name='nomduprod' value='{$cart['typeItem']}'/>
-            <input class='bouton-retirer-panier' type='submit' name='btn1' value='Retirer Panier'/>
+            <input class='bouton-retirer-panier' type='submit' name='btn1' value='Retirer du panier'/>
             </form></td></tr>";
             $totalPrix = $totalPrix + $cart['Prix'];
         }
         }
-        echo"<tr><td><b>Total</b></td><td>{$totalPrix}€</td></tr>";
+        echo"<tr><td><b>Total</b></td><td style='color: #68B6FD;'><b>{$totalPrix}€</b></td></tr>";
         echo "</table>";
 
         if(!empty($_POST)){
@@ -109,7 +104,7 @@ if(!isset($_SESSION['cle_id'])) {
                         */
                if ($cagnotteUser<$totalPrix) {
                    $valid = false;
-                   $er_cagnotte = "Vous n'avez pas assez dans votre cagnotte";
+                   $er_cagnotte = "Vous n'avez pas assez dans votre cagnotte !";
                    echo "$er_cagnotte";
                }else{
                    $valid = true;
@@ -119,7 +114,7 @@ if(!isset($_SESSION['cle_id'])) {
                        $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
                        mysqli_stmt_bind_param($stmt,'ii',$totalPrix,$id);
                        mysqli_stmt_execute($stmt);
-                       echo"Achat réussi,{$totalPrix} € on était déduis de votre cagnotte.";
+                       echo"Achat réussi ! {$totalPrix} € on était déduis de votre cagnotte.";
                         $deleteCart = mysqli_query($conn,"DELETE FROM Cart WHERE idUser = $id");
                        
                        
@@ -140,8 +135,8 @@ if(!isset($_SESSION['cle_id'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>
     <script src="../assets/javascript/menuSelectionVente.js"></script>
+    
 </body>
-
 </html>
 <?php
     mysqli_close($conn);
