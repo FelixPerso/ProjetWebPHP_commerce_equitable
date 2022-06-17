@@ -39,8 +39,7 @@ if(!isset($_SESSION['cle_id'])) {
                 </ul>
             </div>
         </header>
-<body>
-    <section class="site2">
+    <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
     <h3 class="titre-panier">Panier</h3>
     <?php
         /**on créer une variable pour calculer le prix total du panier*/
@@ -59,6 +58,7 @@ if(!isset($_SESSION['cle_id'])) {
             echo"<tr class='produits'><td>{$cart['typeItem']}</td><td>{$cart['Prix']}€</td><td>
             <form id='frm' name='frm' method='post'>
             <input type='hidden' name='nomduprod' value='{$cart['id']}'/>
+            
             <input class='bouton-retirer-panier' type='submit' name='btn1' value='Retirer du panier'/>
             </form></td></tr>";
             $totalPrix = $totalPrix + $cart['Prix'];
@@ -138,6 +138,8 @@ if(!isset($_SESSION['cle_id'])) {
                         
                         
                    }
+               }else{
+                echo"<div class='w3-container w3-center'><p><b>Veuillez ajouter des articles au panier avant effectuer un achat !</b></p></div>";
                }
             }
            }
@@ -145,6 +147,16 @@ if(!isset($_SESSION['cle_id'])) {
 ?>
 
     </section>
+    
+    <script>
+    // When the user clicks on <div>, open the popup
+ function popupCartEmpty() {            
+    ar width=250, height=150;            
+    var x=Math.round((screen.width-width)/2);            
+    var y=Math.round((screen.height-height)/2);            
+    var popup2=window.open("popup2.html", "centre", "width="+width+",height="+height+",left="+x+",top="+y);                   
+}
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>

@@ -215,7 +215,8 @@
         <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/inscConn.css'>
         <title>Inscription</title>
     </head>
-    <body> 
+    <img class="w3-display-topright w3-animate-opacity" src="../images/logo_IT+_.png" style="width:4%" > 
+    <body>
         <section class="site"> 
             <header>
                 <div class="bouton-burger">
@@ -233,7 +234,8 @@
                     </ul>
                 </div>
             </header>  
-        </section>  
+        </section>
+        <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >  
         <div class="rectangle1">
             <h3>Inscription</h3>
             <form class="formulaire" method="post">

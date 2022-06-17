@@ -67,6 +67,7 @@ $nameTypeItem = $tuple['name'];
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/vendeur.css'>
 </head>
 <body>
+    
     <section class="site">
         <header>
             <div class="bouton-burger">
@@ -85,6 +86,7 @@ $nameTypeItem = $tuple['name'];
         </div>
     </header>
 </section>
+<img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
 <div class="rectangle">
     <h3>Trouver un vendeur</h3>
     <form class="formulaire" action="" method="POST">

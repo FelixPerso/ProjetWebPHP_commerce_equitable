@@ -25,6 +25,14 @@ body {
         "body1 body2"
         "footer footer"; 
 }
+.logo
+{
+    position: fixed;
+    z-index: -1; /* pour que ce sois en "arriere plan" */
+    top: 0; /* on place la division en haut a droite */
+    right: 0;
+}
+
 
 
 

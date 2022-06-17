@@ -20,8 +20,8 @@ $HistoBuy = mysqli_query($conn,"SELECT nameProduit,prix FROM HistoriqueBuy WHERE
     <meta charset='utf-8'>
     <title>IT+ - Historique</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/main.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/historiqueSell.css'>
+    
 </head>
 <body>
     <section class="site">
@@ -42,6 +42,7 @@ $HistoBuy = mysqli_query($conn,"SELECT nameProduit,prix FROM HistoriqueBuy WHERE
         </div>
     </header>
 </section>
+<img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
 <h3 class="titre-histo-vente">Historique des ventes</h3>
 <?php
 if($HistoSell){
@@ -57,7 +58,7 @@ if($HistoSell){
 if($HistoBuy){
     echo "<table class='historique-achat'><tr class='legende'><td><b>Produit</b></td><td><b>Prix</b></td></tr>";
     while(($HistoriqueBuy = mysqli_fetch_array($HistoBuy))!=null) {
-        echo"<tr class='produits'><td>{$HistoriqueBuy['nameProduit']}</td><td style='color: #FF0000;'><b>-{$HistoriqueBuy['prix']}</td></tr>";
+        echo"<tr class='produits'><td>{$HistoriqueBuy['nameProduit']}</td><td style='color: #FF0000;'><b>-{$HistoriqueBuy['prix']}€</td></tr>";
     }
     echo "</table>";
 }

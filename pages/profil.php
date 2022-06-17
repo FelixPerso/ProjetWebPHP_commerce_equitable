@@ -32,6 +32,7 @@
                 </ul>
             </div>
         </header>
+        <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
         <button class="bouton-deconnexion" onclick="window.location.href = 'logout.php';">Déconnexion</button>
         <button class="bouton-historique" onclick="window.location.href = 'historiqueSell.php';">Historique</button>
         <div class="grand-rectangle1">

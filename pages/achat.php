@@ -21,7 +21,9 @@ if(!isset($_SESSION['cle_id'])) {
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
+
 <body>
+   
     <section class="site2">
         <header>
             <div class="bouton-burger">
@@ -41,6 +43,7 @@ if(!isset($_SESSION['cle_id'])) {
 
                 </ul>
             </div>
+            <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
             <div class="w3-container">
                 <div class="w3-dropdown-click">
                     <button class="w3-button w3-marina" onclick="rechercheMenuFunction()">Rechercher</button>
@@ -171,7 +174,7 @@ if(!isset($_SESSION['cle_id'])) {
     }
     function ProdAddCart()
     {
-    alert("Votre produit à bien été ajouté au panier"); //this is the message in ""
+    alert("Votre produit à bien été ajouté au panier"); //message pour confirmé ajout panier
     }   
     </script>
     <a href="#">

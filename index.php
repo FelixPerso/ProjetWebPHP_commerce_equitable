@@ -24,6 +24,7 @@
                 </ul>
             </div>
         </header>
+        <img class="logo" src="./images/logo_IT+_.png" style="width:4%" >
         <div class="grand-rectangle1">
             <div class="rectangle1">
                 <h3>Achat</h3>

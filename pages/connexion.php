@@ -48,9 +48,11 @@ $res = mysqli_query($conn,$sql);
         <meta charset="utf-8">
         <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
         <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/inscConn.css'>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <title>Connexion</title>
     </head>
-    <body>
+    <img class="w3-display-topright w3-animate-opacity" src="../images/logo_IT+_.png" style="width:4%" >
+    <body> 
         <section class="site"> 
             <header>
                 <div class="bouton-burger">
@@ -68,7 +70,8 @@ $res = mysqli_query($conn,$sql);
                     </ul>
                 </div>
             </header>  
-        </section>   
+        </section>
+        <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >   
         <div class="rectangle1">
             <h3>Connexion</h3>
             <form class="formulaire" method="post">
