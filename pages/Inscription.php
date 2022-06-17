@@ -235,7 +235,7 @@
                 </div>
             </header>  
         </section>
-        <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >  
+        <img class="logo" src="../images/logo_IT+_.png">  
         <div class="rectangle1">
             <h3>Inscription</h3>
             <form class="formulaire" method="post">

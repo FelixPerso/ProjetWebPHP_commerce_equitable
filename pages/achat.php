@@ -43,7 +43,7 @@ if(!isset($_SESSION['cle_id'])) {
 
                 </ul>
             </div>
-            <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
+            <img class="logo" src="../images/logo_IT+_.png" >
             <div class="w3-container">
                 <div class="w3-dropdown-click">
                     <button class="w3-button w3-marina" onclick="rechercheMenuFunction()">Rechercher</button>

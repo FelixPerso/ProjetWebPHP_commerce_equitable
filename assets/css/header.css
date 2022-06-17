@@ -31,6 +31,7 @@ body {
     z-index: -1; /* pour que ce sois en "arriere plan" */
     top: 0; /* on place la division en haut a droite */
     right: 0;
+    width:6rem;
 }
 
 

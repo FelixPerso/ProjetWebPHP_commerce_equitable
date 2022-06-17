@@ -39,7 +39,7 @@ if(!isset($_SESSION['cle_id'])) {
                 </ul>
             </div>
         </header>
-    <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
+    <img class="logo" src="../images/logo_IT+_.png" >
     <h3 class="titre-panier">Panier</h3>
     <?php
         /**on créer une variable pour calculer le prix total du panier*/

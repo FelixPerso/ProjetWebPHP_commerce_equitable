@@ -71,7 +71,7 @@ $res = mysqli_query($conn,$sql);
                 </div>
             </header>  
         </section>
-        <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >   
+        <img class="logo" src="../images/logo_IT+_.png" >   
         <div class="rectangle1">
             <h3>Connexion</h3>
             <form class="formulaire" method="post">

@@ -42,7 +42,7 @@ $HistoBuy = mysqli_query($conn,"SELECT nameProduit,prix FROM HistoriqueBuy WHERE
         </div>
     </header>
 </section>
-<img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
+<img class="logo" src="../images/logo_IT+_.png" >
 <h3 class="titre-histo-vente">Historique des ventes</h3>
 <?php
 if($HistoSell){
