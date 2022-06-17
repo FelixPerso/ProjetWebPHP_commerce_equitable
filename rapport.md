@@ -91,5 +91,9 @@ Je suis très content de notre site internet bien que des fonctionnalités aurai
 
 <b>Pas assez d'argent dans la cagnotte : </b>Si un utilisateur tente d'acheter plusieurs produits alors qu'il n'a pas assez d'argent dans sa cagnotte un message d'erreur apparaît sur la page panier.
 
+<b>Panier vide<b> En cas de panier vide, l'utilisateur est avertir avec un texte qui apparaît à l'écran.
+
+
+
 
 
