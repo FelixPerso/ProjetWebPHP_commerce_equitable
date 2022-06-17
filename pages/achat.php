@@ -63,9 +63,7 @@ if(!isset($_SESSION['cle_id'])) {
                 </div>
             </div>
         </header>
-        <div class ='bouton-panier'>
-        <a class="w3-btn w3-round-xxlarge" href="./cart.php">Panier</a>
-        </div>                
+        <button class="bouton-panier" onclick="window.location.href='cart.php';">Panier</button>           
         <?php
         $val =0;
         $numimg = 0;
