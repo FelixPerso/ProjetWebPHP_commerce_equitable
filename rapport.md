@@ -45,7 +45,7 @@ Lorsque ses premières tâches ont été finalisées. Nous avons entamé la cons
 
 <br>
 
-### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Nos réalisations particulièremet réussies ###
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Nos réalisations particulièrement réussies ###
 
 Les réalisations que nous avons décidé de mettre en avant sont celles de la page de vente, car nous les trouvons intéressantes. De plus, ce sont également les plus aboutis du site internet.
 
