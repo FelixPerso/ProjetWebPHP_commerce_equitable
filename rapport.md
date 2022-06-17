@@ -26,7 +26,7 @@ Dans la première partie de la création de ce site web, nous avons créé, plus
 * Page d'historiques
 
 >Nous avons également créé un CSS commun à toutes les pages page contenant le header et footer du site. Chaque page possède en plus une page de CSS unique. 
-Pour la connexion à la base de données créer sur PhpMyAdmin, un fichier script.php avec toutes les informations a été créé.
+Pour la connexion à la base de données créer sur PhpMyAdmin, un fichier bd.php avec toutes les informations a été créé.
 
 <br>
 
