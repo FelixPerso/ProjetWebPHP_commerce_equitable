@@ -15,9 +15,9 @@ if(!isset($_SESSION['cle_id'])) {
 <!DOCTYPE HTML>
 <head>
     <meta charset='utf-8'>
-    <title>IT+ - Achat</title>
+    <title>IT+ - Panier</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/achat.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/cart.css'>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
@@ -43,7 +43,7 @@ if(!isset($_SESSION['cle_id'])) {
 
 <body>
     <section class="site2">
-    <h3 class="titre-histo-vente">Panier</h3>
+    <h3 class="titre-panier">Panier</h3>
 
  
     
@@ -59,7 +59,7 @@ if(!isset($_SESSION['cle_id'])) {
         $retirerArticle =  mysqli_prepare($conn,"DELETE FROM Cart where typeItem = ?");
         
         if($cartProd){
-            echo "<table class='historique-vente'><td><b>Produit</b></td><td><b>Prix</b></td></tr>";
+            echo "<table class='table-panier'><td><b>Produit</b></td><td><b>Prix</b></td></tr>";
         while(($cart = mysqli_fetch_array($cartProd))!=null) {
             echo"<tr class='produits'><td>{$cart['typeItem']}</td><td>{$cart['Prix']}€</td><td>
             <form id='frm' name='frm' method='post'>
