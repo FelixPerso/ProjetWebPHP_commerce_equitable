@@ -49,16 +49,16 @@ if(!isset($_SESSION['cle_id'])) {
          * Pour avoir le panier du user, on récupère tout ce qu'il y a dans la table "cart"
          * en fonction de la personne qui est connectée.
          */
-        $cartProd = mysqli_query($conn,"SELECT Prix,typeItem FROM Cart WHERE idUser=$id");
+        $cartProd = mysqli_query($conn,"SELECT id,Prix,typeItem FROM Cart WHERE idUser=$id");
         /**Pour retirer un article du panier en fonction de son nom*/
-        $retirerArticle =  mysqli_prepare($conn,"DELETE FROM Cart where typeItem = ?");
+        $retirerArticle =  mysqli_prepare($conn,"DELETE FROM Cart where id = ?");
         
         if($cartProd){
             echo "<table class='table-panier'><td><b>Produit</b></td><td><b>Prix</b></td></tr>";
         while(($cart = mysqli_fetch_array($cartProd))!=null) {
             echo"<tr class='produits'><td>{$cart['typeItem']}</td><td>{$cart['Prix']}€</td><td>
             <form id='frm' name='frm' method='post'>
-            <input type='hidden' name='nomduprod' value='{$cart['typeItem']}'/>
+            <input type='hidden' name='nomduprod' value='{$cart['id']}'/>
             <input class='bouton-retirer-panier' type='submit' name='btn1' value='Retirer du panier'/>
             </form></td></tr>";
             $totalPrix = $totalPrix + $cart['Prix'];
@@ -75,7 +75,8 @@ if(!isset($_SESSION['cle_id'])) {
                         mysqli_stmt_bind_param($retirerArticle,'s',$_POST['nomduprod']);
                         mysqli_stmt_execute($retirerArticle);
                         header("Refresh:1");
-    
+                        
+                        
                     }
                 } 
         
@@ -99,7 +100,8 @@ if(!isset($_SESSION['cle_id'])) {
                $tuple = mysqli_fetch_assoc($table);
                $cagnotteUser = $tuple['stash'];
 
-                       /**On recupere le prix total du panier grâce à $totalPrix calculé avant
+                       /**
+                        * On recupere le prix total du panier grâce à $totalPrix calculé avant
                         * et on verifie que la cagnotte de l'utilisateur est bien supérieur au total du panier.
                         */
                if ($cagnotteUser<$totalPrix) {
@@ -114,15 +116,27 @@ if(!isset($_SESSION['cle_id'])) {
                        $stmt = mysqli_prepare($conn,"UPDATE Customer SET stash = stash - ? WHERE id=?");
                        mysqli_stmt_bind_param($stmt,'ii',$totalPrix,$id);
                        mysqli_stmt_execute($stmt);
-                       echo"Achat réussi ! {$totalPrix} € on était déduis de votre cagnotte.";
-                        $deleteCart = mysqli_query($conn,"DELETE FROM Cart WHERE idUser = $id");
                        
-                       
-                       /**On va inserer les informations de vente dans une nouvelle table "HistoriqueBuy" afin de recenser nos historiques de vente
-                        * $stmt = mysqli_prepare($conn,"INSERT INTO HistoriqueBuy(nameProduit,Prix,Pays,id) VALUES (?,?,?,?)");
-                        * mysqli_stmt_bind_param($stmt,'sisii',$_POST[',$nameTypeItem,$produitPrix,$id);
-                        * mysqli_stmt_execute($stmt);
+                       /**
+                        * On va inserer les informations de achat dans une nouvelle table "HistoriqueBuy"
+                        * afin de recenser nos historiques d'achat
                         */
+                    
+                    $cartProd = mysqli_query($conn,"SELECT prix,typeItem FROM Cart WHERE idUser=$id");
+                    if($cartProd){
+                        while(($cart = mysqli_fetch_array($cartProd))!=null) {
+                            $stmt = mysqli_query($conn,"INSERT INTO HistoriqueBuy(nameProduit,Prix,id) 
+                            VALUES ('{$cart['typeItem']}',{$cart['prix']},$id)");
+                        }
+                    }
+                        /**
+                        * On supprime ensuite le contenu du panier de l'utilisateur
+                        */
+                       $deleteCart = mysqli_query($conn,"DELETE FROM Cart WHERE idUser = $id");
+                       header("Refresh:1");
+                       echo"Achat réussi ! {$totalPrix} € on était déduis de votre cagnotte."; 
+                        
+                        
                    }
                }
             }
@@ -135,7 +149,9 @@ if(!isset($_SESSION['cle_id'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="../assets/javascript/transitionBurger.js"></script>
     <script src="../assets/javascript/menuSelectionVente.js"></script>
-    
+    <a href="#">
+        <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">
+    </a>
 </body>
 </html>
 <?php

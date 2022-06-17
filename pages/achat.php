@@ -90,7 +90,7 @@ if(!isset($_SESSION['cle_id'])) {
              echo"<tr><td class='w3-center'><img class='w3-image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
              <tr><td><form id='frm' name='frm' method='post'>
              <input type='hidden' name='idprod' value='{$titreprod['id']}'/>
-             <input class='bouton-achat-panier' type='submit' name='btn' value='Ajouter au panier'/>
+             <input class='bouton-achat-panier' type='submit' name='btn' onclick='ProdAddCart()' value='Ajouter au panier'/>
              </form></td></tr></table>";
              
 
@@ -128,6 +128,8 @@ if(!isset($_SESSION['cle_id'])) {
                         $stmt = mysqli_prepare($conn,"INSERT INTO Cart(prix,typeItem,idUser) VALUES (?,?,?)");
                         mysqli_stmt_bind_param($stmt,'isi',$produitPrix,$nomTypeItem,$id);
                         mysqli_stmt_execute($stmt);
+                        echo '<script>ProdAddCart()</script>';
+                        
                     }
                 }
             }   
@@ -163,10 +165,14 @@ if(!isset($_SESSION['cle_id'])) {
     }
 
     // When the user clicks on <div>, open the popup
-    function myFunction() {
+    function ProdAddCart() {
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
     }
+    function ProdAddCart()
+    {
+    alert("Votre produit à bien été ajouté au panier"); //this is the message in ""
+    }   
     </script>
     <a href="#">
         <img class="arrowtop" src="../images/arrow_top.png" alt="arrowtop">

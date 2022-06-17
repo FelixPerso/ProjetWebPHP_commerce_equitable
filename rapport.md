@@ -40,9 +40,9 @@ Lorsque ses premières tâches ont été finalisées. Nous avons entamé la cons
 
 * <b>Hugo</b> s'est occupé des parties connexions et inscription ainsi qu'une partie de la page vente et de la page des historiques.<br>
 
-* <b>Félix</b> s'est occupé des pages d'achat, profil et le panier.
+* <b>Félix</b> s'est occupé des pages d'achat, profil et panier.
 
->Au final, chacun de nous étions indispensable à la réalisation de se projet, l'entraide a été très présent lors de la rencontre de problèmes.
+>Au final, chacun de nous étions indispensable à la réalisation de ce projet, l'entraide a été très présent lors de la rencontre de problèmes.
 
 <br>
 
@@ -80,3 +80,16 @@ Si vous cliquez sur le bouton "Historique", vous verrez alors votre vente effect
 * <b>Félix  :</b>  Pour ma part, ce projet m'a permis de grandement m'améliorer en PHP. J'avais des difficultés par manque de pratique à effectuer des commandes un peu complexe et maintenant je me sens plus à l'aise. Cela m'a donné envie de créer mon propre site !
 De plus, j'ai appris à utiliser une de base de données comme phpMyAdmin, c'est très pratique et assez intuitif pour gérer beaucoup de données. J'ai pu également consolider mes compétences en HTML et CSS. J'ai vraiment apprécié travailler avec mes deux partenaires Thomas et Hugo. Lorsque, j'avais des difficultés en PHP, Hugo m'était d'une grande d'aide et je pense m'être bien amélioré grâce à lui. Et pour le CSS, Thomas m'a apprit des astuces que je ne connaissais pas. Chacun a pu m'aider dans ses domaines de prédilection.
 Je suis très content de notre site internet bien que des fonctionnalités auraient pu être ajoutées, comme un filtre ou une page admin.
+
+<br>
+
+## Annexe :
+
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tests illustrant le bon fonctionnement de notre site ###
+
+<b>Utilisateur non connecté : </b>Lorsqu'un utilisateur arrive sur notre site et qu'il souhaite accéder au page de _profil_, _panier_, _historique_ sans être connecté, il est automatiquement redirigé vers la page de connexion.
+
+<b>Pas assez d'argent dans la cagnotte : </b>Si un utilisateur tente d'acheter plusieurs produits alors qu'il n'a pas assez d'argent dans sa cagnotte un message d'erreur apparaît sur la page panier.
+
+
+

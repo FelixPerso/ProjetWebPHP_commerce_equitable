@@ -56,3 +56,18 @@
 
     background: rgba(104, 182, 253, 0.40);
   }
+.arrowtop {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    height: 60px;
+}
+  
+.arrowtop:hover {
+
+    z-index: 0;
+    height: 65px;
+    bottom: 37.5px; 
+    right: 37.5px; 
+     
+}  

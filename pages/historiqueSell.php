@@ -9,7 +9,7 @@ if(!isset($_SESSION['cle_id'])) {
 }
 
 $HistoSell = mysqli_query($conn,"SELECT nameEntreprise,nameProduit,Prix,Quantite,Total FROM HistoriqueSell WHERE id=$id");
-$HistoBuy = mysqli_query($conn,"SELECT nameProduit,Prix,Pays,Total FROM HistoriqueBuy WHERE id=$id");
+$HistoBuy = mysqli_query($conn,"SELECT nameProduit,prix FROM HistoriqueBuy WHERE id=$id");
 
 
 ?>
@@ -55,9 +55,9 @@ if($HistoSell){
 <h3 class="titre-histo-achat">Historique des achats</h3>
 <?php
 if($HistoBuy){
-    echo "<table class='historique-achat'><tr class='legende'><td><b>Produit</b></td><td><b>Prix</b></td><td><b>Pays</b></td><td><b>Quantité</b></td><td><b>Total</b></td></tr>";
+    echo "<table class='historique-achat'><tr class='legende'><td><b>Produit</b></td><td><b>Prix</b></td></tr>";
     while(($HistoriqueBuy = mysqli_fetch_array($HistoBuy))!=null) {
-        echo"<tr class='produits'><td>{$HistoriqueBuy['Pays']}</td><td>{$HistoriqueBuy['nameProduit']}</td><td style='color: #F01A25;'><b>-{$HistoriqueBuy['Prix']}€</b></td><td>{$HistoriqueBuy['Quantite']}</td><td style='color: #F01A25;'><b>-{$HistoriqueBuy['Total']}€</b></td></tr>";
+        echo"<tr class='produits'><td>{$HistoriqueBuy['nameProduit']}</td><td style='color: #FF0000;'><b>-{$HistoriqueBuy['prix']}</td></tr>";
     }
     echo "</table>";
 }
