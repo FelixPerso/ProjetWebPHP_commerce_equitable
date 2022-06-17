@@ -34,7 +34,7 @@
         </header>
         <img class="logo" src="../images/logo_IT+_.png" style="width:4%" >
         <button class="bouton-deconnexion" onclick="window.location.href = 'logout.php';">Déconnexion</button>
-        <button class="bouton-historique" onclick="window.location.href = 'historiqueSell.php';">Historique</button>
+        <button class="bouton-historique" onclick="window.location.href = 'historique.php';">Historique</button>
         <div class="grand-rectangle1">
             <div class="rectangle1">
                 <h3>Métaux précieux recyclés</h3>

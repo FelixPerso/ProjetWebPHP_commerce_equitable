@@ -20,7 +20,7 @@ $HistoBuy = mysqli_query($conn,"SELECT nameProduit,prix FROM HistoriqueBuy WHERE
     <meta charset='utf-8'>
     <title>IT+ - Historique</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/header.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/historiqueSell.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/pages/historique.css'>
     
 </head>
 <body>
