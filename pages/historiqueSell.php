@@ -2,10 +2,9 @@
 include 'bd.php';
 session_start();
 
-if(!isset($_SESSION['cle_id']))
-    echo "connexion impossible";
-
-else {
+if(!isset($_SESSION['cle_id'])) {
+    header("Location:./connexion.php");
+}else {
     $id = $_SESSION['cle_id'];
 }
 

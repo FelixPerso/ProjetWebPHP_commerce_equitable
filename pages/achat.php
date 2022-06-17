@@ -44,9 +44,13 @@ if(!isset($_SESSION['cle_id'])) {
             <div class="w3-container">
                 <div class="w3-dropdown-click">
                     <button class="w3-button w3-marina" onclick="rechercheMenuFunction()">Rechercher</button>
+                    
                     <div class="w3-dropdown-content w3-bar-block w3-card w3-white" id="myDIV">
+                        
+                    
                         <input class="w3-input w3-padding" type="text" placeholder="..." id="myInput"
                         onkeyup="rechercheFiltreFunction()">
+                        
                         <?php
                         if($titre){
                             while(($titreprod = mysqli_fetch_array($titre))!=null)
@@ -59,8 +63,9 @@ if(!isset($_SESSION['cle_id'])) {
                 </div>
             </div>
         </header>
-        
-
+        <div class ='bouton-panier'>
+        <a class="w3-btn w3-round-xxlarge" href="./cart.php">Panier</a>
+        </div>                
         <?php
         $val =0;
         $numimg = 0;
@@ -71,7 +76,8 @@ if(!isset($_SESSION['cle_id'])) {
          foreach($titre as $titreprod)
          {
              echo"<div class='w3-col s4 w3-center'>";
-             echo"<table><tr class='nom-produit'><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}</h4></td></tr><tr><td style='padding-left:5%;'><b>Prix :</b> {$titreprod['Prix']} €</td></tr><br><br>";
+             echo"<table><tr class='nom-produit'><td><h4 id='{$titreprod['name']}'>{$titreprod['name']}
+             </h4></td></tr><tr><td style='padding-left:5%;'><b>Prix :</b> {$titreprod['Prix']} €</td></tr><br><br>";
 
              $val++;
              $numimg++;
@@ -85,7 +91,8 @@ if(!isset($_SESSION['cle_id'])) {
 
              echo"<tr><td class='w3-center'><img class='w3-image' src='../images/img$numimg.png' alt='img' height='40%' width='40%'></td></tr>  
              <tr><td><form id='frm' name='frm' method='post'>
-             <input type='hidden' name='idprod' value='{$titreprod['id']}'/><input class='bouton-achat-panier' type='submit' name='btn' value='Ajouter au panier'/>
+             <input type='hidden' name='idprod' value='{$titreprod['id']}'/>
+             <input class='bouton-achat-panier' type='submit' name='btn' value='Ajouter au panier'/>
              </form></td></tr></table>";
              
 
@@ -95,11 +102,6 @@ if(!isset($_SESSION['cle_id'])) {
 
      }
      echo"</div>";
-
-
-
-     
-   
 
         if(!empty($_POST)){
 
@@ -128,10 +130,6 @@ if(!isset($_SESSION['cle_id'])) {
                         $stmt = mysqli_prepare($conn,"INSERT INTO Cart(prix,typeItem,idUser) VALUES (?,?,?)");
                         mysqli_stmt_bind_param($stmt,'isi',$produitPrix,$nomTypeItem,$id);
                         mysqli_stmt_execute($stmt);
-                        // On va inserer les informations de vente dans une nouvelle table "HistoriqueBuy" afin de recenser nos historiques de vente
-                        // $stmt = mysqli_prepare($conn,"INSERT INTO HistoriqueBuy(nameProduit,Prix,Pays,id) VALUES (?,?,?,?)");
-                        // mysqli_stmt_bind_param($stmt,'sisii',$_POST[',$nameTypeItem,$produitPrix,$id);
-                        // mysqli_stmt_execute($stmt);
                     }
                 }
             }   
