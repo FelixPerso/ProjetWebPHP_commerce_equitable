@@ -32,9 +32,9 @@ Le fichier bd.php permet de faire la connexion à la base de données MariaDB.
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Organisation et Répartition des tâches ###
 
-Dans un premier temps, nous nous sommes concentré sur la réalisation du wireflow avec le Site Internet [Figma](https://www.figma.com/). Par la suite, nous avons amélioré la base de données en rajoutant quelques tables (_les tables des historiques et du panier_) et en rajoutant de nombreux tuples dans chacune des tables.
+Dans un premier temps, nous nous sommes concentré sur la réalisation du wireflow avec le site Internet [Figma](https://www.figma.com/). Par la suite, nous avons amélioré la base de données en rajoutant quelques tables (_les tables des historiques et du panier_) et en rajoutant de nombreux tuples dans chacune des tables.
 
-Lorsque ces premières tâches ont été finalisées. Nous avons entammé la construction du Site Internet en se divisant le travail :
+Lorsque ses premières tâches ont été finalisées. Nous avons entamé la construction du site Internet en se divisant le travail :
 * <b>Thomas</b>, qui a déjà réalisé une grande partie de wireflow, s'est occupé principalement de l'aspect graphique de l'intégralité du site. Il s'est également occupé en partie de la page de vente et de la page d'accueil. <br>
 
 * <b>Hugo</b> s'est occupé des parties connexions et inscription ainsi qu'une partie de la page vente et de la page des historiques.<br>
